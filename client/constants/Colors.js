@@ -1,3 +1,3 @@
-export default{
+export default {
     primary: '#fc9208'
 }
