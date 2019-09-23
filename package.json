@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/skens06/trouvetonbio_expo#readme",
   "dependencies": {
-    "expo": "^35.0.0"
+    "expo": "^35.0.0",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   }
 }
