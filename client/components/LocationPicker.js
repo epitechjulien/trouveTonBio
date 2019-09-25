@@ -8,14 +8,15 @@ import Colors from '../constants/Colors';
 const LocationPicker = props => {
   const [isFetching, setIsFetching] = useState(false);
   const [pickedLocation, setPickedLocation] = useState();
-
   const mapPickedLocation  = props.navigation.getParam('pickedLocation');
-
+  const { onLocationPicked } = props;
+    
   useEffect(() => {
     if (mapPickedLocation) {
         setPickedLocation(mapPickedLocation);
+        props.onLocationPicked(mapPickedLocation);
     }
-  }, [mapPickedLocation]);
+  }, [mapPickedLocation, onLocationPicked]);
 
   const verifyPermissions = async () => {
     const result = await Permissions.askAsync(Permissions.LOCATION);
@@ -41,11 +42,17 @@ const LocationPicker = props => {
       const location = await Location.getCurrentPositionAsync({
         timeout: 5000
       });
-      console.log(location)
+    //   console.log(location)
       setPickedLocation({
         lat: location.coords.latitude,
         lng: location.coords.longitude
       });
+
+      props.onLocationPicked({
+        lat: location.coords.latitude,
+        lng: location.coords.longitude
+      });
+
     } catch (err) {
       Alert.alert(
         'Could not fetch location!',
