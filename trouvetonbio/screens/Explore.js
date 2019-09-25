@@ -1,11 +1,37 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet,ImageBackground, SafeAreaView , Platform, StatusBar, TextInput, ScrollView, Image, Dimensions} from 'react-native'
+import { Text, View, StyleSheet, FlatList, ImageBackground, SafeAreaView , Platform, StatusBar, TextInput, ScrollView, Image, Dimensions} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'; 
 import Category from './components/Explore/Category';
 import { Thumbnail} from 'native-base';
 import Colors from '../constants/Colors';
 
+import { CATEGORIES } from '../data/dummy-data';
+import CategoryGridTile from '../components/CategoryGridTile';
+
+
 const { height, width} = Dimensions.get('window')
+
+const renderGridItem = itemData => {
+    return (
+
+
+        
+    <CategoryGridTile
+        title={itemData.item.title}
+        color={itemData.item.color}
+        image={itemData.item.image}
+        onSelect = {() => {
+            props.navigation.navigate({
+                routeName: 'CategoryProducts',
+                params: {
+                  categoryId: itemData.item.id
+            }
+    });
+        }} />
+
+        );
+};
+
 
 export class Explore extends Component {
 
@@ -15,7 +41,6 @@ export class Explore extends Component {
             this.startHeaderHeight= 100 + StatusBar.currentHeight
         }
     }
-    //page d'aceuil:
     render() {
         return (
             <SafeAreaView style = {{flex:1}}>
@@ -29,20 +54,22 @@ export class Explore extends Component {
                         </ImageBackground>
                     </View>
             <ScrollView scrollEventThrottle={16}>
-                <View style={{flex:1, backgroundColor:'white', paddingTop: 20}}>
+                <View style={{flex:1, backgroundColor:'white', paddingTop: 20, paddingBottom: 20}}>
                     <Text style={styles.title}>Faites vos courses</Text>
 
                             <Text style={styles.subtitle}>Catégories</Text>
-                            <View style={{height :130, marginTop:20}}>
-                                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                    <Category image={require('../assets/home.jpg')} name="Home"/>
-                                    <Category image={require('../assets/experiences.jpg')} name="Experiences"/>
-                                    <Category image={require('../assets/restaurant.jpg')} name="Restaurant"/>
-                                </ScrollView>
+                            <View style={{height :130, marginTop:5, marginBottom: 15,}}>
+                            <FlatList
+                                keyExtractor={(item, index) => item.id}
+                                data={CATEGORIES}
+                                renderItem={renderGridItem}
+                                // numColumns={2}
+                                horizontal={true}
+                                />
                             </View>
 
                             <Text style={styles.subtitle}>Promotions</Text>
-                            <View style={{height :130, marginTop:20}}>
+                            <View style={{height :130, marginTop:5, marginBottom: 15,}}>
                                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                                     <Category image={require('../assets/home.jpg')} name="Home"/>
                                     <Category image={require('../assets/experiences.jpg')} name="Experiences"/>
@@ -51,13 +78,14 @@ export class Explore extends Component {
                             </View>
 
                             <Text style={styles.subtitle}>Evenements</Text>
-                            <View style={{height :130, marginTop:20}}>
+                            <View style={{height :130, marginTop:5, marginBottom: 15,}}>
                                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                                     <Category image={require('../assets/home.jpg')} name="Home"/>
                                     <Category image={require('../assets/experiences.jpg')} name="Experiences"/>
                                     <Category image={require('../assets/restaurant.jpg')} name="Restaurant"/>
                                 </ScrollView>
                             </View>
+
                 </View>
             </ScrollView>
 
@@ -78,6 +106,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 24,
+        textAlign: 'center',
         color:'#107848',
         fontWeight:'700',
         paddingHorizontal: 20,
@@ -88,10 +117,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color:'#000',
         fontWeight:'700',
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        marginTop: 20,
     },
     SearchContainer:{
-        height : 200,
+        height : '30%',
         backgroundColor: '#107848',
         borderBottomWidth: 1,
         borderBottomColor: '#dddddd'
