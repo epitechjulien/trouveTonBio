@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, FlatList, ImageBackground, SafeAreaView , Platform, StatusBar, TextInput, ScrollView, Image, Dimensions} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'; 
-import Category from './components/Explore/Category';
+import Category from '../components/Explore/Category';
 import { Thumbnail} from 'native-base';
 import Colors from '../constants/Colors';
 
@@ -48,8 +48,8 @@ export class Explore extends Component {
                     <View style={styles.SearchContainer}>
                     <ImageBackground source={require('../assets/home.png')} style={{width: '100%', height: '100%'}}>
                         <View style={styles.SearchArea}>
-                            <Icon name= "ios-search" size={20}/>
-                            <TextInput underlineColorAndroid="transparent" placeholder="Que recherchez vous ?" placeholderTextColor= "grey" style={styles.SearchInput}/>
+                            <Icon name= "ios-search" size={24} color="white" style={{marginLeft:10,}}/>
+                            <TextInput underlineColorAndroid="transparent" placeholder="Que recherchez vous ?" placeholderTextColor= "white" style={styles.SearchInput}/>
                         </View>
                         </ImageBackground>
                     </View>
@@ -129,19 +129,21 @@ const styles = StyleSheet.create({
     SearchArea:{
         flexDirection: 'row',
         padding:10,
-        backgroundColor: 'white',
+        backgroundColor: '#107848',
         marginHorizontal: 20,
         shadowOffset : { width: 0, height :0},
         shadowColor: 'black',
         shadowOpacity: 0.2,
         elevation :1,
         marginTop: 50,
+        color: 'white',
+        borderRadius: 10,
     },
     SearchInput: {
         flex:1,
         fontWeight:'700',
         color: 'white',
-        backgroundColor: 'white',
+        paddingLeft: 15,
     },
   });
 

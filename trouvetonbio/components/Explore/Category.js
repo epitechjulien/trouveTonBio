@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import {
-    View,
-    Image,
-    Text,
-    StyleSheet
-} from "react-native";
+import {View,Image,Text,StyleSheet} from "react-native";
 
 //mise en page: page d'acceuil
 class Category extends Component {

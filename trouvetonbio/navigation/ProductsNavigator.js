@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform} from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -6,7 +7,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-
+import Colors from '../constants/Colors';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
 // Screen to import
 import ExploreScreen from '../screens/Explore';
@@ -22,7 +24,7 @@ import ProductDetailScreen from '../screens/ProductDetailScreen';
 import EventsScreenDetails from '../screens/EventsScreenDetails';
 import EventsScreenCategory from '../screens/EventsScreenCategory';
 
-import Colors from '../constants/Colors';
+
 
 const ProductsNavigator = createStackNavigator({
     //all pages of navigation
@@ -112,27 +114,31 @@ const tabScreenConfig = {
 };
 
 //create the bar navigation!
-const TabNavigator = createBottomTabNavigator(
-    tabScreenConfig, {activeTintColor: Colors.primaryColor, shifting: true, tabBarOptions: {
+const TabNavigator  = Platform.OS === 'android'
+    ? createMaterialBottomTabNavigator(tabScreenConfig, {
+        activeTintColor: Colors.primaryColor,
+        shifting: true,
+    })
+    :createBottomTabNavigator(
+        tabScreenConfig, {
+    tabBarOptions: {
         height: 150,
         activeTintColor: Colors.primaryColor,
-        activeColor: 'white',
+        activeColor: Colors.primaryColor,
         inactiveTintColor: 'white',
         activeBackgroundColor: Colors.accentColor,
         alignContent: 'center',
         style: {
             backgroundColor: Colors.primaryColor,
             alignContent: 'center',
-            // paddingTop: 30,
-            // borderTopWidth: 5,
+            height: 150,
+            paddingTop: 50,
+            borderTopWidth: 5,
         },
         tabStyle: {
-            // height: 40,
+            height: 150,
         }
     }
-
-    }
-    
-);
+});
 
 export default createAppContainer(TabNavigator);
