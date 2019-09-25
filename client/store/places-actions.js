@@ -6,7 +6,7 @@ export const SET_PLACES = 'SET_PLACES';
 import { insertPlace , fetchPlaces } from '../helpers/db';
 import { async } from 'q';
 
-export const addPlace = (title, image) => {
+export const addPlace = (title, image, location) => {
   return async dispatch => {
     const fileName = image.split('/').pop();
     const newPath = FileSystem.documentDirectory + fileName;
