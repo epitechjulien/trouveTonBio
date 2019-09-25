@@ -33,7 +33,7 @@ const LocationPicker = props => {
       const location = await Location.getCurrentPositionAsync({
         timeout: 5000
       });
-      console.log(location)
+    //   console.log(location)
       setPickedLocation({
         lat: location.coords.latitude,
         lng: location.coords.longitude
