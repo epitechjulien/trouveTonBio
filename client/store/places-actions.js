@@ -14,7 +14,7 @@ export const addPlace = (title, image, location) => {
       location.lat
     },${location.lng}&key=${ENV.googleApiKey}`);
 
-    if (!reponse.ok) {
+    if (!response.ok) {
       throw new Error('Something went wrong!');
     }
 

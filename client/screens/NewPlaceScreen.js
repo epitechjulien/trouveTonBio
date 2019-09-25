@@ -21,7 +21,7 @@ const NewPlaceScreen = props => {
       setSelectedImage(imagePath);
   };
 
-  const locationPickedHandler = useCallBack(location => {
+  const locationPickedHandler = useCallback(location => {
     setSelectedLocation(location);
     // console.log(location);
   }, [] );
