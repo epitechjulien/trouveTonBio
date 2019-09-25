@@ -58,13 +58,14 @@ export class Explore extends Component {
                     <Text style={styles.title}>Faites vos courses</Text>
 
                             <Text style={styles.subtitle}>Catégories</Text>
-                            <View style={{height :130, marginTop:5, marginBottom: 15,}}>
+                            <View style={{height :165, marginTop:5, marginBottom: 15,}}>
                             <FlatList
                                 keyExtractor={(item, index) => item.id}
                                 data={CATEGORIES}
                                 renderItem={renderGridItem}
                                 // numColumns={2}
                                 horizontal={true}
+                                style={styles.FlatList}
                                 />
                             </View>
 

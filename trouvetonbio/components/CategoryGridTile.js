@@ -5,12 +5,12 @@ import { TouchableOpacity, View, Text, ImageBackground, StyleSheet } from 'react
 const CategoryGridTile = props => {
     console.log(props.image);
     return (
-        <View style={styles.shadow}>
+
         <View style={styles.gridItem}>
             <TouchableOpacity style={{flex: 1}}
                 onPress={props.onSelect}
             >
-                <View style={styles.border}>
+                <View style={styles.border} >
                 <View style={{ ...styles.container, ...styles.mealHeader}}>
                     <ImageBackground source={props.image} style={styles.bgImage} />
                 </View>
@@ -20,73 +20,66 @@ const CategoryGridTile = props => {
                 </View>
           </TouchableOpacity>
         </View>
-        </View>
+
     );
 };
-
+  
 const styles = StyleSheet.create({
     border: {
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.32,
-        shadowRadius: 5.46,
-        elevation: 9,
         borderRadius: 5,
-        height: 150,
-        width: 150,
-        backgroundColor: '#FFFAFA',
-        overflow: 'hidden'
+        borderWidth: 1,
+        height: 120,
+        width: 140,
+        backgroundColor: 'white',
+        overflow: 'hidden',
+        borderWidth: 0.5,
+        borderColor:'#dddddd',
+        elevation:3,
+        shadowOpacity: 0.2,
+        shadowRadius: 1.41,
+        position:'relative',
     },
     mealRow: {
         flexDirection: 'row',
-        height: 30,
-        backgroundColor: 'white',
     },
     mealHeader: {
-        height: '90%'
+        height: '100%'
     },
     mealDetail: {
         paddingHorizontal: 10,
         justifyContent: 'space-between'
     },
     bgImage: {
-        width: '150%',
-        height: '110%'
+        width: '100%',
+        height: 100,
     },
     gridItem: {
         flex: 1,
-        margin: 15,
-        height: 150,
-        borderRadius: 10,
+        marginLeft: 20,
+        height: 125,
         overflow: 'hidden',
-        borderColor: 'black'
+        marginTop: 20,
+
     },
     container: {
         flex: 1,
-        //borderRadius: 25,
-        borderColor: 'black',
-        //padding: 15,
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
         overflow: 'hidden'
     },
     image: {
-        height: 200,
-        width: '150%',
+        height: 150,
+        width: '100%',
         overflow: 'hidden'
     },
-    shadow: {
-        shadowColor: 'black',
-        shadowOpacity: 0.26,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 8,
-        elevation: 5
-    },
     title: {
+        marginTop: 5,
         flex: 1,
-        fontSize: 15,
-        textAlign: 'center',
-        borderColor: '#000000'
+        fontSize: 12,
+        textAlign: 'left',
+        height:25,
+        justifyContent: 'center',
+        fontWeight: 'bold',
     }
 });
 
