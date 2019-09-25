@@ -1,13 +1,21 @@
 import * as FileSystem from 'expo-file-system';
+import { insertPlace , fetchPlaces } from '../helpers/db';
+import { async } from 'q';
+import ENV from '../env';
 
 
 export const ADD_PLACE = 'ADD_PLACE';
 export const SET_PLACES = 'SET_PLACES';
-import { insertPlace , fetchPlaces } from '../helpers/db';
-import { async } from 'q';
 
 export const addPlace = (title, image, location) => {
   return async dispatch => {
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${
+      location.lat
+    },${location.lng}&key=${ENV.googleApiKey}`);
+
+    if (!reponse.ok)
+
     const fileName = image.split('/').pop();
     const newPath = FileSystem.documentDirectory + fileName;
 
