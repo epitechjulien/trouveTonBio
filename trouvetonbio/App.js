@@ -4,17 +4,36 @@ import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import { useScreens } from 'react-native-screens';
 
+// STORE import
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import cartReducer from './store/reducers/cart';
+import productsReducer from './store/reducers/products';
+import ShopNavigator from './navigation/ShopNavigator';
+import ordersReducer from './store/reducers/orders';
+
+// Product import
 import ProductsNavigator from './navigation/ProductsNavigator';
 
 useScreens();
 
-//type de text
+// Font loading import
 const fetchFonts = () => {
   Font.loadAsync({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
     'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf')
   });
 };
+
+// Reducer const combiner
+const rootReducer = combineReducers({
+  products: productsReducer,
+  cart: cartReducer,
+  orders: ordersReducer
+});
+
+// remove composeWithDev before deploying app
+const store = createStore(rootReducer);
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
