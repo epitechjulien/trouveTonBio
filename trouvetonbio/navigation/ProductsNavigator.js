@@ -9,8 +9,11 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import Colors from '../constants/Colors';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import {createDrawerNavigator} from 'react-navigation-drawer';
 
-// Screen to import
+
+// SCREENS
+import ShopScreen from '../screens/ShopScreen';
 import ExploreScreen from '../screens/Explore';
 import EventsScreen from '../screens/EventsScreen';
 import MapScreen from '../screens/MapScreen';
@@ -20,9 +23,14 @@ import AlertScreen from '../screens/AlertScreen';
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryProductsScreen from '../screens/CategoryProductsScreen';
 import SousCategoryProduct from '../screens/SousCategoryProduct';
-import ProductDetailScreen from '../screens/ProductDetailScreen';
+import ProductDetailScreen2 from '../screens/ProductDetailScreen';
 import EventsScreenDetails from '../screens/EventsScreenDetails';
 import EventsScreenCategory from '../screens/EventsScreenCategory';
+// SHOP SCREENS
+import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
+import ProductDetailScreen from '../screens/shop/ProductDetailScreen';
+import CartScreen from '../screens/shop/CartScreen';
+import OrdersScreen from '../screens/shop/OrdersScreen';
 
 
 
@@ -36,11 +44,12 @@ const ProductsNavigator = createStackNavigator({
     },
     CategoryProducts: {
         screen: CategoryProductsScreen,
+        
     },
     SousCategoryProduct: {
         screen: SousCategoryProduct,
     },
-    ProductDetail: ProductDetailScreen,
+    ProductDetail: ProductDetailScreen2,
     Events:
     {
         screen: EventsScreen,
@@ -60,12 +69,26 @@ const ProductsNavigator = createStackNavigator({
         screen: EventsScreenDetails,
         navigationOptions:{
             headerTitle: 'Events Details',
-            
         }
-    }
+    },
+    ProductsOverview:
+    {
+        screen: ProductsOverviewScreen,
+        navigationOptions:{
+            headerTitle: 'Products',
+        }
+    },
+    ShopScreen:
+    {
+        screen: ShopScreen,
+        navigationOptions:{
+            headerTitle: 'Shop Screen',
+
+        }
+    },
+    ProductDetail: ProductDetailScreen,
+    Cart: CartScreen
 }, {
-    // initialRouteName: 'CategoryProducts', commencé par cette page!
-    // Apply headerStyle for all screen
     defaultNavigationOptions: {
         headerStyle: {
             backgroundColor: Colors.primaryColor
@@ -73,6 +96,42 @@ const ProductsNavigator = createStackNavigator({
         headerTintColor: 'white'
     }
 });
+
+// Header menu shop
+const OrdersNavigator = createStackNavigator(
+    {
+      Orders: OrdersScreen
+    },
+    {
+      navigationOptions: {
+        drawerIcon: drawerConfig => (
+          <Ionicons
+            name={Platform.OS === 'android' ? 'md-list' : 'ios-list'}
+            size={23}
+            color={drawerConfig.tintColor}
+          />
+        )
+      },
+      defaultNavigationOptions: {
+        headerStyle: {
+            backgroundColor: Colors.primaryColor
+        },
+        headerTintColor: 'white'
+    }
+    }
+  );
+  
+  const ShopNavigator = createDrawerNavigator(
+    {
+      Products: ProductsNavigator,
+      Orders: OrdersNavigator
+    },
+    {
+      contentOptions: {
+        activeTintColor: Colors.primaryColor
+      }
+    }
+  );
 
 //create caracteristique navBar
 const tabScreenConfig = {
@@ -104,9 +163,9 @@ const tabScreenConfig = {
         tabBarColor: Colors.accentColor
     }
     },
-    Alertes: {screen: AlertScreen, navigationOptions: {
+    Achat: {screen: ShopScreen, navigationOptions: {
         tabBarIcon: (tabInfo) => {
-            return <Ionicons name="md-notifications" size={28} color="white" activeColor='white'/>
+            return <Ionicons name="md-cart" size={28} color="white" activeColor='white'/>
         },
         tabBarColor: Colors.primaryColor
     }
