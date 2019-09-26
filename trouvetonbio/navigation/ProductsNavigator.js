@@ -44,6 +44,7 @@ const ProductsNavigator = createStackNavigator({
     },
     CategoryProducts: {
         screen: CategoryProductsScreen,
+        
     },
     SousCategoryProduct: {
         screen: SousCategoryProduct,
@@ -68,15 +69,26 @@ const ProductsNavigator = createStackNavigator({
         screen: EventsScreenDetails,
         navigationOptions:{
             headerTitle: 'Events Details',
-            
         }
     },
-    ProductsOverview: ProductsOverviewScreen,
+    ProductsOverview:
+    {
+        screen: ProductsOverviewScreen,
+        navigationOptions:{
+            headerTitle: 'Products',
+        }
+    },
+    ShopScreen:
+    {
+        screen: ShopScreen,
+        navigationOptions:{
+            headerTitle: 'Shop Screen',
+
+        }
+    },
     ProductDetail: ProductDetailScreen,
     Cart: CartScreen
 }, {
-    // initialRouteName: 'CategoryProducts', commencé par cette page!
-    // Apply headerStyle for all screen
     defaultNavigationOptions: {
         headerStyle: {
             backgroundColor: Colors.primaryColor
@@ -116,7 +128,7 @@ const OrdersNavigator = createStackNavigator(
     },
     {
       contentOptions: {
-        activeTintColor: Colors.primary
+        activeTintColor: Colors.primaryColor
       }
     }
   );
