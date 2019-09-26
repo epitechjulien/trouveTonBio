@@ -2,19 +2,18 @@ import React from 'react';
 import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
 
 import { CATEGORIES, PRODUCTS } from '../data/dummy-data';
-import Product from '../models/products';
+import ProductItem from '../components/ProductItem';
 
 //category of product
 const CategoryProductsScreen = props => {
 
     const renderProductItem= itemData => {
-        return (<View><Text>{itemData.item.title}</Text></View>);
+        return <ProductItem title={itemData.item.title} image={itemData.item.imageUrl} price={itemData.item.price} onSelectProduct={() => {}}/>;
     };
     
     const catId = props.navigation.getParam('categoryId');
 
     const displayedProducts = PRODUCTS.filter(Products => Products.categoryIds.indexOf(catId) >= 0);
-    
     
     const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
 

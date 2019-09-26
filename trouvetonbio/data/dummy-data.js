@@ -36,7 +36,7 @@ export const PRODUCTS = [
     ),
     new Product(
       'p3',
-      ['c2'],
+      ['c1'],
       ['owner1'],
       'Coffee Mug',
       'https://images.pexels.com/photos/160834/coffee-cup-and-saucer-black-coffee-loose-coffee-beans-160834.jpeg?cs=srgb&dl=bean-beans-black-coffee-160834.jpg&fm=jpg',
@@ -45,7 +45,7 @@ export const PRODUCTS = [
     ),
     new Product(
       'p4',
-      ['c3'],
+      ['c1'],
       ['owner2'],
       'The Book - Limited Edition',
       'https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?cs=srgb&dl=blur-blurred-book-pages-46274.jpg&fm=jpg',

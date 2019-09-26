@@ -65,6 +65,14 @@ export class Explore extends Component {
                                 renderItem={renderGridItem}
                                 // numColumns={2}
                                 horizontal={true}
+                                onSelect = {() => {
+                                    props.navigation.navigate({
+                                        routeName: 'CategoryProducts',
+                                        params: {
+                                          categoryId: itemData.item.id
+                                    }
+                            });
+                                }}
                                 style={styles.FlatList}
                                 />
                             </View>
