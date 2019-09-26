@@ -3,7 +3,7 @@ import { TouchableOpacity, View, Text, ImageBackground, StyleSheet } from 'react
 
 //mise en page de la page events
 const CategoryGridTile = props => {
-    console.log(props.image);
+    // console.log(props.image);
     return (
 
         <View style={styles.gridItem}>

@@ -1,20 +1,26 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
 
-import { CATEGORIES } from '../data/dummy-data';
+import { CATEGORIES, PRODUCTS } from '../data/dummy-data';
+import Product from '../models/products';
 
 //category of product
 const CategoryProductsScreen = props => {
+
+    const renderProductItem= itemData => {
+        return (<View><Text>{itemData.item.title}</Text></View>);
+    };
+    
     const catId = props.navigation.getParam('categoryId');
 
+    const displayedProducts = PRODUCTS.filter(Products => Products.categoryIds.indexOf(catId) >= 0);
+    
+    
     const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
+
     return (
         <View style={styles.screen}>
-            <Text>The Categories Product Screen!</Text>
-            <Text>{selectedCategory.title}</Text>
-            <Button title="Go to The sous Products!" onPress={() => {
-                props.navigation.navigate({routeName: 'SousCategoryProduct'});
-            }} />
+            <FlatList data={displayedProducts} keyExtractor={(item, index)=>item.id} renderItem={renderProductItem}/>
         </View>
     );
 };
