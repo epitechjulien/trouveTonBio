@@ -26,7 +26,7 @@ const ProductDetailScreen = props => {
       <Image style={styles.image} source={{uri: selectedProduct.imageUrl}}/>
       <View style= {styles.actions}>
         <Button color={Colors.primary} title ="Add to Cart" onpress={() => {
-          dispatch(cartActions.addtoCart(selectedProduct));
+          dispatch(cartActions.addToCart(selectedProduct));
         }}/>
       </View>
       
