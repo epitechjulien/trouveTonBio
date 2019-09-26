@@ -1,5 +1,5 @@
 import Category from '../models/category';
-//import Product from '../models/prodcut';
+//import Product from '../models/product';
 
 
 //les categories
