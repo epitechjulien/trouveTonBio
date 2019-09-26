@@ -8,7 +8,7 @@ import ProductItem from '../components/ProductItem';
 const CategoryProductsScreen = props => {
 
     const renderProductItem= itemData => {
-        return <ProductItem title={itemData.item.title} image={itemData.item.imageUrl} price={itemData.item.price} onSelectProduct={() => {}}/>;
+        return <ProductItem title={itemData.item.title} image={itemData.item.imageUrl} price={itemData.item.price} onSelectProduct={() => {props.navigation.navigate({routename : 'ProductDetail', params: { productId: itemData.item.id}})}}/>;
     };
     
     const catId = props.navigation.getParam('categoryId');
