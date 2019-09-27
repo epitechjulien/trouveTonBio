@@ -35,7 +35,7 @@ const UserProductsScreen = props => {
                  
                 }}
               />
-                    </ProductItem>
+                </ProductItem>
               )}
             />
     );
