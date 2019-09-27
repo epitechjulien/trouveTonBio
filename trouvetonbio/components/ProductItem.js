@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+import { TouchableOpacity, View, Text, ImageBackground, StyleSheet } from 'react-native';
 
 const ProductItem = props => {
     return (
@@ -11,12 +11,11 @@ const ProductItem = props => {
                 </View>
                 <View style={{ ...styles.mealRow, ...styles.mealDetail}}>
                     <Text style={styles.title}>{props.title}</Text>
-                    <Text style={styles.title}>{props.price}</Text>
                 </View>
                 </View>
           </TouchableOpacity>
         </View>
-        );
+    );
 };
 
 const styles = StyleSheet.create({
@@ -49,12 +48,6 @@ const styles = StyleSheet.create({
         height: 100,
     },
     gridItem: {
-        flex: 1,
-        marginLeft: 20,
-        height: 125,
-        overflow: 'hidden',
-        marginTop: 20,
-
     },
     container: {
         flex: 1,
@@ -72,7 +65,7 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 12,
         textAlign: 'left',
-        height:30,
+        height:25,
         justifyContent: 'center',
         fontWeight: 'bold',
     }

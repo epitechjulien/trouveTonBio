@@ -80,19 +80,23 @@ export class Explore extends Component {
 
                             <Text style={styles.subtitle}>Promotions</Text>
                             <View style={{height :130, marginTop:5, marginBottom: 15,}}>
-                                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                    <Category image={require('../assets/home.jpg')} name="Home"/>
-                                    <Category image={require('../assets/experiences.jpg')} name="Experiences"/>
-                                    <Category image={require('../assets/restaurant.jpg')} name="Restaurant"/>
+                                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
+                                    <Category style={styles.border} image={require('../assets/pomme1.jpg')} name="Pomme Golden: 4€"/>
+                                    <Category style={styles.border} image={require('../assets/banane.png')} name="BANANE naturelle: 7€"/>
+                                    <Category style={styles.border} image={require('../assets/raisins.jpg')} name="Grappe de Raisins: 2€"/>
+                                    <Category style={styles.border} image={require('../assets/carrot.jpg')} name="Carrottes longues: 1€"/>
+                                    <Category style={styles.border} image={require('../assets/asperge.jpg')} name="Asperges: 1€"/>
+                                    <Category style={styles.border} image={require('../assets/raisins.jpg')} name="Grappe de Raisins: 2€"/>
                                 </ScrollView>
                             </View>
 
                             <Text style={styles.subtitle}>Evenements</Text>
                             <View style={{height :130, marginTop:5, marginBottom: 15,}}>
                                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                    <Category image={require('../assets/home.jpg')} name="Home"/>
-                                    <Category image={require('../assets/experiences.jpg')} name="Experiences"/>
-                                    <Category image={require('../assets/restaurant.jpg')} name="Restaurant"/>
+                                    <Category image={require('../assets/visite1.png')} name="La ferme de Gally"/>
+                                    <Category image={require('../assets/visite2.png')} name="Visite Champs de Monique"/>
+                                    <Category image={require('../assets/visite3.png')} name="Visite Cave vins"/>
+                                    <Category image={require('../assets/visite1.png')} name="La ferme de Gally"/>
                                 </ScrollView>
                             </View>
 
@@ -154,6 +158,20 @@ const styles = StyleSheet.create({
         fontWeight:'700',
         color: 'white',
         paddingLeft: 15,
+    },
+    border: {
+        borderRadius: 5,
+        borderWidth: 1,
+        height: 120,
+        width: 140,
+        backgroundColor: 'white',
+        overflow: 'hidden',
+        borderWidth: 0.5,
+        borderColor:'#dddddd',
+        elevation:3,
+        shadowOpacity: 0.2,
+        shadowRadius: 1.41,
+        position:'relative',
     },
   });
 

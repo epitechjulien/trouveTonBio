@@ -1,8 +1,11 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
+import { View, Text, Button, StyleSheet, FlatList, Platform } from 'react-native';
+import { useSelector, useDispatch, Provider } from 'react-redux';
 
 import { CATEGORIES, PRODUCTS } from '../data/dummy-data';
 import ProductItem from '../components/ProductItem';
+import HeaderButton from '../components/UI/HeaderButton';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 //category of product
 const CategoryProductsScreen = props => {
@@ -24,16 +27,55 @@ const CategoryProductsScreen = props => {
     );
 };
 
-// recupere le nom de la categories
 CategoryProductsScreen.navigationOptions = (navigationData) => {
     const catId = navigationData.navigation.getParam('categoryId');
 
     const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
 
     return {
-        headerTitle: selectedCategory.title
+        headerTitle: selectedCategory.title,
+        // headerRight: (
+        // <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        //   <Item
+        //     title="Cart"
+        //     iconName={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
+        //     onPress={() => {
+        //         navigationData.navigation.navigate('Cart');
+        //     }}
+        //   />
+        // </HeaderButtons>
+        // )
     };
 };
+
+// CategoryProductsScreen.navigationOptions = navData => {
+//     return {
+         
+//       headerTitle: 'All Products',
+//       headerLeft: (
+//         <HeaderButtons HeaderButtonComponent={HeaderButton}>
+//           <Item
+//             title="Menu"
+//             iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
+//             onPress={() => {
+//               navData.navigation.toggleDrawer();
+//             }}
+//           />
+//         </HeaderButtons>
+//       ),
+//       headerRight: (
+//         <HeaderButtons HeaderButtonComponent={HeaderButton}>
+//           <Item
+//             title="Cart"
+//             iconName={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
+//             onPress={() => {
+//               navData.navigation.navigate('Cart');
+//             }}
+//           />
+//         </HeaderButtons>
+//       )
+//     };
+//   };
 
 const styles = StyleSheet.create({
     screen: {
