@@ -7,7 +7,7 @@ const ProductItem = props => {
             <TouchableOpacity style={{flex: 1}} onPress={props.onSelectProduct}>
                 <View style={styles.border} >
                 <View style={{ ...styles.container, ...styles.mealHeader}}>
-                    <ImageBackground source={{uri: props.image}} style={styles.bgImage} />
+                    <ImageBackground source={props.image} style={styles.bgImage} />
                 </View>
                 <View style={{ ...styles.mealRow, ...styles.mealDetail}}>
                     <Text style={styles.title}>{props.title}</Text>
