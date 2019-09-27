@@ -1,9 +1,11 @@
 import React from 'react';
-import { TouchableOpacity, View, Text, ImageBackground, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, Text, ImageBackground, StyleSheet, FlatList, Platform} from 'react-native';
 
 const ProductItem = props => {
     return (
+        // <FlatList numColumns={2}>
         <View style={styles.gridItem}>
+
             <TouchableOpacity style={{flex: 1}} onPress={props.onSelectProduct}>
                 <View style={styles.border} >
                 <View style={{ ...styles.container, ...styles.mealHeader}}>
@@ -15,6 +17,8 @@ const ProductItem = props => {
                 </View>
           </TouchableOpacity>
         </View>
+        // </FlatList>
+
     );
 };
 
@@ -48,6 +52,11 @@ const styles = StyleSheet.create({
         height: 100,
     },
     gridItem: {
+        paddingTop: 20,
+        paddingLeft: 20,
+        paddingRight: 20,
+        height: 150,
+        width: 400,
     },
     container: {
         flex: 1,
