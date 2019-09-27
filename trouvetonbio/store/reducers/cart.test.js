@@ -1,4 +1,4 @@
-import cartReducer from 'cart'
+import cartReducer  from 'cart';
 import { addToCart } from '../actions/cart'
 
 
