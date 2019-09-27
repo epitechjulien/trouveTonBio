@@ -6,7 +6,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../../components/UI/HeaderButton';
 import ProductItem from '../../components/shop/ProductItem';
 import Colors from '../../constants/Colors';
-import * as  productsAction from '../../store/actions/products';
+import * as  productsActions from '../../store/actions/products';
 
 const UserProductsScreen = props => {
     const userProducts = useSelector(state => state.products.userProducts);

@@ -122,7 +122,7 @@ export const PRODUCTS = [
       'Pomme Golden',
       require("../assets/pomme1.jpg"),
       'Comment cuisiner la pomme, la conserver, à quelles saisons la déguster pour une saveur optimale... découvrez tous les secrets de ce délicieux fruit.',
-      5
+      7
     ),
     new Product(
       'p13',
@@ -140,7 +140,7 @@ export const PRODUCTS = [
       'Grappe de Raisins',
       require("../assets/raisins.jpg"),
       'Le raisin est le fruit de la vigne et appartient à la famille des vitacées. Il se présente sous forme de grappes composées de nombreux grains. Le raisin est originaire d’Asie Mineure. En France, c’est François 1er qui fit entrer le raisin sur les tables de Fontainebleau. Les raisins blancs sont de couleurs claires qui varient du vert au jaune, voire jaune doré. Quant aux raisins noirs, ils arborent des couleurs rouge, violette pouvant aller jusqu’au noir violet. En parfumerie, le raisin est reproduit par l’association de différentes molécules.',
-      3.99
+      5.50
     ),
     new Product(
       'p15',
