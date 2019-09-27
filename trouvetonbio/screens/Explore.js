@@ -11,29 +11,30 @@ import CategoryGridTile from '../components/CategoryGridTile';
 
 const { height, width} = Dimensions.get('window')
 
-const renderGridItem = itemData => {
-    return (
-
-
-        
-    <CategoryGridTile
-        title={itemData.item.title}
-        color={itemData.item.color}
-        image={itemData.item.image}
-        onSelect = {() => {
-            props.navigation.navigate({
-                routeName: 'CategoryProducts',
-                params: {
-                  categoryId: itemData.item.id
-            }
-    });
-        }} />
-
-        );
-};
 
 
 export class Explore extends Component {
+
+    renderGridItem = itemData => {
+        return (
+    
+    
+            
+        <CategoryGridTile
+            title={itemData.item.title}
+            color={itemData.item.color}
+            image={itemData.item.image}
+            onSelect = {() => {
+                this.props.navigation.navigate({
+                    routeName: 'CategoryProducts',
+                    params: {
+                      categoryId: itemData.item.id
+                }
+        });
+            }} />
+    
+            );
+    };
 
     componentWillMount(){
         this.startHeaderHeight = 80
@@ -62,9 +63,17 @@ export class Explore extends Component {
                             <FlatList
                                 keyExtractor={(item, index) => item.id}
                                 data={CATEGORIES}
-                                renderItem={renderGridItem}
+                                renderItem={this.renderGridItem}
                                 // numColumns={2}
                                 horizontal={true}
+                                onSelect = {() => {
+                                    props.navigation.navigate({
+                                        routeName: 'CategoryProducts',
+                                        params: {
+                                          categoryId: itemData.item.id
+                                    }
+                            });
+                                }}
                                 style={styles.FlatList}
                                 />
                             </View>

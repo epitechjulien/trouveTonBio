@@ -49,9 +49,9 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "babel-preset-expo": "^7.0.0",
-    "jest-expo": "^35.0.0",
-    "react-test-renderer": "^16.9.0",
+    "babel-preset-expo": "^6.0.0",
+    "jest-expo": "^34.0.0",
+    "react-test-renderer": "^16.8.6",
     "redux-devtools": "^3.5.0"
   },
   "private": true
