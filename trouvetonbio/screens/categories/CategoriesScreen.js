@@ -16,6 +16,7 @@ const CategoriesScreen = props => {
                     routeName: 'SousCategories',
                     params: {
                       categoryId: itemData.item.id,
+                      subcat: itemData.item.id
                 }
         });
             }} />

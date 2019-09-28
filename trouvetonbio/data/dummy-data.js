@@ -51,7 +51,7 @@ export const PRODUCTS = [
     new Product(
       'p2',
       'c1',
-      'sub1',
+      'sub6',
       'owner2',
       'BANANE naturelle',
       require("../assets/banane.png"),
@@ -81,7 +81,7 @@ export const PRODUCTS = [
     new Product(
       'p5',
       'c1',
-      'sub1',
+      'sub4',
       'owner3',
       'Pêches de Bretage',
       require("../assets/peche.jpg"),
@@ -91,7 +91,7 @@ export const PRODUCTS = [
     new Product(
       'p6',
       'c2',
-      'sub2',
+      'sub5',
       'owner4',
       'Carrottes longues',
       require("../assets/carrot.jpg"),
@@ -101,7 +101,7 @@ export const PRODUCTS = [
     new Product(
       'p7',
       'c2',
-      'sub2',
+      'sub5',
       'owner4',
       "Duo d'asperges vertes et blanches",
       require("../assets/asperge.jpg"),
@@ -111,7 +111,7 @@ export const PRODUCTS = [
     new Product(
       'p8',
       'c2',
-      'sub2',
+      'sub5',
       'owner4',
       "Choux-fleur",
       require("../assets/chouxfleur.jpg"),
@@ -121,7 +121,7 @@ export const PRODUCTS = [
     new Product(
       'p9',
       'c2',
-      'sub2',
+      'sub5',
       'owner4',
       'Carrottes longues',
       require("../assets/carrot.jpg"),

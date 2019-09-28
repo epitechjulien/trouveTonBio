@@ -3,12 +3,13 @@ import { View, Text, FlatList, StyleSheet, TouchableOpacity,Image } from 'react-
 import { CATEGORIES, SUBCATEGORIES } from '../../data/dummy-data';
 import SubcategoryGridTile from '../../components/categories/SubcategoryGridTile';
 
-//recupere les données des categories
+//recupere les données des sous categories
 const SubcategoriesScreen = props => {
-
-    const catId= props.navigation.getParam('categoryId');
-    const selectedcategoryId= CATEGORIES.find(cat => cat.id === catId);
-
+    console.log(props.navigation)
+    const catsubcat= props.navigation.getParam('subcat');
+    const selectedsubcat= CATEGORIES.find(cat => cat.subcat === catsubcat);
+    
+    
     const renderGridItem = itemData => {
         return (
         <SubcategoryGridTile
@@ -18,8 +19,9 @@ const SubcategoriesScreen = props => {
                 props.navigation.navigate({
                     routeName: 'SubCategoryProductsScreen',
                     params: {
-                        Subcategories: itemData.item.id
+                        subcategoriesIds: itemData.item.id
                 }
+                
         });
             }} />
             );
