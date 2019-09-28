@@ -18,7 +18,7 @@ import ExploreScreen from '../screens/Explore';
 import EventsScreen from '../screens/EventsScreen';
 import MapScreen from '../screens/MapScreen';
 import HomeScreen from '../screens/HomeScreen';
-import ProfilScreen from '../screens/ProfilScreen';
+import ProfilScreen from '../screens/user/ProfilScreen';
 import AlertScreen from '../screens/AlertScreen';
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryProductsScreen from '../screens/CategoryProductsScreen';
