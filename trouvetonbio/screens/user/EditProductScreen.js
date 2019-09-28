@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect, useCallback, useReducer } from 'react';
 import {
   View,
@@ -232,3 +233,24 @@ const styles = StyleSheet.create({
 });
 
 export default EditProductScreen;
+=======
+import React from "react";
+import { View, ScrollView, Text, StyleSheet} from 'react-native';
+import { TextInput } from "react-native-paper";
+
+const EditProductScreen = props => {
+    return (
+       <ScrollView>
+           <View>
+               <Text>Title</Text>
+               <TextInput />
+           </View>
+       </ScrollView>
+    );
+};
+
+const styles = StyleSheet.create({});
+
+export default EditProductScreen;
+
+>>>>>>> d90d417318bd1fff481d9b0072fa49c295895c9a

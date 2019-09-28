@@ -1,15 +1,12 @@
 import React from 'react';
-import { TouchableOpacity, View, Text, ImageBackground, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, Text, ImageBackground, StyleSheet, FlatList, Platform} from 'react-native';
 
-//mise en page de la page events
-const CategoryGridTile = props => {
-    // console.log(props.image);
+const ProductItem = props => {
     return (
-
+        // <FlatList numColumns={2}>
         <View style={styles.gridItem}>
-            <TouchableOpacity style={{flex: 1}}
-                onPress={props.onSelect}
-            >
+
+            <TouchableOpacity style={{flex: 1}} onPress={props.onSelectProduct}>
                 <View style={styles.border} >
                 <View style={{ ...styles.container, ...styles.mealHeader}}>
                     <ImageBackground source={props.image} style={styles.bgImage} />
@@ -20,10 +17,11 @@ const CategoryGridTile = props => {
                 </View>
           </TouchableOpacity>
         </View>
+        // </FlatList>
 
     );
 };
-  
+
 const styles = StyleSheet.create({
     border: {
         borderRadius: 5,
@@ -54,12 +52,11 @@ const styles = StyleSheet.create({
         height: 100,
     },
     gridItem: {
-        flex: 1,
-        marginLeft: 20,
-        height: 125,
-        overflow: 'hidden',
-        marginTop: 20,
-
+        paddingTop: 20,
+        paddingLeft: 20,
+        paddingRight: 20,
+        height: 150,
+        width: 400,
     },
     container: {
         flex: 1,
@@ -83,4 +80,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CategoryGridTile;
+export default ProductItem;
