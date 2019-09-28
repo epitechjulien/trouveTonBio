@@ -15,7 +15,6 @@ import {createDrawerNavigator} from 'react-navigation-drawer';
 // BARRE DE NAVIGATION SCREEN
 import ShopScreen from '../screens/ShopScreen';
 import ExploreScreen from '../screens/Explore';
-import EventsScreen from '../screens/EventsScreen';
 import MapScreen from '../screens/MapScreen';
 import ProfilScreen from '../screens/ProfilScreen';
 
@@ -42,13 +41,6 @@ const ProductsNavigator = createStackNavigator({
     CategoryProducts: {
         screen: CategoryProductsScreen,
         
-    },
-    Events:
-    {
-        screen: EventsScreen,
-        navigationOptions:{
-            headerTitle: 'Events Categories'  
-        }
     },
     ProductsOverview:
     {
