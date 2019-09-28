@@ -1,6 +1,28 @@
 import Category from '../models/category';
 import Product from '../models/products';
+import Subcategories from '../models/subcategories';
 
+
+//les sous categories
+export const SUBCATEGORIES = [
+  new Subcategories('sub1','c1','Fruits de saison', require('../data/Images/fruits/saison.jpg')),
+  new Subcategories('sub2','c1','Fruits rouges', require('../data/Images/fruits/rouges.jpg')),
+  new Subcategories('sub3','c1','Fruits exotiques', require('../data/Images/fruits/exotique.jpg')),
+  new Subcategories('sub4','c1','Fruits agrumes', require('../data/Images/fruits/agrumes.jpg')),
+  new Subcategories('sub5','c2','Légumes de saison', require('../data/Images/legumes/saison.jpeg')),
+  new Subcategories('sub6','c2','Légumes exotiques', require('../data/Images/legumes/exotique.jpg')),
+  new Subcategories('sub7','c2','Légumes Verts', require('../data/Images/legumes/verts.jpg')),
+  new Subcategories('sub8','c2','Légumes Rouges', require('../data/Images/legumes/rouges.jpg')),
+  new Subcategories('sub9','c3','Poulet', require('../data/Images/viandes/poulet.jpg')),
+  new Subcategories('sub10','c3','Lapin', require('../data/Images/viandes/lapin.jpg')),
+  new Subcategories('sub11','c3','Dinde', require('../data/Images/viandes/dinde.jpg')),
+  new Subcategories('sub12','c3','Canard', require('../data/Images/viandes/canard.jpg')),
+  new Subcategories('sub13','c3','Foies', require('../data/Images/viandes/foies.jpeg')),
+  new Subcategories('sub14','c3','Boeuf', require('../data/Images/viandes/boeuf.jpg')),
+  new Subcategories('sub15','c3','Porc', require('../data/Images/viandes/porc.jpg')),
+  new Subcategories('sub16','c3','Veau', require('../data/Images/viandes/veau.jpg')),
+  new Subcategories('sub17','c3','Barbecue', require('../data/Images/viandes/barbecue.jpg')),
+];
 
 //les categories
 export const CATEGORIES = [
@@ -19,6 +41,7 @@ export const PRODUCTS = [
     new Product(
       'p1',
       'c1',
+      'sub1',
       'owner1',
       'Pomme Golden',
       require("../assets/pomme1.jpg"),
@@ -28,6 +51,7 @@ export const PRODUCTS = [
     new Product(
       'p2',
       'c1',
+      'sub1',
       'owner2',
       'BANANE naturelle',
       require("../assets/banane.png"),
@@ -37,6 +61,7 @@ export const PRODUCTS = [
     new Product(
       'p3',
       'c1',
+      'sub1',
       'owner1',
       'Grappe de Raisins',
       require("../assets/raisins.jpg"),
@@ -46,6 +71,7 @@ export const PRODUCTS = [
     new Product(
       'p4',
       'c1',
+      'sub1',
       'owner2',
       'Poires d’hiver',
       require("../assets/poire.jpg"),
@@ -55,6 +81,7 @@ export const PRODUCTS = [
     new Product(
       'p5',
       'c1',
+      'sub1',
       'owner3',
       'Pêches de Bretage',
       require("../assets/peche.jpg"),
@@ -64,6 +91,7 @@ export const PRODUCTS = [
     new Product(
       'p6',
       'c2',
+      'sub2',
       'owner4',
       'Carrottes longues',
       require("../assets/carrot.jpg"),
@@ -73,6 +101,7 @@ export const PRODUCTS = [
     new Product(
       'p7',
       'c2',
+      'sub2',
       'owner4',
       "Duo d'asperges vertes et blanches",
       require("../assets/asperge.jpg"),
@@ -82,6 +111,7 @@ export const PRODUCTS = [
     new Product(
       'p8',
       'c2',
+      'sub2',
       'owner4',
       "Choux-fleur",
       require("../assets/chouxfleur.jpg"),
@@ -91,6 +121,7 @@ export const PRODUCTS = [
     new Product(
       'p9',
       'c2',
+      'sub2',
       'owner4',
       'Carrottes longues',
       require("../assets/carrot.jpg"),
@@ -100,6 +131,7 @@ export const PRODUCTS = [
     new Product(
       'p10',
       'c2',
+      'sub2',
       'owner4',
       "Duo d'asperges vertes et blanches",
       require("../assets/asperge.jpg"),
@@ -109,6 +141,7 @@ export const PRODUCTS = [
     new Product(
       'p11',
       'c2',
+      'sub2',
       'owner4',
       "Choux-fleur",
       require("../assets/chouxfleur.jpg"),
@@ -118,6 +151,7 @@ export const PRODUCTS = [
     new Product(
       'p12',
       'c1',
+      'sub1',
       'owner1',
       'Pomme Golden',
       require("../assets/pomme1.jpg"),
@@ -127,6 +161,7 @@ export const PRODUCTS = [
     new Product(
       'p13',
       'c1',
+      'sub1',
       'owner2',
       'BANANE naturelle',
       require("../assets/banane.png"),
@@ -136,6 +171,7 @@ export const PRODUCTS = [
     new Product(
       'p14',
       'c1',
+      'sub1',
       'owner1',
       'Grappe de Raisins',
       require("../assets/raisins.jpg"),
@@ -145,6 +181,7 @@ export const PRODUCTS = [
     new Product(
       'p15',
       'c1',
+      'sub1',
       'owner2',
       'Poires d’hiver',
       require("../assets/poire.jpg"),

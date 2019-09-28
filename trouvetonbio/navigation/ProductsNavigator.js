@@ -22,10 +22,7 @@ import ProfilScreen from '../screens/ProfilScreen';
 import AlertScreen from '../screens/AlertScreen';
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryProductsScreen from '../screens/CategoryProductsScreen';
-import SousCategoryProduct from '../screens/SousCategoryProduct';
 import ProductDetailScreen2 from '../screens/ProductDetailScreen';
-import EventsScreenDetails from '../screens/EventsScreenDetails';
-import EventsScreenCategory from '../screens/EventsScreenCategory';
 // SHOP SCREENS
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
 import ProductDetailScreen from '../screens/shop/ProductDetailScreen';
@@ -46,29 +43,12 @@ const ProductsNavigator = createStackNavigator({
         screen: CategoryProductsScreen,
         
     },
-    SousCategoryProduct: {
-        screen: SousCategoryProduct,
-    },
     ProductDetail: ProductDetailScreen2,
     Events:
     {
         screen: EventsScreen,
         navigationOptions:{
             headerTitle: 'Events Categories'  
-        }
-    },
-    EventsCategory:
-    {
-        screen: EventsScreenCategory,
-        navigationOptions:{
-            headerTitle: 'Events Categories'  
-        }
-    },
-    EventsDetails:
-    {
-        screen: EventsScreenDetails,
-        navigationOptions:{
-            headerTitle: 'Events Details',
         }
     },
     ProductsOverview:

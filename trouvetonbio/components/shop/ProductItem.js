@@ -27,6 +27,7 @@ const ProductItem = props => {
             <View style={styles.details}>
               <Text style={styles.title}>{props.title}</Text>
               <Text style={styles.cat}>Catégorie : {props.categoryIds}</Text>
+              <Text style={styles.cat}>Sous Catégorie : {props.subcategoriesIds}</Text>
               <Text style={styles.cat}>Producteur : {props.ownerId}</Text>
               <Text style={styles.price}>€{props.price.toFixed(2)}</Text>
             </View>
