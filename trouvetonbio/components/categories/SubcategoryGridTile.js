@@ -1,8 +1,10 @@
 import React from 'react';
+import { CATEGORIES, SUBCATEGORIES } from '../../data/dummy-data';
 import { TouchableOpacity, View, Text, ImageBackground, StyleSheet } from 'react-native';
 
 //mise en page des sous categories
 const SubcategoryGridTile = props => {
+    
     return (
 
         <View style={styles.gridItem}>

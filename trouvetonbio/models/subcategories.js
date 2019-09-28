@@ -1,7 +1,7 @@
 class Subcategories {
-    constructor(id, CategoryIds, title, image) {
+    constructor(id, categoryIds, title, image) {
         this.id = id;
-        this.CategoryIds=CategoryIds;
+        this.categoryIds=categoryIds;
         this.title = title;
         this.image = image
     }

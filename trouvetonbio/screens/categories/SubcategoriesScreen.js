@@ -1,11 +1,14 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity,Image } from 'react-native';
-
-import { SUBCATEGORIES } from '../../data/dummy-data';
+import { CATEGORIES, SUBCATEGORIES } from '../../data/dummy-data';
 import SubcategoryGridTile from '../../components/categories/SubcategoryGridTile';
 
 //recupere les données des categories
 const SubcategoriesScreen = props => {
+
+    const catId= props.navigation.getParam('categoryId');
+    const selectedcategoryId= CATEGORIES.find(cat => cat.id === catId);
+
     const renderGridItem = itemData => {
         return (
         <SubcategoryGridTile
@@ -13,9 +16,9 @@ const SubcategoriesScreen = props => {
             image={itemData.item.image}
             onSelect = {() => {
                 props.navigation.navigate({
-                    routeName: 'Sous-Catégories',
+                    routeName: 'SubCategoryProductsScreen',
                     params: {
-                      categoryId: itemData.item.id
+                        Subcategories: itemData.item.id
                 }
         });
             }} />
@@ -32,8 +35,9 @@ const SubcategoriesScreen = props => {
 };
 
 SubcategoriesScreen.navigationOptions = {
-    headerTitle: 'Sous-Catégories'
+    headerTitle: 'Les sous catégories'
 };
+
 
 const styles = StyleSheet.create({
     screen: {

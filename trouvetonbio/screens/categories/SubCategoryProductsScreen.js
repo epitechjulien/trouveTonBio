@@ -16,7 +16,7 @@ const CategoryProductsScreen = props => {
     
     const catId = props.navigation.getParam('categoryId');
 
-    const displayedProducts = PRODUCTS.filter(Products => Products.categoryIds.indexOf(catId) >= 0);
+    const displayedProducts = PRODUCTS.filter(Products => Products.subcategoriesIds.indexOf(catId) >= 0);
     
     const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
 
@@ -33,7 +33,7 @@ CategoryProductsScreen.navigationOptions = (navigationData) => {
     const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
 
     return {
-        headerTitle: selectedCategory.title,
+        // headerTitle: selectedCategory.title,
     };
 };
 

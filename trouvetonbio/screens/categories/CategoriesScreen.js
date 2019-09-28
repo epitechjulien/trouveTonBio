@@ -13,9 +13,9 @@ const CategoriesScreen = props => {
             image={itemData.item.image}
             onSelect = {() => {
                 props.navigation.navigate({
-                    routeName: 'CategoryProducts',
+                    routeName: 'SousCategories',
                     params: {
-                      categoryId: itemData.item.id
+                      categoryId: itemData.item.id,
                 }
         });
             }} />
@@ -32,7 +32,7 @@ const CategoriesScreen = props => {
 };
 
 CategoriesScreen.navigationOptions = {
-    headerTitle: 'Catégories'
+    headerTitle: 'Nos Catégories'
 };
 
 const styles = StyleSheet.create({

@@ -22,6 +22,7 @@ import ProfilScreen from '../screens/ProfilScreen';
 import CategoriesScreen from '../screens/categories/CategoriesScreen';
 import SubcategoriesScreen from '../screens/categories/SubcategoriesScreen';
 import CategoryProductsScreen from '../screens/categories/CategoryProductsScreen';
+import SubCategoryProductsScreen from '../screens/categories/SubCategoryProductsScreen';
 
 // SHOP SCREENS
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
@@ -34,13 +35,19 @@ const ProductsNavigator = createStackNavigator({
     Categories: {
         screen: CategoriesScreen,
         navigationOptions: {
-            headerTitle: 'Catégories'
+            // headerTitle: 'Nos Catégories'
         }
     },
     SousCategories: {
         screen: SubcategoriesScreen,
         navigationOptions: {
-            headerTitle: 'Sous-Catégories'
+            // headerTitle: 'Sous-Catégories'
+        }
+    },
+    SubCategoryProductsScreen: {
+        screen: SubCategoryProductsScreen,
+        navigationOptions: {
+            // headerTitle: 'Produits'
         }
     },
     CategoryProducts: {

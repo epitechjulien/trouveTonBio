@@ -26,15 +26,15 @@ export const SUBCATEGORIES = [
 
 //les categories
 export const CATEGORIES = [
-    new Category('c1', 'Fruits', '#FBFCFA', require('../data/Images/fruits/fruits.jpeg')),
-    new Category('c2', 'Legumes', '#FBFCFA', require('../data/Images/legumes/legumes.jpeg')),
-    new Category('c3', 'Viandes', '#FBFCFA', require('../data/Images/viandes/viandes.jpg')),
-    new Category('c4', 'Fromages', '#FBFCFA', require('../data/Images/fromages/fromages.jpg')),
-    new Category('c5', 'Vins', '#FBFCFA', require('../data/Images/vins/vins.jpeg')),
-    new Category('c6', 'Epicerie', '#FBFCFA', require('../data/Images/epicerie/epicerie.jpg')),
-    new Category('c7', 'Produit Laitier', '#FBFCFA', require('../data/Images/produit_laitier/creme.jpg')),
-    new Category('c8', 'Poissons', '#FBFCFA', require('../data/Images/poisson/poissons.jpg')),
-    new Category('c9', 'Boissons', '#FBFCFA', require('../data/Images/boisson/boisson.jpeg'))
+    new Category('c1',['sub1','sub2','sub3','sub4'],'Fruits', '#FBFCFA', require('../data/Images/fruits/fruits.jpeg')),
+    new Category('c2',['sub5','sub6','sub7','sub8'], 'Legumes', '#FBFCFA', require('../data/Images/legumes/legumes.jpeg')),
+    new Category('c3',['sub9','sub10','sub11','sub12','sub13','sub14','sub15','sub16','sub17'], 'Viandes', '#FBFCFA', require('../data/Images/viandes/viandes.jpg')),
+    new Category('c4','' ,'Fromages', '#FBFCFA', require('../data/Images/fromages/fromages.jpg')),
+    new Category('c5','' , 'Vins', '#FBFCFA', require('../data/Images/vins/vins.jpeg')),
+    new Category('c6','' , 'Epicerie', '#FBFCFA', require('../data/Images/epicerie/epicerie.jpg')),
+    new Category('c7','' , 'Produit Laitier', '#FBFCFA', require('../data/Images/produit_laitier/creme.jpg')),
+    new Category('c8','' , 'Poissons', '#FBFCFA', require('../data/Images/poisson/poissons.jpg')),
+    new Category('c9','' , 'Boissons', '#FBFCFA', require('../data/Images/boisson/boisson.jpeg'))
 ];
 
 export const PRODUCTS = [
