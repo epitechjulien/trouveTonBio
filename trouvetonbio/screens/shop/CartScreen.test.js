@@ -16,9 +16,3 @@ it('renders correctly', () => {
 
   expect(tree).toMatchSnapshot();
 });
-
-
-
-// test('one is one', () => {
-//   expect(1).toEqual(1)
-// });
