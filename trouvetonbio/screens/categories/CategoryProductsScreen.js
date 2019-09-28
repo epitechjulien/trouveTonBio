@@ -11,7 +11,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 const CategoryProductsScreen = props => {
 
     const renderProductItem= itemData => {
-        return <ProductItem title={itemData.item.title} image={itemData.item.imageUrl} price={itemData.item.price} onSelectProduct={() => {props.navigation.navigate({routename : 'ProductDetail', params: { productId: itemData.item.id}})}}/>;
+        return <ProductItem title={itemData.item.title} image={itemData.item.imageUrl} price={itemData.item.price} subcategoriesIds={itemData.item.subcategoriesIds} onSelectProduct={() => {props.navigation.navigate({routename : 'ProductDetail', params: { productId: itemData.item.id}})}}/>;
     };
     
     const catId = props.navigation.getParam('categoryId');
@@ -34,17 +34,6 @@ CategoryProductsScreen.navigationOptions = (navigationData) => {
 
     return {
         headerTitle: selectedCategory.title,
-        // headerRight: (
-        // <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        //   <Item
-        //     title="Cart"
-        //     iconName={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
-        //     onPress={() => {
-        //         navigationData.navigation.navigate('Cart');
-        //     }}
-        //   />
-        // </HeaderButtons>
-        // )
     };
 };
 

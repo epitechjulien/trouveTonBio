@@ -20,6 +20,7 @@ import ProfilScreen from '../screens/ProfilScreen';
 
 // CATEGORIES ET SOUS CATEGORIES
 import CategoriesScreen from '../screens/categories/CategoriesScreen';
+import SubcategoriesScreen from '../screens/categories/SubcategoriesScreen';
 import CategoryProductsScreen from '../screens/categories/CategoryProductsScreen';
 
 // SHOP SCREENS
@@ -28,14 +29,18 @@ import ProductDetailScreen from '../screens/shop/ProductDetailScreen';
 import CartScreen from '../screens/shop/CartScreen';
 import OrdersScreen from '../screens/shop/OrdersScreen';
 
-
-
 const ProductsNavigator = createStackNavigator({
     //all pages of navigation
     Categories: {
         screen: CategoriesScreen,
         navigationOptions: {
             headerTitle: 'Catégories'
+        }
+    },
+    SousCategories: {
+        screen: SubcategoriesScreen,
+        navigationOptions: {
+            headerTitle: 'Sous-Catégories'
         }
     },
     CategoryProducts: {
@@ -127,7 +132,7 @@ const tabScreenConfig = {
         tabBarColor: Colors.primaryColor
     }
     },
-    Profil: {screen: ProfilScreen, navigationOptions: {
+    Profil: {screen: SubcategoriesScreen, navigationOptions: {
         tabBarIcon: (tabInfo) => {
             return <MaterialCommunityIcons name="account" size={28} color="white" activeColor='white'/>
         },

@@ -1,19 +1,19 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity,Image } from 'react-native';
 
-import { CATEGORIES } from '../../data/dummy-data';
-import CategoryGridTile from '../../components/categories/CategoryGridTile';
+import { SUBCATEGORIES } from '../../data/dummy-data';
+import SubcategoryGridTile from '../../components/categories/SubcategoryGridTile';
 
 //recupere les données des categories
-const CategoriesScreen = props => {
+const SubcategoriesScreen = props => {
     const renderGridItem = itemData => {
         return (
-        <CategoryGridTile
+        <SubcategoryGridTile
             title={itemData.item.title}
             image={itemData.item.image}
             onSelect = {() => {
                 props.navigation.navigate({
-                    routeName: 'CategoryProducts',
+                    routeName: 'Sous-Catégories',
                     params: {
                       categoryId: itemData.item.id
                 }
@@ -24,15 +24,15 @@ const CategoriesScreen = props => {
     return (
         <FlatList
             keyExtractor={(item, index) => item.id}
-            data={CATEGORIES}
+            data={SUBCATEGORIES}
             renderItem={renderGridItem}
             numColumns={2}
             />
     );
 };
 
-CategoriesScreen.navigationOptions = {
-    headerTitle: 'Catégories'
+SubcategoriesScreen.navigationOptions = {
+    headerTitle: 'Sous-Catégories'
 };
 
 const styles = StyleSheet.create({
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CategoriesScreen;
+export default SubcategoriesScreen;

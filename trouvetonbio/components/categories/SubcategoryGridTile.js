@@ -1,8 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, View, Text, ImageBackground, StyleSheet } from 'react-native';
 
-//mise en page des categories
-const CategoryGridTile = props => {
+//mise en page des sous categories
+const SubcategoryGridTile = props => {
     return (
 
         <View style={styles.gridItem}>
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CategoryGridTile;
+export default SubcategoryGridTile;

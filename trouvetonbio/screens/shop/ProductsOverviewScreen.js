@@ -29,7 +29,7 @@ const ProductsOverviewScreen = props => {
           image={itemData.item.imageUrl}
           title={itemData.item.title}
           categoryIds={itemData.item.categoryIds}
-          categoryIds={itemData.item.categoryIds}
+          subcategoriesIds={itemData.item.subcategoriesIds}
           ownerId={itemData.item.ownerId}
           price={itemData.item.price}
           onSelect={() => {
