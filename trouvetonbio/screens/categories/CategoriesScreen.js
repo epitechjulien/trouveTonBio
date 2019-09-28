@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity,Image } from 'react-native';
 
-import { CATEGORIES } from '../data/dummy-data';
-import CategoryGridTile from '../components/CategoryGridTile';
+import { CATEGORIES } from '../../data/dummy-data';
+import CategoryGridTile from '../../components/categories/CategoryGridTile';
 
 //recupere les données des categories
 const CategoriesScreen = props => {

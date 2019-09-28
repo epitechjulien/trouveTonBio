@@ -2,9 +2,9 @@ import React from 'react';
 import { View, Text, Button, StyleSheet, FlatList, Platform } from 'react-native';
 import { useSelector, useDispatch, Provider } from 'react-redux';
 
-import { CATEGORIES, PRODUCTS } from '../data/dummy-data';
-import ProductItem from '../components/ProductItem';
-import HeaderButton from '../components/UI/HeaderButton';
+import { CATEGORIES, PRODUCTS } from '../../data/dummy-data';
+import ProductItem from '../../components/categories/ProductItem';
+import HeaderButton from '../../components/UI/HeaderButton';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 //category of product

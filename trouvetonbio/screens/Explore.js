@@ -6,7 +6,7 @@ import { Thumbnail} from 'native-base';
 import Colors from '../constants/Colors';
 
 import { CATEGORIES } from '../data/dummy-data';
-import CategoryGridTile from '../components/CategoryGridTile';
+import CategoryGridTile from '../components/categories/CategoryGridTile';
 
 
 const { height, width} = Dimensions.get('window')

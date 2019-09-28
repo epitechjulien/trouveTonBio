@@ -1,3 +1,4 @@
+// LIBRAIRIES ET COMPOSANT
 import React from 'react';
 import { Platform} from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -11,18 +12,17 @@ import Colors from '../constants/Colors';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import {createDrawerNavigator} from 'react-navigation-drawer';
 
-
-// SCREENS
+// BARRE DE NAVIGATION SCREEN
 import ShopScreen from '../screens/ShopScreen';
 import ExploreScreen from '../screens/Explore';
 import EventsScreen from '../screens/EventsScreen';
 import MapScreen from '../screens/MapScreen';
-import HomeScreen from '../screens/HomeScreen';
 import ProfilScreen from '../screens/ProfilScreen';
-import AlertScreen from '../screens/AlertScreen';
-import CategoriesScreen from '../screens/CategoriesScreen';
-import CategoryProductsScreen from '../screens/CategoryProductsScreen';
-import ProductDetailScreen2 from '../screens/ProductDetailScreen';
+
+// CATEGORIES ET SOUS CATEGORIES
+import CategoriesScreen from '../screens/categories/CategoriesScreen';
+import CategoryProductsScreen from '../screens/categories/CategoryProductsScreen';
+
 // SHOP SCREENS
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
 import ProductDetailScreen from '../screens/shop/ProductDetailScreen';
@@ -43,7 +43,6 @@ const ProductsNavigator = createStackNavigator({
         screen: CategoryProductsScreen,
         
     },
-    ProductDetail: ProductDetailScreen2,
     Events:
     {
         screen: EventsScreen,
