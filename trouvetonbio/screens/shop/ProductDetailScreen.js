@@ -7,13 +7,9 @@ import * as cartActions from '../../store/actions/cart';
 import { PRODUCTS } from '../../data/dummy-data';
 
 const ProductDetailScreen = props => {
-    //extract productId from parameter we receive
+    console.log(props)
+    
     const productId= props.navigation.getParam('productId');
-
-    // const selectedProduct = useSelector(state => 
-    //   state.products.availableProducts.find(prod => prod.id === productId)
-    // );
-
     const selectedProduct = PRODUCTS.find(prod => prod.id === productId);
     const dispatch = useDispatch();
 

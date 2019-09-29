@@ -5,10 +5,8 @@ import Category from '../components/Explore/Category';
 import { Thumbnail} from 'native-base';
 import Colors from '../constants/Colors';
 
-import { CATEGORIES } from '../data/dummy-data';
+import { CATEGORIES, SUBCATEGORIES } from '../data/dummy-data';
 import CategoryGridTile from '../components/categories/CategoryGridTile';
-
-
 const { height, width} = Dimensions.get('window')
 
 
@@ -68,9 +66,9 @@ export class Explore extends Component {
                                 horizontal={true}
                                 onSelect = {() => {
                                     props.navigation.navigate({
-                                        routeName: 'CategoryProducts',
+                                        routeName: 'SousCategories',
                                         params: {
-                                          categoryId: itemData.item.id
+                                            categoryId: itemData.item.id,
                                     }
                             });
                                 }}

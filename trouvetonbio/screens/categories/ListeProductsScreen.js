@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, FlatList, Platform } from 'react-native';
-import { useSelector, useDispatch, Provider } from 'react-redux';
 
-import { CATEGORIES,SUBCATEGORIES, PRODUCTS } from '../../data/dummy-data';
-import ProductItem from '../../components/categories/ProductItem';
+import { SUBCATEGORIES, PRODUCTS } from '../../data/dummy-data';
+import ProductItem from '../../components/shop/ListProductItem';
 import HeaderButton from '../../components/UI/HeaderButton';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
@@ -15,11 +14,15 @@ const CategoryProductsScreen = props => {
         title={itemData.item.title}
         image={itemData.item.imageUrl}
         price={itemData.item.price}
+        subcategoriesIds={itemData.item.subcategoriesIds}
+        categoryIds={itemData.item.categoryIds}
         
         onSelectProduct={() => {
             props.navigation.navigate({
-                routename : 'ProductsOverview',
-                // params: { productId: itemData.item.id}
+                routename : 'ProductDetail',
+                params: {
+                    productId: itemData.item.id
+                }
             })
         }
     }/>;
@@ -30,25 +33,62 @@ const CategoryProductsScreen = props => {
     const selectedCategory = SUBCATEGORIES.find(cat => cat.id === catId);
 
     return (
-        <View style={styles.screen}>
-            <FlatList style={styles.bg} data={displayedProducts} keyExtractor={(item, index)=>item.id} renderItem={renderProductItem}/>
+        <View >
+            <FlatList
+            
+            data={displayedProducts}
+            keyExtractor={(item, index)=>item.id}
+            renderItem={renderProductItem}/>
         </View>
     );
+
 };
 
-CategoryProductsScreen.navigationOptions = {
-    headerTitle: 'Nos produits'
-};
+
+
+
+CategoryProductsScreen.navigationOptions = navData => {
+    const productId = navData.navigation.getParam('productId');
+    const selectedProduct = PRODUCTS.find(prod => prod.id === productId);   
+       
+    
+    return {
+         
+      headerTitle: 'Nos produits',
+      headerLeft: (
+        <HeaderButtons HeaderButtonComponent={HeaderButton}>
+          <Item
+            title="Menu"
+            iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
+            onPress={() => {
+              navData.navigation.toggleDrawer();
+            }}
+          />
+        </HeaderButtons>
+      ),
+      headerRight: (
+        <HeaderButtons HeaderButtonComponent={HeaderButton}>
+          <Item
+            title="Cart"
+            iconName={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
+            onPress={() => {
+              navData.navigation.navigate('Cart');
+            }}
+          />
+        </HeaderButtons>
+      )
+    };
+  };
 
 
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'black',
     },
     bg: {
-        backgroundColor: 'black',
     },
 });
 
