@@ -1,38 +1,42 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity,Image } from 'react-native';
-import { CATEGORIES, SUBCATEGORIES } from '../../data/dummy-data';
-import SubcategoryGridTile from '../../components/categories/SubcategoryGridTile';
+import { View, Text, Button, StyleSheet, FlatList, Platform } from 'react-native';
+import { useSelector, useDispatch, Provider } from 'react-redux';
 
-//recupere les données des sous categories
+import { CATEGORIES, SUBCATEGORIES } from '../../data/dummy-data';
+import ProductItem from '../../components/categories/old';
+import HeaderButton from '../../components/UI/HeaderButton';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import CategoryGridTile from '../../components/categories/CategoryGridTile';
+
+//category of product
 const SubcategoriesScreen = props => {
-    console.log(props.navigation)
-    const catsubcat= props.navigation.getParam('subcat');
-    const selectedsubcat= CATEGORIES.find(cat => cat.subcat === catsubcat);
     
-    
-    const renderGridItem = itemData => {
-        return (
-        <SubcategoryGridTile
-            title={itemData.item.title}
-            image={itemData.item.image}
-            onSelect = {() => {
-                props.navigation.navigate({
-                    routeName: 'SubCategoryProductsScreen',
-                    params: {
-                        subcategoriesIds: itemData.item.id
+    const renderProductItem= itemData => {
+        return <ProductItem
+         title={itemData.item.title}
+         image={itemData.item.image}
+         categoryIds={itemData.item.categoryIds}
+         onSelectProduct={() => {
+             props.navigation.navigate({
+                routeName: 'Products',
+                params: {
+                    subcategoriesIds: itemData.item.id
                 }
-                
-        });
-            }} />
-            );
+                })
+            }
+        }/>;
     };
+
+    const catId = props.navigation.getParam('categoryId');
+
+    const displayedProducts = SUBCATEGORIES.filter(Products => Products.categoryIds.indexOf(catId) >= 0);
+    
+    const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
+
     return (
-        <FlatList
-            keyExtractor={(item, index) => item.id}
-            data={SUBCATEGORIES}
-            renderItem={renderGridItem}
-            numColumns={2}
-            />
+        <View style={styles.screen}>
+            <FlatList numColumns={1} data={displayedProducts} keyExtractor={(item, index)=>item.id} renderItem={renderProductItem}/>
+        </View>
     );
 };
 

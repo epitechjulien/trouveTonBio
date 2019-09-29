@@ -18,11 +18,10 @@ import ExploreScreen from '../screens/Explore';
 import MapScreen from '../screens/MapScreen';
 import ProfilScreen from '../screens/ProfilScreen';
 
-// CATEGORIES ET SOUS CATEGORIES
+// PAGE CATEGORIES + SOUS CATEGORIES + LISTE DES PRODUITS
 import CategoriesScreen from '../screens/categories/CategoriesScreen';
 import SubcategoriesScreen from '../screens/categories/SubcategoriesScreen';
-import CategoryProductsScreen from '../screens/categories/CategoryProductsScreen';
-import SubCategoryProductsScreen from '../screens/categories/SubCategoryProductsScreen';
+import ListeProductsScreen from '../screens/categories/ListeProductsScreen';
 
 // SHOP SCREENS
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
@@ -34,32 +33,17 @@ const ProductsNavigator = createStackNavigator({
     //all pages of navigation
     Categories: {
         screen: CategoriesScreen,
-        navigationOptions: {
-            // headerTitle: 'Nos Catégories'
-        }
     },
     SousCategories: {
         screen: SubcategoriesScreen,
-        navigationOptions: {
-            // headerTitle: 'Sous-Catégories'
-        }
     },
-    SubCategoryProductsScreen: {
-        screen: SubCategoryProductsScreen,
-        navigationOptions: {
-            // headerTitle: 'Produits'
-        }
-    },
-    CategoryProducts: {
-        screen: CategoryProductsScreen,
+    Products: {
+        screen: ListeProductsScreen,
         
     },
     ProductsOverview:
     {
         screen: ProductsOverviewScreen,
-        navigationOptions:{
-            headerTitle: 'Products',
-        }
     },
     ShopScreen:
     {
@@ -69,7 +53,10 @@ const ProductsNavigator = createStackNavigator({
 
         }
     },
-    ProductDetail: ProductDetailScreen,
+    ProductDetail:
+    {
+        screen: ProductDetailScreen,
+    },
     Cart: CartScreen
 }, {
     defaultNavigationOptions: {
@@ -139,7 +126,7 @@ const tabScreenConfig = {
         tabBarColor: Colors.primaryColor
     }
     },
-    Profil: {screen: SubcategoriesScreen, navigationOptions: {
+    Profil: {screen: ProfilScreen, navigationOptions: {
         tabBarIcon: (tabInfo) => {
             return <MaterialCommunityIcons name="account" size={28} color="white" activeColor='white'/>
         },
