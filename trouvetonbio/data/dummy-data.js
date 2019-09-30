@@ -1,5 +1,5 @@
 import Category from '../models/category';
-import Product from '../models/products';
+import Product from '../models/product';
 import Subcategories from '../models/subcategories';
 
 

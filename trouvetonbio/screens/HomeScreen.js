@@ -15,16 +15,14 @@ export class Explore extends Component {
 
     renderGridItem = itemData => {
         return (
-    
-    
-            
+
         <CategoryGridTile
             title={itemData.item.title}
             color={itemData.item.color}
             image={itemData.item.image}
             onSelect = {() => {
                 this.props.navigation.navigate({
-                    routeName: 'CategoryProducts',
+                    routeName: 'SousCategories',
                     params: {
                       categoryId: itemData.item.id
                 }

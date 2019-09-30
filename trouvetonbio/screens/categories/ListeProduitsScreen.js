@@ -19,7 +19,7 @@ const CategoryProductsScreen = props => {
         
         onSelectProduct={() => {
             props.navigation.navigate({
-                routename : 'ProductDetail',
+                routename : 'Products',
                 params: {
                     productId: itemData.item.id
                 }

@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Button } from 'react-native';
 
-const FiltersScreen = props => {
+const EventsScreen = props => {
+
     return (
         <View style={styles.screen}>
-            <Text>The Filters Screen Product!</Text>
+            <Text>EVENTS</Text>
         </View>
     );
 };
@@ -13,8 +14,8 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     }
 });
 
-export default FiltersScreen;
+export default EventsScreen;

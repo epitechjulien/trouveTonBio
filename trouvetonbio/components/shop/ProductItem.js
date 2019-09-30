@@ -9,6 +9,8 @@ import {
   Platform
 } from 'react-native';
 
+import Card from '../UI/Card';
+
 const ProductItem = props => {
   let TouchableCmp = TouchableOpacity;
 
@@ -17,19 +19,16 @@ const ProductItem = props => {
   }
 
   return (
-    <View style={styles.product}>
+    <Card style={styles.product}>
       <View style={styles.touchable}>
         <TouchableCmp onPress={props.onSelect} useForeground>
           <View>
             <View style={styles.imageContainer}>
-              <Image style={styles.image} source={ props.image } />
+              <Image style={styles.image} source={{ uri: props.image }} />
             </View>
             <View style={styles.details}>
               <Text style={styles.title}>{props.title}</Text>
-              <Text style={styles.cat}>Catégorie : {props.categoryIds}</Text>
-              <Text style={styles.cat}>Sous Catégorie : {props.subcategoriesIds}</Text>
-              <Text style={styles.cat}>Producteur : {props.ownerId}</Text>
-              <Text style={styles.price}>€{props.price.toFixed(2)}</Text>
+              <Text style={styles.price}>${props.price.toFixed(2)}</Text>
             </View>
             <View style={styles.actions}>
               {props.children}
@@ -37,19 +36,12 @@ const ProductItem = props => {
           </View>
         </TouchableCmp>
       </View>
-    </View>
+    </Card>
   );
 };
 
 const styles = StyleSheet.create({
   product: {
-    shadowColor: 'black',
-    shadowOpacity: 0.26,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    elevation: 5,
-    borderRadius: 10,
-    backgroundColor: 'white',
     height: 300,
     margin: 20
   },
@@ -77,13 +69,6 @@ const styles = StyleSheet.create({
     fontFamily: 'open-sans-bold',
     fontSize: 18,
     marginVertical: 2
-    
-  },
-  cat: {
-    fontFamily: 'open-sans-bold',
-    fontSize: 10,
-    marginVertical: 2
-    
   },
   price: {
     fontFamily: 'open-sans',

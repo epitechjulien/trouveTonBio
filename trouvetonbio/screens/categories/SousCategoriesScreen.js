@@ -18,7 +18,7 @@ const SubcategoriesScreen = props => {
          categoryIds={itemData.item.categoryIds}
          onSelectProduct={() => {
              props.navigation.navigate({
-                routeName: 'Products',
+                routeName: 'ProductsOverview',
                 params: {
                     subcategoriesIds: itemData.item.id
                 }

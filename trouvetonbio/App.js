@@ -1,51 +1,48 @@
-import React, {useState} from 'react';
-import { Text, View } from 'react-native';
-import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
-import { useScreens } from 'react-native-screens';
-
-// STORE import
-import { createStore, combineReducers } from 'redux';
+import React, { useState } from 'react';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import cartReducer from './store/reducers/cart';
+import { AppLoading } from 'expo';
+import * as Font from 'expo-font';
+import ReduxThunk from 'redux-thunk';
+
 import productsReducer from './store/reducers/products';
-import ShopNavigator from './navigation/ShopNavigator';
+import cartReducer from './store/reducers/cart';
 import ordersReducer from './store/reducers/orders';
+import authReducer from './store/reducers/auth';
+import NavigationContainer from './navigation/NavigationContainer';
 
-// Product import
-import ProductsNavigator from './navigation/ProductsNavigator';
+const rootReducer = combineReducers({
+  products: productsReducer,
+  cart: cartReducer,
+  orders: ordersReducer,
+  auth: authReducer
+});
 
-useScreens();
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
-// Font loading import
 const fetchFonts = () => {
-  Font.loadAsync({
+  return Font.loadAsync({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
     'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf')
   });
 };
 
-// Reducer const combiner
-const rootReducer = combineReducers({
-  products: productsReducer,
-  cart: cartReducer,
-  orders: ordersReducer
-});
-
-// remove composeWithDev before deploying app
-const store = createStore(rootReducer);
-
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
 
-  if(!fontLoaded) {
+  if (!fontLoaded) {
     return (
       <AppLoading
         startAsync={fetchFonts}
-        onFinish={() => setFontLoaded(true)}
+        onFinish={() => {
+          setFontLoaded(true);
+        }}
       />
     );
   }
-
-  return <ProductsNavigator />;
+  return (
+    <Provider store={store}>
+      <NavigationContainer />
+    </Provider>
+  );
 }
