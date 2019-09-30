@@ -12,7 +12,7 @@ const UserProductsScreen = props => {
     const userProducts = useSelector(state => state.products.userProducts);
     const dispatch = useDispatch();
 
-    const editProductHandler = (id) => {
+    const editProductHandler = id => {
       props.navigation.navigate('EditProduct', {productId: id});
     }
 
@@ -23,9 +23,13 @@ const UserProductsScreen = props => {
               renderItem={itemData => (
                   <ProductItem
                     image={itemData.item.imageUrl}
+                    categoryIds={itemData.item.categoryIds}
+                    ownerId={itemData.item.ownerId}
                     title={itemData.item.title}
                     price={itemData.item.price}
-                    onSelect={() => {}}
+                    onSelect={() => {
+                      editProductHandler(itemData.item.id);
+                    }}
                     >
                     <Button
                         color={Colors.primaryColor}
@@ -75,4 +79,4 @@ UserProductsScreen.navigationOptions = navData => {
     };
 };
 
-export default UserProductsScreen
+export default UserProductsScreen;

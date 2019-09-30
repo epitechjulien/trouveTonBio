@@ -1,3 +1,4 @@
+
 class Product {
     constructor(id, categoryIds,subcategoriesIds, ownerId, title, imageUrl, description, price) {
         this.id=id;

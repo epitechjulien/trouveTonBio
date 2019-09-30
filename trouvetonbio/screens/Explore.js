@@ -24,7 +24,7 @@ export class Explore extends Component {
             image={itemData.item.image}
             onSelect = {() => {
                 this.props.navigation.navigate({
-                    routeName: 'CategoryProducts',
+                    routeName: 'SousCategories',
                     params: {
                       categoryId: itemData.item.id
                 }

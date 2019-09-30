@@ -15,7 +15,7 @@ import EditProductScreen from '../screens/user/EditProductScreen';
 
 const defaultNavOptions = {
   headerStyle: {
-    backgroundColor: Platform.OS === 'android' ? Colors.primary : ''
+    backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
   },
   headerTitleStyle: {
     fontFamily: 'open-sans-bold'
@@ -23,7 +23,7 @@ const defaultNavOptions = {
   headerBackTitleStyle: {
     fontFamily: 'open-sans'
   },
-  headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primary
+  headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor
 };
 
 const ProductsNavigator = createStackNavigator(
@@ -91,7 +91,7 @@ const ShopNavigator = createDrawerNavigator(
   },
   {
     contentOptions: {
-      activeTintColor: Colors.primary
+      activeTintColor: Colors.primaryColor
     }
   }
 );
