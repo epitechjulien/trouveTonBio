@@ -38,6 +38,22 @@ const EditProductScreen = props => {
     return (
        <ScrollView>
            <View style={styles.form}>
+           <View style={styles.formControl}>
+                 <Text style={styles.label}>categoryIds</Text>
+                 <TextInput
+                    style={styles.input}
+                    value={categoryIds}
+                    onChangeText= {text => setcategoryIds(text)}
+                />
+             </View>
+             <View style={styles.formControl}>
+                 <Text style={styles.label}>subcategoriesIds</Text>
+                 <TextInput
+                    style={styles.input}
+                    value={subcategoriesIds}
+                    onChangeText= {text => setsubcategoriesIds(text)}
+                />
+             </View>
              <View style={styles.formControl}>
                  <Text style={styles.label}>Title</Text>
                  <TextInput
@@ -54,7 +70,6 @@ const EditProductScreen = props => {
                     onChangeText= {text => setImageUrl(text)}
                 />
              </View>
-             {editedProduct ? null : (
              <View style={styles.formControl}>
                  <Text style={styles.label}>Price</Text>
                  <TextInput
@@ -63,7 +78,6 @@ const EditProductScreen = props => {
                     onChangeText= {text => setPrice(text)}
                 />
              </View>
-             )}
              <View style={styles.formControl}>
                  <Text style={styles.label}>Description</Text>
                  <TextInput

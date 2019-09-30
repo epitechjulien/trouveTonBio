@@ -10,6 +10,8 @@ export const createProduct = (title, description, imageUrl, price) => {
     return {
         type: CREATE_PRODUCT,
         productData: {
+            //categoryIds,
+            //subcategoriesIds,
             title,
             description,
             imageUrl,

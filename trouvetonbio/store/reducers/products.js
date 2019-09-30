@@ -12,8 +12,8 @@ export default (state = initialState, action) => {
       case CREATE_PRODUCT: 
         const newProduct = new Product(
           new Date().toString(),
-          'fruit',
-          'pomme',
+          action.productData.categoryIds,
+          action.productData.subcategoriesIds,
           'owner1',
           action.productData.title,
           action.productData.imageUrl,
@@ -31,6 +31,8 @@ export default (state = initialState, action) => {
             );
             const updatedProduct = new Product(
               action.pid,
+              action.productData.categoryIds,
+              action.productData.subcategoriesIds,
               state.userProducts[productIndex].ownerId,
               action.productData.title,
               action.productData.imageUrl,
