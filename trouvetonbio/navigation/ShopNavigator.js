@@ -113,9 +113,28 @@ const AdminNavigator = createStackNavigator(
   }
 );
 
-const ShopNavigator = createDrawerNavigator(
+const CategoriesNavigator = createStackNavigator(
   {
     Categories: Categories,
+  },
+  {
+    navigationOptions: {
+      drawerIcon: drawerConfig => (
+        <Ionicons
+          name={Platform.OS === 'android' ? 'md-apps' : 'ios-apps'}
+          size={23}
+          color={drawerConfig.tintColor}
+        />
+      )
+    },
+    defaultNavigationOptions: defaultNavOptions
+  }
+);
+
+
+const ShopNavigator = createDrawerNavigator(
+  {
+    Categories: CategoriesNavigator,
     Products: ProductsNavigator,
     Orders: OrdersNavigator,
     Admin: AdminNavigator
