@@ -173,16 +173,6 @@ const AuthNavigator = createStackNavigator(
   }
 );
 
-const MainNavigator = createSwitchNavigator({
-  Startup: StartupScreen,
-  Auth: AuthNavigator,
-  Shop: ShopNavigator,
-  Accueil: HomeScreen,
-  Events: EventsScreen,
-  Carte: MapScreen,
-  Profil: ProfilScreen,
-});
-
 
 //create caracteristique navBar
 const tabScreenConfig = {
@@ -214,7 +204,7 @@ const tabScreenConfig = {
       tabBarColor: Colors.accentColor
   }
   },
-  Achat: {screen: MainNavigator, navigationOptions: {
+  Achat: {screen: ProductsNavigator, navigationOptions: {
       tabBarIcon: (tabInfo) => {
           return <Ionicons name="md-cart" size={28} color="white" activeColor='white'/>
       },
