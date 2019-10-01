@@ -12,7 +12,7 @@ const CategoryProductsScreen = props => {
     const renderProductItem= itemData => {
         return <ProductItem
         title={itemData.item.title}
-        image={itemData.item.imageUrl}
+        image={itemData.item.image}
         price={itemData.item.price}
         subcategoriesIds={itemData.item.subcategoriesIds}
         categoryIds={itemData.item.categoryIds}

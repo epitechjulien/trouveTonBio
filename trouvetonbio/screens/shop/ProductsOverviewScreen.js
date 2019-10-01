@@ -97,7 +97,7 @@ const ProductsOverviewScreen = props => {
       keyExtractor={item => item.id}
       renderItem={itemData => (
         <ProductItem
-          image={itemData.item.imageUrl}
+          image={itemData.item.image}
           title={itemData.item.title}
           price={itemData.item.price}
           onSelect={() => {
