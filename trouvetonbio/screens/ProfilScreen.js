@@ -6,9 +6,12 @@ import {
   Image,
   Button,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  FlatList,
+  ImageBackground
 } from 'react-native';
 import Colors from '../constants/Colors';
+
 
 
 export default class ProfilScreen extends Component {
@@ -17,37 +20,40 @@ export default class ProfilScreen extends Component {
     return (
       <ScrollView>
       <View style={styles.container}>
-          <View style={styles.header}></View>
+      <ImageBackground source={require('../assets/home.png')} style={{height: 180}}></ImageBackground>
           <Image style={styles.avatar} source={require('../assets/profil/maxime.jpg')}/>
           <View style={styles.body}>
             <View style={styles.bodyContent}>
               <Text style={styles.name}>Maxime André</Text>
               <Text style={styles.info}>Producteur</Text>
-              <Text style={styles.description}>J'aime cultiver les choux-fleurs</Text>
-              
+
+
+              <Text style={styles.description}>Profil Dashboard</Text>
               <TouchableOpacity style={styles.buttonContainer}>
-                <Text style={styles.text}>Mon profil</Text>  
+                <Text style={styles.text2}>Mon profil</Text>  
               </TouchableOpacity>              
               <TouchableOpacity style={styles.buttonContainer}>
-              <Text style={styles.text}>Votre panier</Text>  
+              <Text style={styles.text2}>Votre panier</Text>  
               </TouchableOpacity>
               <TouchableOpacity style={styles.buttonContainer}>
-              <Text style={styles.text}>Vos commandes</Text>  
+              <Text style={styles.text2}>Vos commandes</Text>  
               </TouchableOpacity>
               <TouchableOpacity style={styles.buttonContainer}>
-              <Text style={styles.text}>Historiques</Text>  
+              <Text style={styles.text2}>Historiques</Text>  
+              </TouchableOpacity>
+
+
+              <Text style={styles.description}>Producteur Dashboard</Text>
+              <TouchableOpacity style={styles.buttonContainer2}>
+              <Text style={styles.text2}>Ma ferme</Text>  
               </TouchableOpacity>
 
               <TouchableOpacity style={styles.buttonContainer2}>
-              <Text style={styles.text}>Ma ferme</Text>  
+              <Text style={styles.text2}>Mes produits</Text>  
               </TouchableOpacity>
 
               <TouchableOpacity style={styles.buttonContainer2}>
-              <Text style={styles.text}>Mes produits</Text>  
-              </TouchableOpacity>
-
-              <TouchableOpacity style={styles.buttonContainer2}>
-              <Text style={styles.text}>Mes ventes</Text>  
+              <Text style={styles.text2}>Mes ventes</Text>  
               </TouchableOpacity>
               
 
@@ -67,6 +73,9 @@ const styles = StyleSheet.create({
   text:{
     color: "white",
   },
+  text2:{
+    color: "black",
+  },
   avatar: {
     width: 130,
     height: 130,
@@ -76,7 +85,7 @@ const styles = StyleSheet.create({
     marginBottom:10,
     alignSelf:'center',
     position: 'absolute',
-    marginTop:80
+    marginTop:110
   },
   name:{
     fontSize:22,
@@ -115,7 +124,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom:5,
     width:'90%',
-    backgroundColor: Colors.primary,
+    borderRadius: 5,
+    borderWidth: 1,
+    backgroundColor: 'white',
+    overflow: 'hidden',
+    borderWidth: 0.5,
+    borderColor:'#dddddd',
+    elevation:3,
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    position:'relative',
+    // backgroundColor: Colors.primary,
   },
   buttonContainer2: {
     marginTop:10,
@@ -125,6 +144,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom:5,
     width:'90%',
-    backgroundColor: Colors.accent,
+    borderRadius: 5,
+    borderWidth: 1,
+    backgroundColor: Colors.activeColor,
+    overflow: 'hidden',
+    borderWidth: 0.5,
+    borderColor:'#dddddd',
+    elevation:3,
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    position:'relative',
   },
 });
