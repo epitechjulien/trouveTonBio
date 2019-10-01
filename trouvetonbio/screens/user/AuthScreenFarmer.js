@@ -120,7 +120,7 @@ const AuthScreenFarmer = props => {
       keyboardVerticalOffset={50}
       style={styles.screen}
     >
-      <ImageBackground source={require('./intro.png')} style={{ width: '100%', height: '100%' }}>
+      <ImageBackground source={require('./login.png')} style={{ width: '100%', height: '100%' }}>
         <Card style={styles.authContainer}>
           <ScrollView>
             <Input

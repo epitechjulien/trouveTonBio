@@ -1,17 +1,25 @@
 import React from 'react';
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
-import {createDrawerNavigator} from 'react-navigation-drawer';
-import { Platform } from 'react-native';
+import { createStackNavigator, createDrawerNavigator, createSwitchNavigator, createAppContainer, DrawerItems } from 'react-navigation-stack';
+import { Platform, SafeAreaView, Button, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useDispatch } from 'react-redux';
+
+import RegisterScreen from '../screens/user/RegisterScreen';
+import RegisterClient from '../screens/user/RegisterClientScreen';
+import RegisterFarmer from '../screens/user/RegisterFarmerScreen';
 
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
 import ProductDetailScreen from '../screens/shop/ProductDetailScreen';
 import CartScreen from '../screens/shop/CartScreen';
 import OrdersScreen from '../screens/shop/OrdersScreen';
-import Colors from '../constants/Colors';
 import UserProductsScreen from '../screens/user/UserProductsScreen';
 import EditProductScreen from '../screens/user/EditProductScreen';
+import AuthScreen from '../screens/user/AuthScreen';
+import AuthScreenFarmer from '../screens/user/AuthScreenFarmer';
+import StartupScreen from '../screens/StartupScreen';
+import Colors from '../constants/Colors';
+// import Register from '../screens/Register';
+import * as authActions from '../store/actions/auth';
 
 const defaultNavOptions = {
   headerStyle: {
@@ -30,7 +38,10 @@ const ProductsNavigator = createStackNavigator(
   {
     ProductsOverview: ProductsOverviewScreen,
     ProductDetail: ProductDetailScreen,
-    Cart: CartScreen
+    Cart: CartScreen,
+    RegisterClient: RegisterClient,
+    RegisterFarmer: RegisterFarmer,
+    AuthScreen: AuthScreen
   },
   {
     navigationOptions: {
@@ -67,7 +78,10 @@ const OrdersNavigator = createStackNavigator(
 const AdminNavigator = createStackNavigator(
   {
     UserProducts: UserProductsScreen,
-    EditProduct: EditProductScreen
+    EditProduct: EditProductScreen,
+    RegisterClient: RegisterClient,
+    RegisterFarmer: RegisterFarmer,
+    AuthScreen: AuthScreen
   },
   {
     navigationOptions: {
@@ -87,13 +101,56 @@ const ShopNavigator = createDrawerNavigator(
   {
     Products: ProductsNavigator,
     Orders: OrdersNavigator,
-    Admin: AdminNavigator
+    Admin: AdminNavigator,
+    RegisterClient: RegisterClient,
+    RegisterFarmer: RegisterFarmer,
+    AuthScreen: AuthScreen
   },
   {
     contentOptions: {
       activeTintColor: Colors.primary
+    },
+    contentComponent: props => {
+      const dispatch = useDispatch();
+      return (
+        <View style={{ flex: 1, paddingTop: 20 }}>
+          <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
+            <DrawerItems {...props} />
+            <Button
+              title="Logout"
+              color={Colors.primary}
+              onPress={() => {
+                dispatch(authActions.logout());
+                // props.navigation.navigate('Auth');
+              }}
+            />
+          </SafeAreaView>
+        </View>
+      );
     }
   }
 );
 
-export default createAppContainer(ShopNavigator);
+const AuthNavigator = createStackNavigator(
+  {
+    RegisterScreen: RegisterScreen,
+    RegisterClient: RegisterClient,
+    RegisterFarmer: RegisterFarmer
+    // AuthScreen: AuthScreen
+  },
+  {
+    defaultNavigationOptions: defaultNavOptions
+  }
+);
+
+const MainNavigator = createSwitchNavigator({
+  Startup: StartupScreen,
+  Auth: AuthNavigator,
+  Shop: ShopNavigator,
+  RegisterClient: RegisterClient,
+  RegisterFarmer: RegisterFarmer,
+  AuthScreen: AuthScreen,
+  AuthScreenFarmer: AuthScreenFarmer
+});
+
+export default createAppContainer(MainNavigator);

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useEffect, useCallback, useReducer } from 'react';
 import {
   View,
@@ -233,24 +232,109 @@ const styles = StyleSheet.create({
 });
 
 export default EditProductScreen;
-=======
-import React from "react";
-import { View, ScrollView, Text, StyleSheet} from 'react-native';
-import { TextInput } from "react-native-paper";
+// =======
+// import React from "react";
+// import { View, ScrollView, Text, StyleSheet} from 'react-native';
+// =======
+// import React, { useState } from "react";
+// import { View, ScrollView, Text, StyleSheet, Platform} from 'react-native';
+// >>>>>>> 9435d418632c5a77a0530ac87a62d334fb839530
+// import { TextInput } from "react-native-paper";
+// import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+// import { useSelector } from 'react-redux';
 
-const EditProductScreen = props => {
-    return (
-       <ScrollView>
-           <View>
-               <Text>Title</Text>
-               <TextInput />
-           </View>
-       </ScrollView>
-    );
-};
+// import HeaderButton from '../../components/UI/HeaderButton';
 
-const styles = StyleSheet.create({});
+// const EditProductScreen = props => {
+//     const prodId = props.navigation.getParam('productId');
+//     const editeProduct = useSelector(state =>
+//         state.products.userProducts.find(prod => prod.id === prodId)
+//         );
 
-export default EditProductScreen;
+//     const [title, setTitle] = useState(editeProduct ? editeProduct.title : '');
+//     const [imageUrl, setImageUrl] = useState(editeProduct ? editeProduct.imageUrl :'');
+//     const [price, setPrice] = useState('');
+//     const [description, setDescription] = useState(editeProduct ? editeProduct.description :''); 
 
->>>>>>> d90d417318bd1fff481d9b0072fa49c295895c9a
+   
+//     return (
+//        <ScrollView>
+//            <View style={styles.form}>
+//              <View style={styles.formControl}>
+//                  <Text style={styles.label}>Title</Text>
+//                  <TextInput
+//                     style={styles.input}
+//                     value={title}
+//                     onChangeText= {text => setTitle(text)}
+//                 />
+//              </View>
+//              <View style={styles.formControl}>
+//                  <Text style={styles.label}>Image URL</Text>
+//                  <TextInput
+//                     style={styles.input}
+//                     value={imageUrl}
+//                     onChangeText= {text => setImageUrl(text)}
+//                 />
+//              </View>
+//              {editeProduct ? null : (
+//              <View style={styles.formControl}>
+//                  <Text style={styles.label}>Price</Text>
+//                  <TextInput
+//                     style={styles.input}
+//                     value={price}
+//                     onChangeText= {text => setPrice(text)}
+//                 />
+//              </View>
+//              )}
+//              <View style={styles.formControl}>
+//                  <Text style={styles.label}>Description</Text>
+//                  <TextInput
+//                     style={styles.input}
+//                     value={description}
+//                     onChangeText= {text => setDescription(text)}
+//                 />
+//              </View>
+//             </View>
+//        </ScrollView>
+//     );
+// };
+
+// EditProductScreen.navigationOptions = navData => {
+//     return {
+//         headerTitle: navData.navigation.getParam('productId')
+//         ? 'Edit Product'
+//         : 'Add Product',
+//         headerRight: <HeaderButtons HeaderButtonComponent={HeaderButton}>
+//         <Item
+//             title="Save"
+//             iconName={Platform.OS === 'android' ? 'md-checkmark' : 'ios-checkmark'}
+//             onPress={() => {
+//             //navData.navigation.navigate('EditProduct');
+//             }}
+//         />
+//         </HeaderButtons>
+//     };
+// };
+
+// const styles = StyleSheet.create({
+//     form: {
+//         margin: 20
+//     },
+//     formControl: {
+//         width: '100%'
+//     },
+//     label: {
+//         fontFamily: 'open-sans-bold',
+//         marginVertical: 8
+//     },
+//     input: {
+//         paddingHorizontal: 2,
+//         paddingVertical: 5,
+//         borderBottomColor: '#ccc',
+//         borderBottomWidth: 1
+//     }
+// });
+
+// export default EditProductScreen;
+
+// >>>>>>> d90d417318bd1fff481d9b0072fa49c295895c9a
