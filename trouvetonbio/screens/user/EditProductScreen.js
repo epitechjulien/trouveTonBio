@@ -4,6 +4,7 @@ import {
   ScrollView,
   StyleSheet,
   Platform,
+  TextInput,
   Alert,
   KeyboardAvoidingView,
   ActivityIndicator
