@@ -10,49 +10,54 @@ import {
   FlatList,
   ImageBackground,
   ActivityIndicator,
-  AsyncStorage
+  AsyncStorage,
+  Platform,
+  SafeAreaView
 } from 'react-native';
+import { createSwitchNavigator, DrawerItems, createAppContainer } from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
+import {createDrawerNavigator} from 'react-navigation-drawer';
+import { useDispatch } from 'react-redux';
 import Colors from '../constants/Colors';
 import * as authActions from '../store/actions/auth';
-import { useDispatch } from 'react-redux';
 
 const ProfilScreen = props => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const tryLogin = async () => {
-      const userData = await AsyncStorage.getItem('userData');
-      if (!userData) {
-        props.navigation.navigate('Auth');
-        return;
-      }
-      const transformedData = JSON.parse(userData);
-      const { token, userId, expiryDate } = transformedData;
-      const expirationDate = new Date(expiryDate);
+  // useEffect(() => {
+  //   const tryLogin = async () => {
+  //     const userData = await AsyncStorage.getItem('userData');
+  //     if (!userData) {
+  //       props.navigation.navigate('Auth');
+  //       return;
+  //     }
+  //     const transformedData = JSON.parse(userData);
+  //     const { token, userId } = transformedData;
+  //     const expirationDate = new Date(expiryDate);
 
-      if (expirationDate <= new Date() || !token || !userId) {
-        props.navigation.navigate('Auth');
-        return;
-      }
+  //     if (expirationDate <= new Date() || !token || !userId) {
+  //       props.navigation.navigate('Auth');
+  //       return;
+  //     }
 
-      const expirationTime = expirationDate.getTime() - new Date().getTime();
+  //     const expirationTime = expirationDate.getTime() - new Date().getTime();
 
-      props.navigation.navigate('Shop');
-      dispatch(authActions.authenticate(userId, token, expirationTime));
-    };
+  //     props.navigation.navigate('Carte');
+  //     dispatch(authActions.authenticate(userId, token));
+  //   };
 
-    tryLogin();
-  }, [dispatch]);
+  //   tryLogin();
+  // }, [dispatch]);
 
   return (
     <ScrollView>
     <View style={styles.container}>
     <ImageBackground source={require('../assets/home.png')} style={{height: 180}}></ImageBackground>
-        <Image style={styles.avatar} source={require('../assets/profil/maxime.jpg')}/>
+        {/* <Image style={styles.avatar} source={require('../assets/profil/maxime.jpg')}/> */}
         <View style={styles.body}>
           <View style={styles.bodyContent}>
-            <Text style={styles.name}>Maxime André</Text>
-            <Text style={styles.info}>Producteur</Text>
+            <Text style={styles.name}>Votre nom</Text>
+            <Text style={styles.info}>Votre statut</Text>
 
 
             <Text style={styles.description}>Profil Dashboard</Text>
@@ -85,6 +90,19 @@ const ProfilScreen = props => {
             <TouchableOpacity style={styles.buttonContainer2}>
             <Text style={styles.text2}>Mes ventes</Text>  
             </TouchableOpacity>
+
+            <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
+            {/* <DrawerItems {...props} /> */}
+            <Button
+              title="Logout"
+              color={Colors.primary}
+              onPress={() => {
+                dispatch(authActions.logout());
+                props.navigation.navigate('Accueil');
+              }}
+            />
+          </SafeAreaView>
+            
             
 
           </View>
@@ -97,57 +115,6 @@ const ProfilScreen = props => {
 export default ProfilScreen;
 
 
-
-// export default class ProfilScreen extends Component {
-
-//   render() {
-//     return (
-//       <ScrollView>
-//       <View style={styles.container}>
-//       <ImageBackground source={require('../assets/home.png')} style={{height: 180}}></ImageBackground>
-//           <Image style={styles.avatar} source={require('../assets/profil/maxime.jpg')}/>
-//           <View style={styles.body}>
-//             <View style={styles.bodyContent}>
-//               <Text style={styles.name}>Maxime André</Text>
-//               <Text style={styles.info}>Producteur</Text>
-
-
-//               <Text style={styles.description}>Profil Dashboard</Text>
-//               <TouchableOpacity style={styles.buttonContainer}>
-//                 <Text style={styles.text2}>Mon profil</Text>  
-//               </TouchableOpacity>              
-//               <TouchableOpacity style={styles.buttonContainer}>
-//               <Text style={styles.text2}>Votre panier</Text>  
-//               </TouchableOpacity>
-//               <TouchableOpacity style={styles.buttonContainer}>
-//               <Text style={styles.text2}>Vos commandes</Text>  
-//               </TouchableOpacity>
-//               <TouchableOpacity style={styles.buttonContainer}>
-//               <Text style={styles.text2}>Historiques</Text>  
-//               </TouchableOpacity>
-
-
-//               <Text style={styles.description}>Producteur Dashboard</Text>
-//               <TouchableOpacity style={styles.buttonContainer2}>
-//               <Text style={styles.text2}>Ma ferme</Text>  
-//               </TouchableOpacity>
-
-//               <TouchableOpacity style={styles.buttonContainer2}>
-//               <Text style={styles.text2}>Mes produits</Text>  
-//               </TouchableOpacity>
-
-//               <TouchableOpacity style={styles.buttonContainer2}>
-//               <Text style={styles.text2}>Mes ventes</Text>  
-//               </TouchableOpacity>
-              
-
-//             </View>
-//         </View>
-//       </View>
-//       </ScrollView>
-//     );
-//   }
-// }
 
 const styles = StyleSheet.create({
   screen: {
