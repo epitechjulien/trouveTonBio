@@ -17,7 +17,6 @@ import { useDispatch } from 'react-redux';
 
 import GeolocScreen from '../screens/GeolocScreen';
 import HomeScreen from '../screens/HomeScreen';
-import EventsScreen from '../screens/EventsScreen';
 import MapScreen from '../screens/MapScreen';
 import ProfilScreen from '../screens/ProfilScreen';
 
@@ -25,6 +24,11 @@ import ProfilScreen from '../screens/ProfilScreen';
 import Categories from '../screens/categories/CategoriesScreen';
 import SousCategories from '../screens/categories/SousCategoriesScreen';
 import ListeProduits from '../screens/categories/ListeProduitsScreen';
+
+// EVENTS SCREEN
+import EventsScreen from '../screens/eventtypes/TypesofEventsScreen';
+import EventsList from '../screens/eventtypes/EventsScreen';
+import EventDetail from '../screens/eventtypes/EventsDetailScreen';
 
 // SHOP SCREENS
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
@@ -62,6 +66,9 @@ const ProductsNavigator = createStackNavigator(
     Categories: Categories,
     SousCategories: SousCategories,
     ListeProduits: ListeProduits,
+    EventsScreen: EventsScreen,
+    EventsList: EventsList,
+    EventDetail:EventDetail,
   },
   {
     navigationOptions: {
@@ -144,24 +151,6 @@ const ShopNavigator = createDrawerNavigator(
     contentOptions: {
       activeTintColor: Colors.primary
     },
-    // contentComponent: props => {
-    //   const dispatch = useDispatch();
-    //   return (
-    //     <View style={{ flex: 1, paddingTop: 20 }}>
-    //       <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
-    //         {/* <DrawerItems {...props} /> */}
-    //         <Button
-    //           title="Logout"
-    //           color={Colors.primary}
-    //           onPress={() => {
-    //             dispatch(authActions.logout());
-    //             // props.navigation.navigate('Auth');
-    //           }}
-    //         />
-    //       </SafeAreaView>
-    //     </View>
-    //   );
-    // }
   }
 );
 
@@ -174,6 +163,7 @@ const AuthNavigator = createStackNavigator(
   }
 );
 
+<<<<<<< HEAD
 const MainNavigator = createSwitchNavigator({
   Startup: StartupScreen,
   Auth: AuthNavigator,
@@ -185,6 +175,8 @@ const MainNavigator = createSwitchNavigator({
   Profil: ProfilScreen,
 });
 
+=======
+>>>>>>> aec9f4a67fe583365c943d9ecdf9a52cfa68f079
 
 //create caracteristique navBar
 const tabScreenConfig = {
@@ -216,7 +208,7 @@ const tabScreenConfig = {
       tabBarColor: Colors.accentColor
   }
   },
-  Achat: {screen: MainNavigator, navigationOptions: {
+  Achat: {screen: ProductsNavigator, navigationOptions: {
       tabBarIcon: (tabInfo) => {
           return <Ionicons name="md-cart" size={28} color="white" activeColor='white'/>
       },

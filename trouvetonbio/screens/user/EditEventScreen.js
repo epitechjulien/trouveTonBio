@@ -13,7 +13,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector, useDispatch } from 'react-redux';
 
 import HeaderButton from '../../components/UI/HeaderButton';
-import * as productsActions from '../../store/actions/products';
+import * as eventsActions from '../../store/actions/events';
 import Input from '../../components/UI/Input';
 import Colors from '../../constants/Colors';
 
@@ -42,34 +42,32 @@ const formReducer = (state, action) => {
   return state;
 };
 
-const EditProductScreen = props => {
+const EditEventsScreen = props => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 
-  const prodId = props.navigation.getParam('productId');
-  const editedProduct = useSelector(state =>
-    state.products.userProducts.find(prod => prod.id === prodId)
+  const eventId = props.navigation.getParam('eventId');
+  const editedEvent = useSelector(state =>
+    state.event.userEvents.find(event => event.id === eventId)
   );
   const dispatch = useDispatch();
 
   const [formState, dispatchFormState] = useReducer(formReducer, {
     inputValues: {
-      categoryIds: editedProduct ? editedProduct.categoryIds: '',
-      subcategoriesIds: editedProduct ? editedProduct.subcategoriesIds: '',
-      title: editedProduct ? editedProduct.title : '',
-      image: editedProduct ? editedProduct.image : '',
-      description: editedProduct ? editedProduct.description : '',
-      price: ''
+      eventtypeId: editedEvent ? editedEvent.eventtypeId: '',
+      title: editedEvent  ? editedEvent .title : '',
+      image: editedEvent  ? editedEvent .image : '',
+      description: editedEvent  ? editedEvent .description : '',
+      date: ''
     },
     inputValidities: {
-      categoryIds: editedProduct ? true : false,
-      subcategoriesIds: editedProduct ? true : false,
-      title: editedProduct ? true : false,
-      image: editedProduct ? true : false,
-      description: editedProduct ? true : false,
-      price: editedProduct ? true : false
+      eventtypeId: editedEvent ? true : false,
+      title: editedEvent? true : false,
+      image: editedEvent ? true : false,
+      description: editedEvent ? true : false,
+      date: editedEvent ? true : false
     },
-    formIsValid: editedProduct ? true : false
+    formIsValid: editedEvent ? true : false
   });
 
   useEffect(() => {
@@ -88,26 +86,25 @@ const EditProductScreen = props => {
     setError(null);
     setIsLoading(true);
     try {
-      if (editedProduct) {
+      if (editedEvent) {
         await dispatch(
-          productsActions.updateProduct(
-            prodId,
-            formState.inputValues.categoryIds,
-            formState.inputValues.subcategoriesIds,
+          eventsActions.updateEvent(
+            eventId,
+            formState.inputValues.eventtypeId,
             formState.inputValues.title,
+            formState.inputValues.image,
             formState.inputValues.description,
-            formState.inputValues.image
+            formState.inputValues.date,
           )
         );
       } else {
         await dispatch(
-          productsActions.createProduct(
-            formState.inputValues.categoryIds,
-            formState.inputValues.subcategoriesIds,
+          eventsActions.createEvent(
+            formState.inputValues.eventtypeId,
             formState.inputValues.title,
-            formState.inputValues.description,
             formState.inputValues.image,
-            +formState.inputValues.price
+            formState.inputValues.description,
+            +formState.inputValues.date
           )
         );
       }
@@ -118,7 +115,7 @@ const EditProductScreen = props => {
 
     setIsLoading(false);
     
-  }, [dispatch, prodId, formState]);
+  }, [dispatch, eventId, formState]);
 
   useEffect(() => {
     props.navigation.setParams({ submit: submitHandler });
@@ -153,25 +150,14 @@ const EditProductScreen = props => {
       <ScrollView>
         <View style={styles.form}>
         <Input
-            id="categoryIds"
-            label="Category Id"
-            errorText="Please enter a valid Category Id"
+            id="eventtypeId"
+            label="Event type Id"
+            errorText="Please enter a valid event type Id"
             keyboardType="default"
             returnKeyType="next"
             onInputChange={inputChangeHandler}
-            initialValue={editedProduct ? editedProduct.categoryIds : ''}
-            initiallyValid={!!editedProduct}
-            required
-          />
-          <Input
-            id="subcategoriesIds"
-            label="Sub Category Id"
-            errorText="Please enter a valid Sub Category Id"
-            keyboardType="default"
-            returnKeyType="next"
-            onInputChange={inputChangeHandler}
-            initialValue={editedProduct ? editedProduct.subcategoriesIds : ''}
-            initiallyValid={!!editedProduct}
+            initialValue={editedEvent ? editedEvent .eventtypeId : ''}
+            initiallyValid={!!editedEvent}
             required
           />
           <Input
@@ -183,8 +169,8 @@ const EditProductScreen = props => {
             autoCorrect
             returnKeyType="next"
             onInputChange={inputChangeHandler}
-            initialValue={editedProduct ? editedProduct.title : ''}
-            initiallyValid={!!editedProduct}
+            initialValue={editedEvent  ? editedEvent .title : ''}
+            initiallyValid={!!editedEvent }
             required
           />
           <Input
@@ -194,22 +180,10 @@ const EditProductScreen = props => {
             keyboardType="default"
             returnKeyType="next"
             onInputChange={inputChangeHandler}
-            initialValue={editedProduct ? editedProduct.image : ''}
-            initiallyValid={!!editedProduct}
+            initialValue={editedEvent ? editedEvent .image : ''}
+            initiallyValid={!!editedEvent }
             
           />
-          {editedProduct ? null : (
-            <Input
-              id="price"
-              label="Price"
-              errorText="Please enter a valid price!"
-              keyboardType="decimal-pad"
-              returnKeyType="next"
-              onInputChange={inputChangeHandler}
-              required
-              min={0.1}
-            />
-          )}
           <Input
             id="description"
             label="Description"
@@ -220,23 +194,34 @@ const EditProductScreen = props => {
             multiline
             numberOfLines={3}
             onInputChange={inputChangeHandler}
-            initialValue={editedProduct ? editedProduct.description : ''}
-            initiallyValid={!!editedProduct}
+            initialValue={editedEvent ? editedEvent.description : ''}
+            initiallyValid={!!editedEvent}
             required
             minLength={5}
           />
+          {editedEvent  ? null : (
+            <Input
+              id="date"
+              label="date"
+              errorText="Please enter a valid date!"
+              keyboardType="default"
+              returnKeyType="next"
+              onInputChange={inputChangeHandler}
+              required
+            />
+          )}
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
 };
 
-EditProductScreen.navigationOptions = navData => {
+EditEventsScreen.navigationOptions = navData => {
   const submitFn = navData.navigation.getParam('submit');
   return {
-    headerTitle: navData.navigation.getParam('productId')
-      ? 'Edit Product'
-      : 'Add Product',
+    headerTitle: navData.navigation.getParam('eventId')
+      ? 'Edit event'
+      : 'Add event',
     headerRight: (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
@@ -262,4 +247,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default EditProductScreen;
+export default EditEventsScreen;

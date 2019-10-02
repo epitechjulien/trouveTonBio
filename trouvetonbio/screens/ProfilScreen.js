@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,64 +8,153 @@ import {
   TouchableOpacity,
   ScrollView,
   FlatList,
-  ImageBackground
+  ImageBackground,
+  ActivityIndicator,
+  AsyncStorage
 } from 'react-native';
 import Colors from '../constants/Colors';
+import * as authActions from '../store/actions/auth';
+import { useDispatch } from 'react-redux';
+
+const ProfilScreen = props => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const tryLogin = async () => {
+      const userData = await AsyncStorage.getItem('userData');
+      if (!userData) {
+        props.navigation.navigate('Auth');
+        return;
+      }
+      const transformedData = JSON.parse(userData);
+      const { token, userId, expiryDate } = transformedData;
+      const expirationDate = new Date(expiryDate);
+
+      if (expirationDate <= new Date() || !token || !userId) {
+        props.navigation.navigate('Auth');
+        return;
+      }
+
+      const expirationTime = expirationDate.getTime() - new Date().getTime();
+
+      props.navigation.navigate('Shop');
+      dispatch(authActions.authenticate(userId, token, expirationTime));
+    };
+
+    tryLogin();
+  }, [dispatch]);
+
+  return (
+    <ScrollView>
+    <View style={styles.container}>
+    <ImageBackground source={require('../assets/home.png')} style={{height: 180}}></ImageBackground>
+        <Image style={styles.avatar} source={require('../assets/profil/maxime.jpg')}/>
+        <View style={styles.body}>
+          <View style={styles.bodyContent}>
+            <Text style={styles.name}>Maxime André</Text>
+            <Text style={styles.info}>Producteur</Text>
+
+
+            <Text style={styles.description}>Profil Dashboard</Text>
+            <TouchableOpacity style={styles.buttonContainer}>
+              <Text style={styles.text2}>Mon profil</Text>  
+            </TouchableOpacity>              
+            <TouchableOpacity style={styles.buttonContainer}>
+            <Text style={styles.text2}>Votre panier</Text>  
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonContainer}>
+            <Text style={styles.text2}>Vos commandes</Text>  
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonContainer}>
+            <Text style={styles.text2}>Historiques</Text>  
+            </TouchableOpacity>
+
+            <Text style={styles.description}>Producteur Dashboard</Text>
+            <TouchableOpacity style={styles.buttonContainer2}>
+            <Text style={styles.text2}>Mes évènements</Text>  
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.buttonContainer2}>
+            <Text style={styles.text2}>Ma ferme</Text>  
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.buttonContainer2}>
+            <Text style={styles.text2}>Mes produits</Text>  
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.buttonContainer2}>
+            <Text style={styles.text2}>Mes ventes</Text>  
+            </TouchableOpacity>
+            
+
+          </View>
+      </View>
+    </View>
+    </ScrollView>
+  );
+};
+
+export default ProfilScreen;
 
 
 
-export default class ProfilScreen extends Component {
+// export default class ProfilScreen extends Component {
 
-  render() {
-    return (
-      <ScrollView>
-      <View style={styles.container}>
-      <ImageBackground source={require('../assets/home.png')} style={{height: 180}}></ImageBackground>
-          <Image style={styles.avatar} source={require('../assets/profil/maxime.jpg')}/>
-          <View style={styles.body}>
-            <View style={styles.bodyContent}>
-              <Text style={styles.name}>Maxime André</Text>
-              <Text style={styles.info}>Producteur</Text>
-
-
-              <Text style={styles.description}>Profil Dashboard</Text>
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text style={styles.text2}>Mon profil</Text>  
-              </TouchableOpacity>              
-              <TouchableOpacity style={styles.buttonContainer}>
-              <Text style={styles.text2}>Votre panier</Text>  
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonContainer}>
-              <Text style={styles.text2}>Vos commandes</Text>  
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonContainer}>
-              <Text style={styles.text2}>Historiques</Text>  
-              </TouchableOpacity>
+//   render() {
+//     return (
+//       <ScrollView>
+//       <View style={styles.container}>
+//       <ImageBackground source={require('../assets/home.png')} style={{height: 180}}></ImageBackground>
+//           <Image style={styles.avatar} source={require('../assets/profil/maxime.jpg')}/>
+//           <View style={styles.body}>
+//             <View style={styles.bodyContent}>
+//               <Text style={styles.name}>Maxime André</Text>
+//               <Text style={styles.info}>Producteur</Text>
 
 
-              <Text style={styles.description}>Producteur Dashboard</Text>
-              <TouchableOpacity style={styles.buttonContainer2}>
-              <Text style={styles.text2}>Ma ferme</Text>  
-              </TouchableOpacity>
+//               <Text style={styles.description}>Profil Dashboard</Text>
+//               <TouchableOpacity style={styles.buttonContainer}>
+//                 <Text style={styles.text2}>Mon profil</Text>  
+//               </TouchableOpacity>              
+//               <TouchableOpacity style={styles.buttonContainer}>
+//               <Text style={styles.text2}>Votre panier</Text>  
+//               </TouchableOpacity>
+//               <TouchableOpacity style={styles.buttonContainer}>
+//               <Text style={styles.text2}>Vos commandes</Text>  
+//               </TouchableOpacity>
+//               <TouchableOpacity style={styles.buttonContainer}>
+//               <Text style={styles.text2}>Historiques</Text>  
+//               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.buttonContainer2}>
-              <Text style={styles.text2}>Mes produits</Text>  
-              </TouchableOpacity>
 
-              <TouchableOpacity style={styles.buttonContainer2}>
-              <Text style={styles.text2}>Mes ventes</Text>  
-              </TouchableOpacity>
+//               <Text style={styles.description}>Producteur Dashboard</Text>
+//               <TouchableOpacity style={styles.buttonContainer2}>
+//               <Text style={styles.text2}>Ma ferme</Text>  
+//               </TouchableOpacity>
+
+//               <TouchableOpacity style={styles.buttonContainer2}>
+//               <Text style={styles.text2}>Mes produits</Text>  
+//               </TouchableOpacity>
+
+//               <TouchableOpacity style={styles.buttonContainer2}>
+//               <Text style={styles.text2}>Mes ventes</Text>  
+//               </TouchableOpacity>
               
 
-            </View>
-        </View>
-      </View>
-      </ScrollView>
-    );
-  }
-}
+//             </View>
+//         </View>
+//       </View>
+//       </ScrollView>
+//     );
+//   }
+// }
 
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   header:{
     backgroundColor: Colors.primary,
     height:150,
