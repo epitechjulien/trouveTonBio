@@ -19,7 +19,7 @@ const EventslistScreen = props => {
         
         onSelectEvent={() => {
             props.navigation.navigate({
-                routename : 'EventsFiche',
+                routename : 'EventDetail',
                 params: {
                   eventId: itemData.item.id
                 }
