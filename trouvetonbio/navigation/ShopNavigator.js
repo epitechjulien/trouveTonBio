@@ -16,7 +16,6 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
 
 import HomeScreen from '../screens/HomeScreen';
-import EventsScreen from '../screens/EventsScreen';
 import MapScreen from '../screens/MapScreen';
 import ProfilScreen from '../screens/ProfilScreen';
 
@@ -24,6 +23,11 @@ import ProfilScreen from '../screens/ProfilScreen';
 import Categories from '../screens/categories/CategoriesScreen';
 import SousCategories from '../screens/categories/SousCategoriesScreen';
 import ListeProduits from '../screens/categories/ListeProduitsScreen';
+
+// EVENTS SCREEN
+import EventsScreen from '../screens/eventtypes/TypesofEventsScreen';
+import EventsList from '../screens/eventtypes/EventsScreen';
+import EventDetail from '../screens/eventtypes/EventsDetailScreen';
 
 // SHOP SCREENS
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
@@ -61,6 +65,9 @@ const ProductsNavigator = createStackNavigator(
     Categories: Categories,
     SousCategories: SousCategories,
     ListeProduits: ListeProduits,
+    EventsScreen: EventsScreen,
+    EventsList: EventsList,
+    EventDetail:EventDetail,
   },
   {
     navigationOptions: {

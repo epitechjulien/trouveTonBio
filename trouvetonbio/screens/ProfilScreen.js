@@ -69,8 +69,11 @@ const ProfilScreen = props => {
             <Text style={styles.text2}>Historiques</Text>  
             </TouchableOpacity>
 
-
             <Text style={styles.description}>Producteur Dashboard</Text>
+            <TouchableOpacity style={styles.buttonContainer2}>
+            <Text style={styles.text2}>Mes évènements</Text>  
+            </TouchableOpacity>
+
             <TouchableOpacity style={styles.buttonContainer2}>
             <Text style={styles.text2}>Ma ferme</Text>  
             </TouchableOpacity>
