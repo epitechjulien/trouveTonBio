@@ -66,8 +66,9 @@ const ProductsNavigator = createStackNavigator(
     Categories: Categories,
     SousCategories: SousCategories,
     ListeProduits: ListeProduits,
-    UserProducts: UserProductsScreen,
-    EditProduct: EditProductScreen,
+    EventsScreen: EventsScreen,
+    EventsList: EventsList,
+    EventDetail:EventDetail
   },
   {
     navigationOptions: {
@@ -90,6 +91,8 @@ const EventsNavigator = createStackNavigator(
     EventDetail:EventDetail,
     EventsOverview:EventsOverviewScreen,
     HomeScreen:HomeScreen,
+    UserProducts: UserProductsScreen,
+    EditProduct: EditProductScreen
   },
   {
     navigationOptions: {
@@ -138,6 +141,34 @@ const AdminNavigator = createStackNavigator(
   }
 );
 
+const AuthNavigator = createStackNavigator(
+  {
+    Auth: AuthScreen
+  },
+  {
+    defaultNavigationOptions: defaultNavOptions
+  }
+);
+
+const ProfilNavigator = createStackNavigator(
+  {
+    Profil: ProfilScreen
+  },
+  {
+    navigationOptions: {
+      drawerIcon: drawerConfig => (
+        <Ionicons
+          name={Platform.OS === 'android' ? 'md-create' : 'ios-create'}
+          size={23}
+          color={drawerConfig.tintColor}
+        />
+      )
+    },
+    defaultNavigationOptions: defaultNavOptions
+  }
+);
+
+
 const CategoriesNavigator = createStackNavigator(
   {
     Categories: Categories,
@@ -171,15 +202,6 @@ const ShopNavigator = createDrawerNavigator(
   }
 );
 
-const AuthNavigator = createStackNavigator(
-  {
-    Auth: AuthScreen
-  },
-  {
-    defaultNavigationOptions: defaultNavOptions
-  }
-);
-
 
 //create caracteristique navBar
 const tabScreenConfig = {
@@ -204,7 +226,14 @@ const tabScreenConfig = {
       tabBarColor: Colors.primaryColor
   }
   },
-  Profil: {screen: ProfilScreen, navigationOptions: {
+  Compte: {screen: AuthNavigator, navigationOptions: {
+    tabBarIcon: (tabInfo) => {
+        return <MaterialCommunityIcons name="account-circle" size={28} color="white" activeColor='white'/>
+    },
+    tabBarColor: Colors.primaryColor
+}
+},
+  Profil: {screen: ProfilNavigator, navigationOptions: {
       tabBarIcon: (tabInfo) => {
           return <MaterialCommunityIcons name="account" size={28} color="white" activeColor='white'/>
       },

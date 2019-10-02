@@ -79,10 +79,10 @@ const AuthScreen = props => {
       );
     }
     setError(null);
-    setIsLoading(true);
+    // setIsLoading(true);
     try {
       await dispatch(action);
-      props.navigation.navigate('Shop');
+      props.navigation.navigate('Carte');
     } catch (err) {
       setError(err.message);
       setIsLoading(false);
@@ -152,6 +152,7 @@ const AuthScreen = props => {
                   setIsSignup(prevState => !prevState);
                 }}
               />
+              <Button style={styles.text2} title="Retour accueil" onPress={() => props.navigation.navigate('Accueil')} />
             </View>
           </ScrollView>
         </Card>
@@ -161,7 +162,7 @@ const AuthScreen = props => {
 };
 
 AuthScreen.navigationOptions = {
-  headerTitle: 'Authenticate'
+  headerTitle: 'Connexion / Inscription'
 };
 
 const styles = StyleSheet.create({
