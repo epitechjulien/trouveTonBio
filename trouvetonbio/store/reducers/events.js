@@ -5,7 +5,7 @@ import {
   UPDATE_EVENT,
   SET_EVENT
 } from '../actions/events';
-import Events from '../../models/event';
+import Event from '../../models/event';
 
 const initialState = {
   availableEvents: [],
@@ -41,11 +41,11 @@ export default (state = initialState, action) => {
       const updatedEvent = new Event(
         action.pid,
         action.eventData.eventtypeId,
-        state.userEvent[eventIndex].ownerId,
+        state.userEvents[eventIndex].ownerId,
         action.eventData.title,
         action.eventData.image,
         action.eventData.description,
-        state.userEvent[eventIndex].date
+        action.eventData.date,
       );
       const updatedUserEvents = [...state.userEvents];
       updatedUserEvents[eventIndex] = updatedEvent;

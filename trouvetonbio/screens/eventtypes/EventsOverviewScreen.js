@@ -22,7 +22,7 @@ const EventsOverviewScreen = props => {
   const [isLoading, setIsLoading] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState();
-  const Event = useSelector(state => state.Event.availableEvent);
+  const Event = useSelector(state => state.Event.availableEvents);
   const dispatch = useDispatch();
 
   const loadEvents = useCallback(async () => {

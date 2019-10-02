@@ -29,6 +29,9 @@ import EventsScreen from '../screens/eventtypes/TypesofEventsScreen';
 import EventsList from '../screens/eventtypes/EventsScreen';
 import EventDetail from '../screens/eventtypes/EventsDetailScreen';
 import EventsOverviewScreen from '../screens/eventtypes/EventsOverviewScreen';
+import UserEvents from '../screens/user/UserEventsScreen';
+import EditEvents from '../screens/user/EditEventScreen';
+
 
 // SHOP SCREENS
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
@@ -68,7 +71,11 @@ const ProductsNavigator = createStackNavigator(
     ListeProduits: ListeProduits,
     EventsScreen: EventsScreen,
     EventsList: EventsList,
-    EventDetail:EventDetail
+    EventDetail:EventDetail,
+    UserProducts: UserProductsScreen,
+    EditProduct: EditProductScreen,
+    UserEvents: UserEvents,
+    EditEvents: EditEvents
   },
   {
     navigationOptions: {
@@ -90,9 +97,6 @@ const EventsNavigator = createStackNavigator(
     EventsList: EventsList,
     EventDetail:EventDetail,
     EventsOverview:EventsOverviewScreen,
-    HomeScreen:HomeScreen,
-    UserProducts: UserProductsScreen,
-    EditProduct: EditProductScreen
   },
   {
     navigationOptions: {
@@ -125,7 +129,9 @@ const OrdersNavigator = createStackNavigator(
 const AdminNavigator = createStackNavigator(
   {
     UserProducts: UserProductsScreen,
-    EditProduct: EditProductScreen
+    EditProduct: EditProductScreen,
+    UserEvents: UserEvents,
+    EditEvents: EditEvents
   },
   {
     navigationOptions: {

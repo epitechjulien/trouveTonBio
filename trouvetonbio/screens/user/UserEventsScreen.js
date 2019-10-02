@@ -12,9 +12,11 @@ const UserEventsScreen = props => {
   const userEvents = useSelector(state => state.events.userEvents);
   const dispatch = useDispatch();
 
-  const editProductHandler = id => {
-    props.navigation.navigate('EditEvent', { eventId: id });
+  const editEventsHandler = id => {
+    props.navigation.navigate('EditEvents', { eventId: id });
+    
   };
+  
 
   const deleteHandler = id => {
     Alert.alert('Are you sure?', 'Do you really want to delete this event?', [
@@ -48,14 +50,14 @@ const UserEventsScreen = props => {
           eventtypeId={itemData.item.eventtypeId}
           date={itemData.item.date}
           onSelect={() => {
-            editProductHandler(itemData.item.id);
+            editEventsHandler(itemData.item.id);
           }}
         >
           <Button
             color={Colors.primary}
             title="Edit"
             onPress={() => {
-              editProductHandler(itemData.item.id);
+              editEventsHandler(itemData.item.id);
             }}
           />
           <Button
@@ -72,24 +74,13 @@ const UserEventsScreen = props => {
 UserEventsScreen.navigationOptions = navData => {
   return {
     headerTitle: 'Your Events',
-    headerLeft: (
-      <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        <Item
-          title="Menu"
-          iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
-          onPress={() => {
-            navData.navigation.toggleDrawer();
-          }}
-        />
-      </HeaderButtons>
-    ),
     headerRight: (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="Add"
           iconName={Platform.OS === 'android' ? 'md-create' : 'ios-create'}
           onPress={() => {
-            navData.navigation.navigate('EditEvent');
+            navData.navigation.navigate('EditEvents');
           }}
         />
       </HeaderButtons>

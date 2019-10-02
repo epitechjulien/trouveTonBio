@@ -84,7 +84,8 @@ const ProfilScreen = props => {
             </TouchableOpacity>
 
             <Button title="Mes produits" onPress={() => props.navigation.navigate({routeName : 'UserProducts'})}/>
-
+            <Button title="Mes évènements" onPress={() => props.navigation.navigate({routeName : 'UserEvents'})}/>
+            
             <TouchableOpacity style={styles.buttonContainer2}>
             <Text style={styles.text2}>Mes ventes</Text>  
             </TouchableOpacity>

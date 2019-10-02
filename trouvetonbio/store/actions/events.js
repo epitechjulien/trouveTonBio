@@ -60,7 +60,7 @@ export const deleteEvent = eventId => {
     if (!response.ok) {
       throw new Error('Something went wrong!');
     }
-    dispatch({ type: EVENT_PRODUCT, pid: eventId });
+    dispatch({ type: DELETE_EVENT, pid: eventId });
   };
 };
 
@@ -131,7 +131,7 @@ export const updateEvent = (id, eventtypeId,title, image, description, date) => 
     dispatch({
       type: UPDATE_EVENT,
       pid: id,
-      productData: {
+      eventData: {
         eventtypeId,
         title,
         image,
