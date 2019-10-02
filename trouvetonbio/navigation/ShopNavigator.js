@@ -15,6 +15,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
 
+import GeolocScreen from '../screens/GeolocScreen';
 import HomeScreen from '../screens/HomeScreen';
 import EventsScreen from '../screens/EventsScreen';
 import MapScreen from '../screens/MapScreen';
@@ -178,6 +179,7 @@ const MainNavigator = createSwitchNavigator({
   Auth: AuthNavigator,
   Shop: ShopNavigator,
   Accueil: HomeScreen,
+  Toto: GeolocScreen,
   Events: EventsScreen,
   Carte: MapScreen,
   Profil: ProfilScreen,
