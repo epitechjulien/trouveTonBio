@@ -28,7 +28,6 @@ import ListeProduits from '../screens/categories/ListeProduitsScreen';
 import EventsScreen from '../screens/eventtypes/TypesofEventsScreen';
 import EventsList from '../screens/eventtypes/EventsScreen';
 import EventDetail from '../screens/eventtypes/EventsDetailScreen';
-import EventsOverviewScreen from '../screens/eventtypes/EventsOverviewScreen';
 import UserEvents from '../screens/user/UserEventsScreen';
 import EditEvents from '../screens/user/EditEventScreen';
 
@@ -96,7 +95,6 @@ const EventsNavigator = createStackNavigator(
     EventsScreen: EventsScreen,
     EventsList: EventsList,
     EventDetail:EventDetail,
-    EventsOverview:EventsOverviewScreen,
   },
   {
     navigationOptions: {

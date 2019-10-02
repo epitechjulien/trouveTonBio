@@ -15,7 +15,8 @@ const EventsDetailScreen = props => {
       <Image style={styles.image} source={eventImage} />
       <View style={styles.actions}>
       </View>
-      <Text style={styles.date}>{eventDate}</Text>
+      <Text style={styles.price}>{eventTitle}</Text>
+      <Text style={styles.date}>le {eventDate}</Text>
       <Text style={styles.description}>{eventDescription}</Text>
     </ScrollView>
   );
@@ -40,8 +41,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#888',
     textAlign: 'center',
-    marginVertical: 20,
+    marginTop: 20,
     fontFamily: 'open-sans-bold'
+  },
+  date: {
+    fontSize: 20,
+    color: '#000',
+    textAlign: 'center',
+    fontFamily: 'open-sans-bold',
+    fontStyle: 'italic',
+    marginBottom: 20,
   },
   description: {
     fontFamily: 'open-sans',

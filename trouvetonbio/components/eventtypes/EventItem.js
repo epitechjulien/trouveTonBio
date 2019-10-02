@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         flex: 1,
         fontSize: 12,
-        textAlign: 'left',
+        textAlign: 'center',
         height:25,
         justifyContent: 'center',
         fontWeight: 'bold',
