@@ -2,11 +2,12 @@ import React from 'react';
 import { TouchableOpacity, View, Text, ImageBackground, StyleSheet, FlatList, Platform} from 'react-native';
 
 const EventItem = props => {
+    console.log('eventitem ',props)
     return (
         
         <View style={styles.gridItem}>
 
-            <TouchableOpacity style={{flex: 1}} onPress={props.onSelectEvent}>
+            <TouchableOpacity style={{flex: 1}} onPress={props.onSelect}>
                 <View style={styles.border} >
                 <View style={{ ...styles.container, ...styles.mealHeader}}>
                     <ImageBackground source={props.image} style={styles.bgImage} />

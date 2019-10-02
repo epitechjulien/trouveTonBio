@@ -8,12 +8,13 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 //recupere les données des types d'évènements
 const TypesofEventsScreen = props => {
-    console.log('2 ',props)
+    console.log('etape 1 ',props)
     const renderGridItem = itemData => {
         return (
         <EventsGridTile
             title={itemData.item.title}
             image={itemData.item.image}
+            id={itemData.item.id}
             onSelect = {() => {
                 props.navigation.navigate({
                     routeName: 'EventsList',
@@ -42,28 +43,7 @@ TypesofEventsScreen.navigationOptions = navData => {
     return {
          
       headerTitle: "Types d'évènements",
-      headerLeft: (
-        <HeaderButtons HeaderButtonComponent={HeaderButton}>
-          <Item
-            title="Menu"
-            iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
-            onPress={() => {
-              navData.navigation.toggleDrawer();
-            }}
-          />
-        </HeaderButtons>
-      ),
-      headerRight: (
-        <HeaderButtons HeaderButtonComponent={HeaderButton}>
-          <Item
-            title="Cart"
-            iconName={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
-            onPress={() => {
-              navData.navigation.navigate('Cart');
-            }}
-          />
-        </HeaderButtons>
-      )
+      
     };
   };
 

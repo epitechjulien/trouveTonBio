@@ -28,6 +28,7 @@ import ListeProduits from '../screens/categories/ListeProduitsScreen';
 import EventsScreen from '../screens/eventtypes/TypesofEventsScreen';
 import EventsList from '../screens/eventtypes/EventsScreen';
 import EventDetail from '../screens/eventtypes/EventsDetailScreen';
+import EventsOverviewScreen from '../screens/eventtypes/EventsOverviewScreen';
 
 // SHOP SCREENS
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
@@ -65,9 +66,8 @@ const ProductsNavigator = createStackNavigator(
     Categories: Categories,
     SousCategories: SousCategories,
     ListeProduits: ListeProduits,
-    EventsScreen: EventsScreen,
-    EventsList: EventsList,
-    EventDetail:EventDetail,
+    UserProducts: UserProductsScreen,
+    EditProduct: EditProductScreen,
   },
   {
     navigationOptions: {
@@ -82,6 +82,24 @@ const ProductsNavigator = createStackNavigator(
     defaultNavigationOptions: defaultNavOptions
   }
 );
+
+const EventsNavigator = createStackNavigator(
+  {
+    EventsScreen: EventsScreen,
+    EventsList: EventsList,
+    EventDetail:EventDetail,
+    EventsOverview:EventsOverviewScreen,
+    HomeScreen:HomeScreen,
+  },
+  {
+    navigationOptions: {
+    },
+    defaultNavigationOptions: defaultNavOptions
+  }
+);
+
+
+
 
 const OrdersNavigator = createStackNavigator(
   {
@@ -172,7 +190,7 @@ const tabScreenConfig = {
       tabBarColor: Colors.primaryColor
   }
   },
-  Events: {screen: EventsScreen, navigationOptions: {
+  Events: {screen: EventsNavigator, navigationOptions: {
       tabBarIcon: (tabInfo) => {
           return <MaterialIcons name="event-available" size={28} color="white" activeColor='white'/>
       },

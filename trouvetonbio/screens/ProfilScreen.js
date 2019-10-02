@@ -78,9 +78,10 @@ const ProfilScreen = props => {
             <Text style={styles.text2}>Ma ferme</Text>  
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttonContainer2}>
-            <Text style={styles.text2}>Mes produits</Text>  
-            </TouchableOpacity>
+            <Button
+          title="Mes produits"
+          onPress={() => props.navigation.navigate({routeName : 'UserProducts'})}
+        />
 
             <TouchableOpacity style={styles.buttonContainer2}>
             <Text style={styles.text2}>Mes ventes</Text>  
@@ -96,58 +97,6 @@ const ProfilScreen = props => {
 
 export default ProfilScreen;
 
-
-
-// export default class ProfilScreen extends Component {
-
-//   render() {
-//     return (
-//       <ScrollView>
-//       <View style={styles.container}>
-//       <ImageBackground source={require('../assets/home.png')} style={{height: 180}}></ImageBackground>
-//           <Image style={styles.avatar} source={require('../assets/profil/maxime.jpg')}/>
-//           <View style={styles.body}>
-//             <View style={styles.bodyContent}>
-//               <Text style={styles.name}>Maxime André</Text>
-//               <Text style={styles.info}>Producteur</Text>
-
-
-//               <Text style={styles.description}>Profil Dashboard</Text>
-//               <TouchableOpacity style={styles.buttonContainer}>
-//                 <Text style={styles.text2}>Mon profil</Text>  
-//               </TouchableOpacity>              
-//               <TouchableOpacity style={styles.buttonContainer}>
-//               <Text style={styles.text2}>Votre panier</Text>  
-//               </TouchableOpacity>
-//               <TouchableOpacity style={styles.buttonContainer}>
-//               <Text style={styles.text2}>Vos commandes</Text>  
-//               </TouchableOpacity>
-//               <TouchableOpacity style={styles.buttonContainer}>
-//               <Text style={styles.text2}>Historiques</Text>  
-//               </TouchableOpacity>
-
-
-//               <Text style={styles.description}>Producteur Dashboard</Text>
-//               <TouchableOpacity style={styles.buttonContainer2}>
-//               <Text style={styles.text2}>Ma ferme</Text>  
-//               </TouchableOpacity>
-
-//               <TouchableOpacity style={styles.buttonContainer2}>
-//               <Text style={styles.text2}>Mes produits</Text>  
-//               </TouchableOpacity>
-
-//               <TouchableOpacity style={styles.buttonContainer2}>
-//               <Text style={styles.text2}>Mes ventes</Text>  
-//               </TouchableOpacity>
-              
-
-//             </View>
-//         </View>
-//       </View>
-//       </ScrollView>
-//     );
-//   }
-// }
 
 const styles = StyleSheet.create({
   screen: {

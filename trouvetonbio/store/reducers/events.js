@@ -59,7 +59,7 @@ export default (state = initialState, action) => {
         availableEvents: updatedAvailableEvents ,
         userEvents: updatedUserEvents
       };
-    case DELETE_PRODUCT:
+    case DELETE_EVENT:
       return {
         ...state,
         userEvents: state.userEvents.filter(

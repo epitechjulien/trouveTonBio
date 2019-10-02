@@ -1,23 +1,22 @@
 import React from 'react';
 import {ScrollView,View,Text,Image,Button,StyleSheet} from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
 import Colors from '../../constants/Colors';
 
 
 const EventsDetailScreen = props => {
-  console.log('3 ',props)
   const eventId = props.navigation.getParam('eventId');
-  const selectedEvent = useSelector(state =>
-    state.Event.availableEvent.find(Event => Event.id === eventId)
-  );
+  const eventTitle = props.navigation.getParam('eventTitle');
+  const eventImage = props.navigation.getParam('eventImage');
+  const eventDescription = props.navigation.getParam('eventDescription');
+  const eventDate = props.navigation.getParam('eventDate');
 
   return (
     <ScrollView>
-      <Image style={styles.image} source={{ uri: selectedEvent.image }} />
+      <Image style={styles.image} source={eventImage} />
       <View style={styles.actions}>
       </View>
-      <Text style={styles.date}>{selectedEvent.date}</Text>
-      <Text style={styles.description}>{selectedEvent.description}</Text>
+      <Text style={styles.date}>{eventDate}</Text>
+      <Text style={styles.description}>{eventDescription}</Text>
     </ScrollView>
   );
 };
