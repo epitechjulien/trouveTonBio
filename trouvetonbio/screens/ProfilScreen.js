@@ -24,30 +24,30 @@ import * as authActions from '../store/actions/auth';
 const ProfilScreen = props => {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   const tryLogin = async () => {
-  //     const userData = await AsyncStorage.getItem('userData');
-  //     if (!userData) {
-  //       props.navigation.navigate('Auth');
-  //       return;
-  //     }
-  //     const transformedData = JSON.parse(userData);
-  //     const { token, userId } = transformedData;
-  //     const expirationDate = new Date(expiryDate);
+  useEffect(() => {
+    const tryLogin = async () => {
+      const userData = await AsyncStorage.getItem('userData');
+      if (!userData) {
+        props.navigation.navigate('Auth');
+        return;
+      }
+      const transformedData = JSON.parse(userData);
+      const { token, userId } = transformedData;
+      const expirationDate = new Date(expiryDate);
 
-  //     if (expirationDate <= new Date() || !token || !userId) {
-  //       props.navigation.navigate('Auth');
-  //       return;
-  //     }
+      if (expirationDate <= new Date() || !token || !userId) {
+        props.navigation.navigate('Auth');
+        return;
+      }
 
-  //     const expirationTime = expirationDate.getTime() - new Date().getTime();
+      const expirationTime = expirationDate.getTime() - new Date().getTime();
 
-  //     props.navigation.navigate('Carte');
-  //     dispatch(authActions.authenticate(userId, token));
-  //   };
+      props.navigation.navigate('Carte');
+      dispatch(authActions.authenticate(userId, token));
+    };
 
-  //   tryLogin();
-  // }, [dispatch]);
+    tryLogin();
+  }, [dispatch]);
 
   return (
     <ScrollView>
@@ -63,13 +63,16 @@ const ProfilScreen = props => {
             <Text style={styles.description}>Profil Dashboard</Text>
             <TouchableOpacity style={styles.buttonContainer}>
               <Text style={styles.text2}>Mon profil</Text>  
-            </TouchableOpacity>              
+            </TouchableOpacity>  
+
             <TouchableOpacity style={styles.buttonContainer}>
             <Text style={styles.text2}>Votre panier</Text>  
             </TouchableOpacity>
+
             <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.text2}>Vos commandes</Text>  
+            <Button title="Vos commandes" onPress={() => props.navigation.navigate({routeName : 'OrdersScreen'})}/>
             </TouchableOpacity>
+
             <TouchableOpacity style={styles.buttonContainer}>
             <Text style={styles.text2}>Historiques</Text>  
             </TouchableOpacity>
@@ -208,5 +211,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 1.41,
     position:'relative',
+  },
+  Button:{
+    backgroundColor: 'white',
   },
 });

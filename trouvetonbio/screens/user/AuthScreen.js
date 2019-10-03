@@ -2,6 +2,7 @@ import React, { useState, useEffect, useReducer, useCallback } from 'react';
 import {
   ScrollView,
   View,
+  Text,
   KeyboardAvoidingView,
   StyleSheet,
   Button,
@@ -82,7 +83,9 @@ const AuthScreen = props => {
     // setIsLoading(true);
     try {
       await dispatch(action);
+      console.log('res data avant redirection',resData.idToken);
       props.navigation.navigate('Profil');
+
     } catch (err) {
       setError(err.message);
       setIsLoading(false);
@@ -138,7 +141,7 @@ const AuthScreen = props => {
                 <ActivityIndicator size="small" color={Colors.primary} />
               ) : (
                 <Button
-                  title={isSignup ? 'Sign Up' : 'Login'}
+                  title={isSignup ? 'Sign Up' : 'SE CONNECTER'}
                   color={Colors.primary}
                   onPress={authHandler}
                 />
@@ -146,13 +149,12 @@ const AuthScreen = props => {
             </View>
             <View style={styles.buttonContainer}>
               <Button
-                title={`Switch to ${isSignup ? 'Login' : 'Sign Up'}`}
-                color={Colors.accent}
+                title={`${isSignup ? 'Login' : "S'ENREGISTRER"}`}
+                color={Colors.activeColor}
                 onPress={() => {
                   setIsSignup(prevState => !prevState);
                 }}
               />
-              <Button style={styles.text2} title="Retour accueil" onPress={() => props.navigation.navigate('Accueil')} />
             </View>
           </ScrollView>
         </Card>
@@ -182,7 +184,10 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 10
-  }
+  },
+  text2:{
+    color: "black",
+  },
 });
 
 export default AuthScreen;
