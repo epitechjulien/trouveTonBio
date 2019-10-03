@@ -131,8 +131,6 @@ const AdminNavigator = createStackNavigator(
     EditProduct: EditProductScreen,
     UserEvents: UserEvents,
     EditEvents: EditEvents,
-    Orders: OrdersScreen,
-    Cart: CartScreen,
   },
   {
     navigationOptions: {
@@ -153,6 +151,8 @@ const AuthNavigator = createStackNavigator(
     Auth: AuthScreen,
     Profil: ProfilScreen,
     Orders: OrdersScreen,
+    Orders: OrdersScreen,
+    Cart: CartScreen,
   },
   {
     defaultNavigationOptions: defaultNavOptions
@@ -271,12 +271,10 @@ const TabNavigator  = Platform.OS === 'android'
         style: {
             backgroundColor: Colors.primaryColor,
             alignContent: 'center',
-            height: 150,
             paddingTop: 50,
             borderTopWidth: 5,
         },
         tabStyle: {
-            height: 150,
         }
     }
 });
