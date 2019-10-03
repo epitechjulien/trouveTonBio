@@ -43,7 +43,7 @@ export const signup = (email, password) => {
 
     const resData = await response.json();
 
-    console.log(resData);
+    //console.log(resData);
     
     dispatch(
       authenticate(

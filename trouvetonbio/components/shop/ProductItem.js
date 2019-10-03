@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     fontFamily: 'open-sans',
     fontSize: 14,
     color: '#888',
+    textAlign: 'center',
     textDecorationLine: 'line-through',
     textDecorationStyle: 'solid'
   },
