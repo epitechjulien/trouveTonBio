@@ -31,7 +31,13 @@ const ProductDetailScreen = props => {
           }}
         />
       </View>
-      <Text style={styles.price}>${selectedProduct.price.toFixed(2)}</Text>
+      
+      {!selectedProduct.promotion ? (<Text style={styles.price}>€{selectedProduct.price.toFixed(2)}</Text>) : (
+        <View>
+       <Text style={styles.promotion}>€{selectedProduct.price.toFixed(2)}</Text>
+       <Text style={styles.price}>€{selectedProduct.promotion.toFixed(2)}</Text>
+        </View>
+      )}
       <Text style={styles.description}>{selectedProduct.description}</Text>
     </ScrollView>
   );
@@ -58,6 +64,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 20,
     fontFamily: 'open-sans-bold'
+  },
+  promotion: {
+    fontSize: 20,
+    color: '#888',
+    textAlign: 'center',
+    marginVertical: 20,
+    fontFamily: 'open-sans-bold',
+    textDecorationLine: 'line-through',
+    textDecorationStyle: 'solid'
   },
   description: {
     fontFamily: 'open-sans',

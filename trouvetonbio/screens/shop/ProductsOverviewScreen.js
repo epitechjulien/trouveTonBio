@@ -101,6 +101,7 @@ const ProductsOverviewScreen = props => {
           image={itemData.item.image}
           title={itemData.item.title}
           price={itemData.item.price}
+          promotion={itemData.item.promotion}
           onSelect={() => {
             selectItemHandler(itemData.item.id, itemData.item.title);
           }}

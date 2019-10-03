@@ -28,7 +28,12 @@ const ProductItem = props => {
             </View>
             <View style={styles.details}>
               <Text style={styles.title}>{props.title}</Text>
-              <Text style={styles.price}>${props.price.toFixed(2)}</Text>
+              {!props.promotion ? <Text style={styles.price}>€{props.price.toFixed(2)}</Text> : (
+                <View>
+                <Text style={styles.promotion}>€{props.price.toFixed(2)}</Text>
+                <Text style={styles.price}>Promotion:{ props.promotion }€</Text>
+                 </View>
+              )}
             </View>
             <View style={styles.actions}>
               {props.children}
@@ -74,6 +79,13 @@ const styles = StyleSheet.create({
     fontFamily: 'open-sans',
     fontSize: 14,
     color: '#888'
+  },
+  promotion: {
+    fontFamily: 'open-sans',
+    fontSize: 14,
+    color: '#888',
+    textDecorationLine: 'line-through',
+    textDecorationStyle: 'solid'
   },
   actions: {
     flexDirection: 'row',
