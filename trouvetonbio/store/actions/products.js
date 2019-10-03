@@ -30,8 +30,9 @@ export const fetchProducts = () => {
             resData[key].ownerId,
             resData[key].title,
             resData[key].image,
-            resData[key].description,
-            resData[key].price
+            resData[key].description,            
+            resData[key].price,
+            resData[key].promotion
           )
         );
       }
@@ -65,7 +66,7 @@ export const deleteProduct = productId => {
   };
 };
 
-export const createProduct = (categoryIds, subcategoriesIds, title, description, image, price) => {
+export const createProduct = (categoryIds, subcategoriesIds, title, description, image, price, promotion) => {
   return async (dispatch, getState) => {
     // any async code you want!
     const token = getState().auth.token;
@@ -84,6 +85,7 @@ export const createProduct = (categoryIds, subcategoriesIds, title, description,
           description,
           image,
           price,
+          promotion,
           ownerId: userId
         })
       }
@@ -101,13 +103,14 @@ export const createProduct = (categoryIds, subcategoriesIds, title, description,
         description,
         image,
         price,
+        promotion,
         ownerId: userId
       }
     });
   };
 };
 
-export const updateProduct = (id, categoryIds,subcategoriesIds, title, description, image) => {
+export const updateProduct = (id, categoryIds,subcategoriesIds, title, description, image, promotion) => {
   return async (dispatch, getState) => {
     const token = getState().auth.token;
     const response = await fetch(
@@ -122,6 +125,7 @@ export const updateProduct = (id, categoryIds,subcategoriesIds, title, descripti
           subcategoriesIds,
           title,
           description,
+          promotion,
           image
         })
       }
@@ -139,6 +143,7 @@ export const updateProduct = (id, categoryIds,subcategoriesIds, title, descripti
         subcategoriesIds,
         title,
         description,
+        promotion,
         image
       }
     });
