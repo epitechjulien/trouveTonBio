@@ -3,6 +3,16 @@ import Order from '../../models/order';
 export const ADD_ORDER = 'ADD_ORDER';
 export const SET_ORDERS = 'SET_ORDERS';
 
+
+/**
+ * This function is used to manage the orders and update the database.
+ * @param {auth, userId} input requested information to register.
+ * @throws {InvalidArgumentException} Throw an error if the argument is not respecting the structure.
+ * @throws {Required fields} Will throw an error if all the fiels are not filled.
+ * @async
+ * @returns {dispatch, getState} : Dispatch is simply using JS destructuring assignment to extract dispatch from this.props object.
+ * 
+ */
 export const fetchOrders = () => {
   return async (dispatch, getState) => {
     const userId = getState().auth.userId;
@@ -35,6 +45,14 @@ export const fetchOrders = () => {
   };
 };
 
+/**
+ * This function is used to add products to the orders.
+ * @param {cartItems, totalAmount}
+ * @throws {InvalidArgumentException} Throw an error if the argument is not respecting the structure.
+ * @throws {Required fields} Will throw an error if all the fiels are not filled.
+ * @async
+ * @returns {dispatch, getState} : Dispatch is simply using JS destructuring assignment to extract dispatch from this.props object.
+ */
 export const addOrder = (cartItems, totalAmount) => {
   return async (dispatch, getState) => {
     const token = getState().auth.token;
@@ -59,6 +77,10 @@ export const addOrder = (cartItems, totalAmount) => {
       throw new Error('Something went wrong!');
     }
 
+/**
+ * This function is used to link the order to the database.
+ * It's taking the data of the id, items, amount, and the date.
+ */
     const resData = await response.json();
 
     dispatch({

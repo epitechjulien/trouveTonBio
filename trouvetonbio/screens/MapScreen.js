@@ -3,12 +3,22 @@ import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native
 import MapView, { Marker } from 'react-native-maps';
 import Colors from '../constants/Colors';
 
+/**
+ * This is used to layout the map on the screen. 
+ */
 const MapScreen = props => {
 
 const initialLocation = props.navigation.getParam('initialLocation');
 const readonly = props.navigation.getParam('readonly');
+
+/**
+ * This is used to select a location for the user.
+ */
 const [selectedLocation, setSelectedLocation] = useState(initialLocation);
 
+/**
+ * This is used to give informations about where the map has to layout first. 
+ */
   const MapRegion ={
     latitude: initialLocation ? initialLocation.lat : 48.8534,
     longitude: initialLocation ? initialLocation.lng : 2.3488,
@@ -16,6 +26,7 @@ const [selectedLocation, setSelectedLocation] = useState(initialLocation);
     longitudeDelta: 0.0421
   };
 
+  
 const selectLocationHandler = event => {
   if (readonly) {
     return;

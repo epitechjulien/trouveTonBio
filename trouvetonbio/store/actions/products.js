@@ -5,6 +5,15 @@ export const CREATE_PRODUCT = 'CREATE_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const SET_PRODUCTS = 'SET_PRODUCTS';
 
+/**
+ * This function is used to manage the products.
+ * @param {auth, userId} input requested information to register.
+ * @throws {InvalidArgumentException} Throw an error if the argument is not respecting the structure.
+ * @throws {Required fields} Will throw an error if all the fiels are not filled.
+ * @async
+ * @returns {dispatch, getState} : Dispatch is simply using JS destructuring assignment to extract dispatch from this.props object.
+ * 
+ */
 export const fetchProducts = () => {
   return async (dispatch, getState) => {
     // any async code you want!
@@ -49,6 +58,12 @@ export const fetchProducts = () => {
   };
 };
 
+/**
+ * This function is used to delete a product and to erase it from the database.
+ * @param {productId}
+ * @async
+ * @returns {dispatch, getState} : Dispatch is simply using JS destructuring assignment to extract dispatch from this.props object.
+ */
 export const deleteProduct = productId => {
   return async (dispatch, getState) => {
     const token = getState().auth.token;
@@ -66,6 +81,14 @@ export const deleteProduct = productId => {
   };
 };
 
+/**
+ * This function is used to create a product and to add it into the database.
+ * @param {categoryIds, subcategoriesIds, title, description, image, price, promotion}
+ * @throws {InvalidArgumentException} Throw an error if the argument is not respecting the structure.
+ * @throws {Required fields} Will throw an error if all the fiels are not filled.
+ * @async
+ * @returns {dispatch, getState} : Dispatch is simply using JS destructuring assignment to extract dispatch from this.props object.
+ */
 export const createProduct = (categoryIds, subcategoriesIds, title, description, image, price, promotion) => {
   return async (dispatch, getState) => {
     // any async code you want!
@@ -110,6 +133,14 @@ export const createProduct = (categoryIds, subcategoriesIds, title, description,
   };
 };
 
+/**
+ * This function is used to modify the relative informations of a product. 
+ * It will also make the changes in the database.
+ * @param {id, categoryIds,subcategoriesIds, title, description, image, promotion}
+ * @throws {InvalidArgumentException} Throw an error if the argument is not respecting the structure.
+ * @async
+ * @returns {dispatch, getState} : Dispatch is simply using JS destructuring assignment to extract dispatch from this.props object.
+ */
 export const updateProduct = (id, categoryIds,subcategoriesIds, title, description, image, promotion) => {
   return async (dispatch, getState) => {
     const token = getState().auth.token;
