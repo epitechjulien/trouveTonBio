@@ -17,6 +17,7 @@ import * as productsActions from '../../store/actions/products';
 import Input from '../../components/UI/Input';
 import Colors from '../../constants/Colors';
 import { SUBCATEGORIES, CATEGORIES } from '../../data/dummy-data'
+import { TextInput } from 'react-native-paper';
 
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
 
@@ -62,7 +63,8 @@ const EditProductScreen = props => {
       title: editedProduct ? editedProduct.title : '',
       image: editedProduct ? editedProduct.image : '',
       description: editedProduct ? editedProduct.description : '',
-      price: ''
+      price: '',
+      promotion: editedProduct ? editedProduct.promotion : ''
     },
     inputValidities: {
       categoryIds: editedProduct ? true : false,
@@ -70,7 +72,8 @@ const EditProductScreen = props => {
       title: editedProduct ? true : false,
       image: editedProduct ? true : false,
       description: editedProduct ? true : false,
-      price: editedProduct ? true : false
+      price: editedProduct ? true : false,
+      //promotion: editedProduct ? true : false
     },
     formIsValid: editedProduct ? true : false
   });
@@ -92,6 +95,9 @@ const EditProductScreen = props => {
     setIsLoading(true);
     try {
       if (editedProduct) {
+        if(formState.inputValues.promotion){
+          formState.inputValues.promotion = (+formState.inputValues.price - (+formState.inputValues.price * (+formState.inputValues.promotion) / 100))
+        }
         await dispatch(
           productsActions.updateProduct(
             prodId,
@@ -99,10 +105,14 @@ const EditProductScreen = props => {
             formState.inputValues.subcategoriesIds,
             formState.inputValues.title,
             formState.inputValues.description,
-            formState.inputValues.image
+            formState.inputValues.image,
+            +formState.inputValues.promotion,
           )
         );
       } else {
+        if(formState.inputValues.promotion){
+          formState.inputValues.promotion = (+formState.inputValues.price - (+formState.inputValues.price * (+formState.inputValues.promotion) / 100))
+        }
         await dispatch(
           productsActions.createProduct(
             formState.inputValues.categoryIds,
@@ -110,7 +120,8 @@ const EditProductScreen = props => {
             formState.inputValues.title,
             formState.inputValues.description,
             formState.inputValues.image,
-            +formState.inputValues.price
+            +formState.inputValues.price,
+            +formState.inputValues.promotion,
           )
         );
       }
@@ -264,6 +275,16 @@ const EditProductScreen = props => {
             required
             minLength={5}
           />
+          <Input
+              id="promotion"
+              label="Promotion"
+              errorText="Please enter a valid promotion!"
+              keyboardType="decimal-pad"
+              returnKeyType="next"
+              onInputChange={inputChangeHandler}
+              initialValue="0"
+              min={0.1}
+            />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

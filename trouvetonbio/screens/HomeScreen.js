@@ -64,8 +64,11 @@ export class Explore extends Component {
             <SafeAreaView style = {{flex:1}}>
                 <View style= {{flex: 1}}>
                     <View style={styles.SearchContainer}>
-                    <ImageBackground source={require('../assets/home.png')} style={{width: '100%', height: '100%'}}>
-                        <Search/>
+                    <ImageBackground source={require('../assets/header.png')} style={{width: '100%', height: '100%'}}>
+                        <View style={styles.SearchArea}>
+                            <Icon name= "ios-search" size={24} color="white" style={{marginLeft:10,}}/>
+                            <TextInput underlineColorAndroid="transparent" placeholder="Que recherchez vous ?" placeholderTextColor= "white" style={styles.SearchInput}/>
+                        </View>
                         </ImageBackground>
                     </View>
             <ScrollView scrollEventThrottle={16}>
