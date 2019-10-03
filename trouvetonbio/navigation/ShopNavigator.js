@@ -132,6 +132,7 @@ const AdminNavigator = createStackNavigator(
     UserEvents: UserEvents,
     EditEvents: EditEvents,
     Orders: OrdersScreen,
+    Cart: CartScreen,
   },
   {
     navigationOptions: {
@@ -149,7 +150,9 @@ const AdminNavigator = createStackNavigator(
 
 const AuthNavigator = createStackNavigator(
   {
-    Auth: AuthScreen
+    Auth: AuthScreen,
+    Profil: ProfilScreen,
+    Orders: OrdersScreen,
   },
   {
     defaultNavigationOptions: defaultNavOptions
@@ -231,15 +234,9 @@ const tabScreenConfig = {
       },
       tabBarColor: Colors.primaryColor
   }
+  
   },
-  Compte: {screen: AuthNavigator, navigationOptions: {
-    tabBarIcon: (tabInfo) => {
-        return <MaterialCommunityIcons name="account-circle" size={28} color="white" activeColor='white'/>
-    },
-    tabBarColor: Colors.primaryColor
-}
-},
-  Profil: {screen: ProfilNavigator, navigationOptions: {
+  Profil: {screen: AuthNavigator, navigationOptions: {
       tabBarIcon: (tabInfo) => {
           return <MaterialCommunityIcons name="account" size={28} color="white" activeColor='white'/>
       },

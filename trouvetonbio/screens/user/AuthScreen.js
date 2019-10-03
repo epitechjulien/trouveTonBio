@@ -83,7 +83,6 @@ const AuthScreen = props => {
     // setIsLoading(true);
     try {
       await dispatch(action);
-      console.log('res data avant redirection',resData.idToken);
       props.navigation.navigate('Profil');
 
     } catch (err) {
@@ -105,6 +104,7 @@ const AuthScreen = props => {
   );
 
   return (
+
     <KeyboardAvoidingView
       behavior="padding"
       keyboardVerticalOffset={50}
