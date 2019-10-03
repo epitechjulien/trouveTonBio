@@ -19,6 +19,7 @@ import GeolocScreen from '../screens/GeolocScreen';
 import HomeScreen from '../screens/HomeScreen';
 import MapScreen from '../screens/MapScreen';
 import ProfilScreen from '../screens/ProfilScreen';
+import searchbar from '../screens/searchbar';
 
 // CATEGORIES SCREEN
 import Categories from '../screens/categories/CategoriesScreen';
@@ -69,6 +70,7 @@ const ProductsNavigator = createStackNavigator(
     EventsScreen: EventsScreen,
     EventsList: EventsList,
     EventDetail:EventDetail,
+    search: searchbar,
   },
   {
     navigationOptions: {
@@ -163,20 +165,6 @@ const AuthNavigator = createStackNavigator(
   }
 );
 
-<<<<<<< HEAD
-const MainNavigator = createSwitchNavigator({
-  Startup: StartupScreen,
-  Auth: AuthNavigator,
-  Shop: ShopNavigator,
-  Accueil: HomeScreen,
-  Toto: GeolocScreen,
-  Events: EventsScreen,
-  Carte: MapScreen,
-  Profil: ProfilScreen,
-});
-
-=======
->>>>>>> aec9f4a67fe583365c943d9ecdf9a52cfa68f079
 
 //create caracteristique navBar
 const tabScreenConfig = {
