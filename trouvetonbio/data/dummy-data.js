@@ -2,40 +2,126 @@ import Category from '../models/category';
 import Product from '../models/product';
 import Subcategories from '../models/subcategories';
 
-
 //les sous categories
 export const SUBCATEGORIES = [
-  new Subcategories('sub1','c1','Fruits de saison', require('../data/Images/fruits/saison.jpg')),
-  new Subcategories('sub2','c1','Fruits rouges', require('../data/Images/fruits/rouges.jpg')),
-  new Subcategories('sub3','c1','Fruits exotiques', require('../data/Images/fruits/exotique.jpg')),
-  new Subcategories('sub4','c1','Fruits agrumes', require('../data/Images/fruits/agrumes.jpg')),
-  new Subcategories('sub5','c2','Légumes de saison', require('../data/Images/legumes/saison.jpeg')),
-  new Subcategories('sub6','c2','Légumes exotiques', require('../data/Images/legumes/exotique.jpg')),
-  new Subcategories('sub7','c2','Légumes Verts', require('../data/Images/legumes/verts.jpg')),
-  new Subcategories('sub8','c2','Légumes Rouges', require('../data/Images/legumes/rouges.jpg')),
-  new Subcategories('sub9','c3','Poulet', require('../data/Images/viandes/poulet.jpg')),
-  new Subcategories('sub10','c3','Lapin', require('../data/Images/viandes/lapin.jpg')),
-  new Subcategories('sub11','c3','Dinde', require('../data/Images/viandes/dinde.jpg')),
-  new Subcategories('sub12','c3','Canard', require('../data/Images/viandes/canard.jpg')),
-  new Subcategories('sub13','c3','Foies', require('../data/Images/viandes/foies.jpeg')),
-  new Subcategories('sub14','c3','Boeuf', require('../data/Images/viandes/boeuf.jpg')),
-  new Subcategories('sub15','c3','Porc', require('../data/Images/viandes/porc.jpg')),
-  new Subcategories('sub16','c3','Veau', require('../data/Images/viandes/veau.jpg')),
-  new Subcategories('sub17','c3','Barbecue', require('../data/Images/viandes/barbecue.jpg')),
+
+  //Fruits
+  new Subcategories('sub1','c1','Banane', require('../data/Images/fruits/banane.png')),
+  new Subcategories('sub2','c1','Pomme', require('../data/Images/fruits/pomme.jpg')),
+  new Subcategories('sub3','c1','Fraise', require('../data/Images/fruits/Fraises.jpg')),
+  new Subcategories('sub4','c1','Framboise', require('../data/Images/fruits/Framboise.jpg')),
+  new Subcategories('sub5','c1','Kiwi', require('../data/Images/fruits/Kiwi.jpg')),
+  new Subcategories('sub6','c1','Melon', require('../data/Images/fruits/Melon.jpg')),
+  new Subcategories('sub7','c1','Pasteque', require('../data/Images/fruits/Pasteque.jpg')),
+  new Subcategories('sub8','c1','Poire', require('../data/Images/fruits/Poire.jpg')),
+  new Subcategories('sub9','c1','Figues', require('../data/Images/fruits/figue.jpg')),
+  new Subcategories('sub10','c1','Agrumes', require('../data/Images/fruits/agrumes1.jpg')),
+  new Subcategories('sub11','c1','Raisin', require('../data/Images/fruits/raisins.jpg')),
+  new Subcategories('sub12','c1','Pêche', require('../data/Images/fruits/peche.jpg')),
+  new Subcategories('sub13','c1','Prune', require('../data/Images/fruits/Prunes.jpg')),
+  new Subcategories('sub14','c1','Tomate', require('../data/Images/fruits/Tomates.jpg')),
+
+//Legumes
+  new Subcategories('sub1','c2','Haricot', require('../data/Images/legumes/haricot.jpg')),
+  new Subcategories('sub2','c2','Pomme de terre', require('../data/Images/legumes/Pommedeterre.jpg')),
+  new Subcategories('sub3','c2','Chou-Fleur', require('../data/Images/legumes/ChouFleur.jpg')),
+  new Subcategories('sub4','c2','Concombre', require('../data/Images/legumes/concombre.jpg')),
+  new Subcategories('sub5','c2','Courgette', require('../data/Images/legumes/courgette.jpg')),
+  new Subcategories('sub6','c2','Aubergine', require('../data/Images/legumes/aubergine.jpg')),
+  new Subcategories('sub7','c2','Poireaux', require('../data/Images/legumes/Poireaux.jpg')),
+  new Subcategories('sub8','c2','Champignon', require('../data/Images/legumes/champignon.jpg')),
+  new Subcategories('sub9','c2','Carotte', require('../data/Images/legumes/carotte.jpg')),
+  new Subcategories('sub10','c2','Brocoli', require('../data/Images/legumes/Brocolie.jpg')),
+  
+
+
+//Viandes
+  new Subcategories('sub1','c3','Poulet', require('../data/Images/viandes/poulet.jpg')),
+  new Subcategories('sub2','c3','Lapin', require('../data/Images/viandes/lapin.jpg')),
+  new Subcategories('sub3','c3','Dinde', require('../data/Images/viandes/dinde.jpg')),
+  new Subcategories('sub4','c3','Canard', require('../data/Images/viandes/canard.jpg')),
+  new Subcategories('sub5','c3','Foies', require('../data/Images/viandes/foies.jpeg')),
+  new Subcategories('sub6','c3','Boeuf', require('../data/Images/viandes/boeuf.jpg')),
+  new Subcategories('sub7','c3','Porc', require('../data/Images/viandes/porc.jpg')),
+  new Subcategories('sub8','c3','Veau', require('../data/Images/viandes/veau.jpg')),
+
+//Poissons
+  new Subcategories('sub1','c4','Saumon', require('../data/Images/poisson/Saumon.jpg')),
+  new Subcategories('sub2','c4','Thon', require('../data/Images/poisson/thon.jpg')),
+  new Subcategories('sub3','c4','Cabillaud', require('../data/Images/poisson/cabilaud.jpg')),
+  new Subcategories('sub4','c4','Sardines', require('../data/Images/poisson/sardines.jpg')),
+  new Subcategories('sub5','c4','Maquereau', require('../data/Images/poisson/Maquereau.jpg')),
+  new Subcategories('sub6','c4','Merlan', require('../data/Images/poisson/merlan.jpg')),
+  new Subcategories('sub7','c4','Sole', require('../data/Images/poisson/sole.jpg')),
+  new Subcategories('sub8','c4','La Dorade', require('../data/Images/poisson/dorade.jpeg')),
+  new Subcategories('sub9','c4','Fruit de mer', require('../data/Images/poisson/fruitDemer.jpg')),
+
+//Crémerie
+
+  new Subcategories('sub1','c5','Beurre', require('../data/Images/cremerie/beurre.jpeg')),
+  new Subcategories('sub2','c5','Fromages', require('../data/Images/cremerie/fromages.jpg')),
+  new Subcategories('sub3','c5','Lait', require('../data/Images/cremerie/Lait.jpg')),
+  new Subcategories('sub4','c5','Yahourt', require('../data/Images/cremerie/yahourt.jpeg')),
+
+//Boulangerie
+
+  new Subcategories('sub1','c6','Pains', require('../data/Images/boulangerie/pains.jpg')),
+  new Subcategories('sub2','c6','Pâtisserie', require('../data/Images/boulangerie/patisserie.jpg')),
+  new Subcategories('sub3','c6','Viennoiseries', require('../data/Images/boulangerie/vienoiserie.jpeg')),
+
+//Boissons
+  new Subcategories('sub1','c7','Jus de fruits', require('../data/Images/boisson/Jusdefruits.jpg')),
+  new Subcategories('sub2','c7','Boissons alcoolisées', require('../data/Images/boisson/boissonsalcoolisee.jpg')),
+  
+
+
+
 ];
 
 //les categories
 export const CATEGORIES = [
-    new Category('c1',['sub1','sub2','sub3','sub4'],'Fruits', '#FBFCFA', require('../data/Images/fruits/fruits.jpeg')),
-    new Category('c2',['sub5','sub6','sub7','sub8'], 'Legumes', '#FBFCFA', require('../data/Images/legumes/legumes.jpeg')),
-    new Category('c3',['sub9','sub10','sub11','sub12','sub13','sub14','sub15','sub16','sub17'], 'Viandes', '#FBFCFA', require('../data/Images/viandes/viandes.jpg')),
-    new Category('c4','' ,'Fromages', '#FBFCFA', require('../data/Images/fromages/fromages.jpg')),
-    new Category('c5','' , 'Vins', '#FBFCFA', require('../data/Images/vins/vins.jpeg')),
-    new Category('c6','' , 'Epicerie', '#FBFCFA', require('../data/Images/epicerie/epicerie.jpg')),
-    new Category('c7','' , 'Produit Laitier', '#FBFCFA', require('../data/Images/produit_laitier/creme.jpg')),
-    new Category('c8','' , 'Poissons', '#FBFCFA', require('../data/Images/poisson/poissons.jpg')),
-    new Category('c9','' , 'Boissons', '#FBFCFA', require('../data/Images/boisson/boisson.jpeg'))
+    new Category('c1',['sub1','sub2','sub3','sub4','sub5','sub6','sub7','sub8','sub9','sub10','sub11','sub12','sub13','sub14'],'Fruits', '#FBFCFA', require('../data/Images/fruits/fruits.jpeg')),
+    new Category('c2',['sub1','sub2','sub3','sub4','sub5','sub6','sub7','sub8','sub9','sub10'], 'Legumes', '#FBFCFA', require('../data/Images/legumes/legumes.jpeg')),
+    new Category('c3',['sub1','sub2','sub3','sub4','sub5','sub6','sub7','sub8'], 'Viandes', '#FBFCFA', require('../data/Images/viandes/viandes.jpg')),
+    new Category('c4',['sub1','sub2','sub3','sub4','sub5','sub6','sub7','sub8','sub9'] , 'Poissons', '#FBFCFA', require('../data/Images/poisson/poissons.jpg')),
+    new Category('c5',['sub1','sub2','sub3','sub4'] , 'Crémerie', '#FBFCFA', require('../data/Images/cremerie/creme.jpg')),
+    new Category('c6',['sub1','sub2','sub3'], 'Boulangerie', '#FBFCFA', require('../data/Images/boulangerie/boulangerie.jpg')),
+    new Category('c7',['sub1','sub2'] , 'Boissons', '#FBFCFA', require('../data/Images/boisson/boisson.jpeg')),
+
+  
 ];
+
+// export const SUBCATEGORIES = [
+//   new Subcategories('sub1','c1','Fruits de saison', require('../data/Images/fruits/saison.jpg')),
+//   new Subcategories('sub2','c1','Fruits rouges', require('../data/Images/fruits/rouges.jpg')),
+//   new Subcategories('sub3','c1','Fruits exotiques', require('../data/Images/fruits/exotique.jpg')),
+//   new Subcategories('sub4','c1','Fruits agrumes', require('../data/Images/fruits/agrumes.jpg')),
+//   new Subcategories('sub5','c2','Légumes de saison', require('../data/Images/legumes/saison.jpeg')),
+//   new Subcategories('sub6','c2','Légumes exotiques', require('../data/Images/legumes/exotique.jpg')),
+//   new Subcategories('sub7','c2','Légumes Verts', require('../data/Images/legumes/verts.jpg')),
+//   new Subcategories('sub8','c2','Légumes Rouges', require('../data/Images/legumes/rouges.jpg')),
+//   new Subcategories('sub9','c3','Poulet', require('../data/Images/viandes/poulet.jpg')),
+//   new Subcategories('sub10','c3','Lapin', require('../data/Images/viandes/lapin.jpg')),
+//   new Subcategories('sub11','c3','Dinde', require('../data/Images/viandes/dinde.jpg')),
+//   new Subcategories('sub12','c3','Canard', require('../data/Images/viandes/canard.jpg')),
+//   new Subcategories('sub13','c3','Foies', require('../data/Images/viandes/foies.jpeg')),
+//   new Subcategories('sub14','c3','Boeuf', require('../data/Images/viandes/boeuf.jpg')),
+//   new Subcategories('sub15','c3','Porc', require('../data/Images/viandes/porc.jpg')),
+//   new Subcategories('sub16','c3','Veau', require('../data/Images/viandes/veau.jpg')),
+//   new Subcategories('sub17','c3','Barbecue', require('../data/Images/viandes/barbecue.jpg')),
+// ];
+
+// export const CATEGORIES = [
+//     new Category('c1',['sub1','sub2','sub3','sub4'],'Fruits', '#FBFCFA', require('../data/Images/fruits/fruits.jpeg')),
+//     new Category('c2',['sub5','sub6','sub7','sub8'], 'Legumes', '#FBFCFA', require('../data/Images/legumes/legumes.jpeg')),
+//     new Category('c3',['sub9','sub10','sub11','sub12','sub13','sub14','sub15','sub16','sub17'], 'Viandes', '#FBFCFA', require('../data/Images/viandes/viandes.jpg')),
+//     new Category('c4','' ,'Fromages', '#FBFCFA', require('../data/Images/fromages/fromages.jpg')),
+//     new Category('c5','' , 'Vins', '#FBFCFA', require('../data/Images/vins/vins.jpeg')),
+//     new Category('c6','' , 'Epicerie', '#FBFCFA', require('../data/Images/epicerie/epicerie.jpg')),
+//     new Category('c7','' , 'Produit Laitier', '#FBFCFA', require('../data/Images/produit_laitier/creme.jpg')),
+//     new Category('c8','' , 'Poissons', '#FBFCFA', require('../data/Images/poisson/poissons.jpg')),
+//     new Category('c9','' , 'Boissons', '#FBFCFA', require('../data/Images/boisson/boisson.jpeg'))
+// ];
 
 export const PRODUCTS = [
     new Product(

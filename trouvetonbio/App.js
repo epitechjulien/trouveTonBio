@@ -5,6 +5,7 @@ import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import ReduxThunk from 'redux-thunk';
 
+import eventsReducer from './store/reducers/events';
 import productsReducer from './store/reducers/products';
 import cartReducer from './store/reducers/cart';
 import ordersReducer from './store/reducers/orders';
@@ -13,6 +14,7 @@ import NavigationContainer from './navigation/NavigationContainer';
 
 const rootReducer = combineReducers({
   products: productsReducer,
+  events: eventsReducer,
   cart: cartReducer,
   orders: ordersReducer,
   auth: authReducer

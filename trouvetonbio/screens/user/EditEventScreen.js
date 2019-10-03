@@ -42,14 +42,17 @@ const formReducer = (state, action) => {
   return state;
 };
 
-const EditEventsScreen = props => {
+const EditEventScreen = props => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 
   const eventId = props.navigation.getParam('eventId');
+  
   const editedEvent = useSelector(state =>
-    state.event.userEvents.find(event => event.id === eventId)
+    state.events.userEvents.find(event => event.id === eventId)
+    
   );
+  
   const dispatch = useDispatch();
 
   const [formState, dispatchFormState] = useReducer(formReducer, {
@@ -58,7 +61,7 @@ const EditEventsScreen = props => {
       title: editedEvent  ? editedEvent .title : '',
       image: editedEvent  ? editedEvent .image : '',
       description: editedEvent  ? editedEvent .description : '',
-      date: ''
+      date: editedEvent  ? editedEvent .date : '',
     },
     inputValidities: {
       eventtypeId: editedEvent ? true : false,
@@ -77,6 +80,7 @@ const EditEventsScreen = props => {
   }, [error]);
 
   const submitHandler = useCallback(async () => {
+    console.log('submitting');
     if (!formState.formIsValid) {
       Alert.alert('Wrong input!', 'Please check the errors in the form.', [
         { text: 'Okay' }
@@ -104,7 +108,7 @@ const EditEventsScreen = props => {
             formState.inputValues.title,
             formState.inputValues.image,
             formState.inputValues.description,
-            +formState.inputValues.date
+            formState.inputValues.date
           )
         );
       }
@@ -199,7 +203,6 @@ const EditEventsScreen = props => {
             required
             minLength={5}
           />
-          {editedEvent  ? null : (
             <Input
               id="date"
               label="date"
@@ -207,16 +210,18 @@ const EditEventsScreen = props => {
               keyboardType="default"
               returnKeyType="next"
               onInputChange={inputChangeHandler}
+              initialValue={editedEvent ? editedEvent.date : ''}
+              initiallyValid={!!editedEvent}
               required
             />
-          )}
+
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
 };
 
-EditEventsScreen.navigationOptions = navData => {
+EditEventScreen.navigationOptions = navData => {
   const submitFn = navData.navigation.getParam('submit');
   return {
     headerTitle: navData.navigation.getParam('eventId')
@@ -247,4 +252,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default EditEventsScreen;
+export default EditEventScreen;

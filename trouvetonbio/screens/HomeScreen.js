@@ -6,7 +6,11 @@ import { Thumbnail} from 'native-base';
 import Colors from '../constants/Colors';
 
 import { CATEGORIES, SUBCATEGORIES } from '../data/dummy-data';
+import { EVENT } from '../data/event-data';
 import CategoryGridTile from '../components/categories/CategoryGridTile';
+import EventsGridTile from '../components/eventtypes/EventsGridTile';
+import Search from '../components/Searchbar';
+
 const { height, width} = Dimensions.get('window')
 
 
@@ -18,13 +22,30 @@ export class Explore extends Component {
 
         <CategoryGridTile
             title={itemData.item.title}
-            color={itemData.item.color}
             image={itemData.item.image}
             onSelect = {() => {
                 this.props.navigation.navigate({
                     routeName: 'SousCategories',
                     params: {
                       categoryId: itemData.item.id
+                }
+        });
+            }} />
+    
+            );
+    };
+
+    renderGridEvent = itemData => {
+        return (
+
+        <EventsGridTile
+            title={itemData.item.title}
+            image={itemData.item.image}
+            onSelect = {() => {
+                this.props.navigation.navigate({
+                    routeName: 'EventsList',
+                    params: {
+                      eventId: itemData.item.id
                 }
         });
             }} />
@@ -44,10 +65,7 @@ export class Explore extends Component {
                 <View style= {{flex: 1}}>
                     <View style={styles.SearchContainer}>
                     <ImageBackground source={require('../assets/home.png')} style={{width: '100%', height: '100%'}}>
-                        <View style={styles.SearchArea}>
-                            <Icon name= "ios-search" size={24} color="white" style={{marginLeft:10,}}/>
-                            <TextInput underlineColorAndroid="transparent" placeholder="Que recherchez vous ?" placeholderTextColor= "white" style={styles.SearchInput}/>
-                        </View>
+                        <Search/>
                         </ImageBackground>
                     </View>
             <ScrollView scrollEventThrottle={16}>
@@ -55,7 +73,7 @@ export class Explore extends Component {
                     <Text style={styles.title}>Faites vos courses</Text>
 
                             <Text style={styles.subtitle}>Catégories</Text>
-                            <View style={{height :165, marginTop:5, marginBottom: 15,}}>
+                            <View style={{height :140, marginTop:5, marginBottom: 15,}}>
                             <FlatList
                                 keyExtractor={(item, index) => item.id}
                                 data={CATEGORIES}
@@ -75,7 +93,7 @@ export class Explore extends Component {
                             </View>
 
                             <Text style={styles.subtitle}>Promotions</Text>
-                            <View style={{height :130, marginTop:5, marginBottom: 15,}}>
+                            <View style={{height :140, marginTop:5, marginBottom: 15,}}>
                                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
                                     <Category style={styles.border} image={require('../assets/pomme1.jpg')} name="Pomme Golden: 4€"/>
                                     <Category style={styles.border} image={require('../assets/banane.png')} name="BANANE naturelle: 7€"/>
@@ -86,14 +104,28 @@ export class Explore extends Component {
                                 </ScrollView>
                             </View>
 
-                            <Text style={styles.subtitle}>Evenements</Text>
-                            <View style={{height :130, marginTop:5, marginBottom: 15,}}>
-                                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                    <Category image={require('../assets/visite1.png')} name="La ferme de Gally"/>
-                                    <Category image={require('../assets/visite2.png')} name="Visite Champs de Monique"/>
-                                    <Category image={require('../assets/visite3.png')} name="Visite Cave vins"/>
-                                    <Category image={require('../assets/visite1.png')} name="La ferme de Gally"/>
-                                </ScrollView>
+                            <Text style={styles.subtitle}>Evènements</Text>
+                            <View style={{height :140, marginTop:5, marginBottom: 15,}}>
+                            <FlatList
+                                keyExtractor={(item, index) => item.id}
+                                data={EVENT}
+                                renderItem={this.renderGridEvent}
+                                // numColumns={2}
+                                horizontal={true}
+                                onSelect = {() => {
+                                    props.navigation.navigate({
+                                        routeName: 'EventDetail',
+                                        params: {
+                                            eventId: itemData.item.id,
+                                            eventTitle: itemData.item.title,
+                                            eventImage: itemData.item.image,
+                                            eventDescription: itemData.item.Description,
+
+                                    }
+                            });
+                                }}
+                                style={styles.FlatList}
+                                />
                             </View>
 
                 </View>
@@ -127,8 +159,8 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color:'#000',
         fontWeight:'700',
-        paddingHorizontal: 20,
-        marginTop: 20,
+        paddingHorizontal: 10,
+        marginTop: 10,
     },
     SearchContainer:{
         height : '30%',

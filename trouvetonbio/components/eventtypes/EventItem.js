@@ -2,11 +2,12 @@ import React from 'react';
 import { TouchableOpacity, View, Text, ImageBackground, StyleSheet, FlatList, Platform} from 'react-native';
 
 const EventItem = props => {
+    console.log('eventitem ',props)
     return (
         
         <View style={styles.gridItem}>
 
-            <TouchableOpacity style={{flex: 1}} onPress={props.onSelectEvent}>
+            <TouchableOpacity style={{flex: 1}} onPress={props.onSelect}>
                 <View style={styles.border} >
                 <View style={{ ...styles.container, ...styles.mealHeader}}>
                     <ImageBackground source={props.image} style={styles.bgImage} />
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         flex: 1,
         fontSize: 12,
-        textAlign: 'left',
+        textAlign: 'center',
         height:25,
         justifyContent: 'center',
         fontWeight: 'bold',

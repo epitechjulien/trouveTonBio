@@ -1,23 +1,23 @@
 import React from 'react';
 import {ScrollView,View,Text,Image,Button,StyleSheet} from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
 import Colors from '../../constants/Colors';
 
 
 const EventsDetailScreen = props => {
-  console.log('3 ',props)
   const eventId = props.navigation.getParam('eventId');
-  const selectedEvent = useSelector(state =>
-    state.Event.availableEvent.find(Event => Event.id === eventId)
-  );
+  const eventTitle = props.navigation.getParam('eventTitle');
+  const eventImage = props.navigation.getParam('eventImage');
+  const eventDescription = props.navigation.getParam('eventDescription');
+  const eventDate = props.navigation.getParam('eventDate');
 
   return (
     <ScrollView>
-      <Image style={styles.image} source={{ uri: selectedEvent.image }} />
+      <Image style={styles.image} source={eventImage} />
       <View style={styles.actions}>
       </View>
-      <Text style={styles.date}>{selectedEvent.date}</Text>
-      <Text style={styles.description}>{selectedEvent.description}</Text>
+      <Text style={styles.price}>{eventTitle}</Text>
+      <Text style={styles.date}>le {eventDate}</Text>
+      <Text style={styles.description}>{eventDescription}</Text>
     </ScrollView>
   );
 };
@@ -41,8 +41,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#888',
     textAlign: 'center',
-    marginVertical: 20,
+    marginTop: 20,
     fontFamily: 'open-sans-bold'
+  },
+  date: {
+    fontSize: 20,
+    color: '#000',
+    textAlign: 'center',
+    fontFamily: 'open-sans-bold',
+    fontStyle: 'italic',
+    marginBottom: 20,
   },
   description: {
     fontFamily: 'open-sans',

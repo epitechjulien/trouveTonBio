@@ -19,7 +19,6 @@ import GeolocScreen from '../screens/GeolocScreen';
 import HomeScreen from '../screens/HomeScreen';
 import MapScreen from '../screens/MapScreen';
 import ProfilScreen from '../screens/ProfilScreen';
-import searchbar from '../screens/searchbar';
 
 // CATEGORIES SCREEN
 import Categories from '../screens/categories/CategoriesScreen';
@@ -30,6 +29,9 @@ import ListeProduits from '../screens/categories/ListeProduitsScreen';
 import EventsScreen from '../screens/eventtypes/TypesofEventsScreen';
 import EventsList from '../screens/eventtypes/EventsScreen';
 import EventDetail from '../screens/eventtypes/EventsDetailScreen';
+import UserEvents from '../screens/user/UserEventsScreen';
+import EditEvents from '../screens/user/EditEventScreen';
+
 
 // SHOP SCREENS
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
@@ -41,6 +43,9 @@ import EditProductScreen from '../screens/user/EditProductScreen';
 import AuthScreen from '../screens/user/AuthScreen';
 import StartupScreen from '../screens/StartupScreen';
 import * as authActions from '../store/actions/auth';
+
+// SEARCH BAR 
+import Search from '../components/Searchbar';
 
 // COLORS
 import Colors from '../constants/Colors';
@@ -70,7 +75,10 @@ const ProductsNavigator = createStackNavigator(
     EventsScreen: EventsScreen,
     EventsList: EventsList,
     EventDetail:EventDetail,
-    search: searchbar,
+    UserProducts: UserProductsScreen,
+    EditProduct: EditProductScreen,
+    UserEvents: UserEvents,
+    EditEvents: EditEvents
   },
   {
     navigationOptions: {
@@ -85,6 +93,22 @@ const ProductsNavigator = createStackNavigator(
     defaultNavigationOptions: defaultNavOptions
   }
 );
+
+const EventsNavigator = createStackNavigator(
+  {
+    EventsScreen: EventsScreen,
+    EventsList: EventsList,
+    EventDetail:EventDetail,
+  },
+  {
+    navigationOptions: {
+    },
+    defaultNavigationOptions: defaultNavOptions
+  }
+);
+
+
+
 
 const OrdersNavigator = createStackNavigator(
   {
@@ -107,7 +131,9 @@ const OrdersNavigator = createStackNavigator(
 const AdminNavigator = createStackNavigator(
   {
     UserProducts: UserProductsScreen,
-    EditProduct: EditProductScreen
+    EditProduct: EditProductScreen,
+    UserEvents: UserEvents,
+    EditEvents: EditEvents
   },
   {
     navigationOptions: {
@@ -122,6 +148,34 @@ const AdminNavigator = createStackNavigator(
     defaultNavigationOptions: defaultNavOptions
   }
 );
+
+const AuthNavigator = createStackNavigator(
+  {
+    Auth: AuthScreen
+  },
+  {
+    defaultNavigationOptions: defaultNavOptions
+  }
+);
+
+const ProfilNavigator = createStackNavigator(
+  {
+    Profil: ProfilScreen
+  },
+  {
+    navigationOptions: {
+      drawerIcon: drawerConfig => (
+        <Ionicons
+          name={Platform.OS === 'android' ? 'md-create' : 'ios-create'}
+          size={23}
+          color={drawerConfig.tintColor}
+        />
+      )
+    },
+    defaultNavigationOptions: defaultNavOptions
+  }
+);
+
 
 const CategoriesNavigator = createStackNavigator(
   {
@@ -156,15 +210,6 @@ const ShopNavigator = createDrawerNavigator(
   }
 );
 
-const AuthNavigator = createStackNavigator(
-  {
-    Auth: AuthScreen
-  },
-  {
-    defaultNavigationOptions: defaultNavOptions
-  }
-);
-
 
 //create caracteristique navBar
 const tabScreenConfig = {
@@ -175,7 +220,7 @@ const tabScreenConfig = {
       tabBarColor: Colors.primaryColor
   }
   },
-  Events: {screen: EventsScreen, navigationOptions: {
+  Events: {screen: EventsNavigator, navigationOptions: {
       tabBarIcon: (tabInfo) => {
           return <MaterialIcons name="event-available" size={28} color="white" activeColor='white'/>
       },
@@ -189,7 +234,14 @@ const tabScreenConfig = {
       tabBarColor: Colors.primaryColor
   }
   },
-  Profil: {screen: ProfilScreen, navigationOptions: {
+  Compte: {screen: AuthNavigator, navigationOptions: {
+    tabBarIcon: (tabInfo) => {
+        return <MaterialCommunityIcons name="account-circle" size={28} color="white" activeColor='white'/>
+    },
+    tabBarColor: Colors.primaryColor
+}
+},
+  Profil: {screen: ProfilNavigator, navigationOptions: {
       tabBarIcon: (tabInfo) => {
           return <MaterialCommunityIcons name="account" size={28} color="white" activeColor='white'/>
       },

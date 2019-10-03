@@ -6,9 +6,12 @@ import EventItem from '../../components/eventtypes/EventItem';
 import HeaderButton from '../../components/UI/HeaderButton';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
+
+
+
 // list of evenements per type of evenement
 const EventslistScreen = props => {
-    console.log('1 ',props)
+    console.log('etape 2 ',props);
     const renderEventItem= itemData => {
         return <EventItem
         title={itemData.item.title}
@@ -16,14 +19,21 @@ const EventslistScreen = props => {
         description={itemData.item.description}
         date={itemData.item.date}
         eventtypeId={itemData.item.eventtypeId}
+        id={itemData.item.id}
         
-        onSelectEvent={() => {
+        onSelect={() => {
+          console.log('sous etape 2 ',itemData.item.id);
             props.navigation.navigate({
-                routename : 'EventDetail',
+                routeName: 'EventDetail',
                 params: {
-                  eventId: itemData.item.id
+                  eventId: itemData.item.id,
+                  eventTitle:itemData.item.title,
+                  eventImage:itemData.item.image,
+                  eventDescription:itemData.item.description,
+                  eventDate:itemData.item.date
                 }
             })
+            console.log('Event id ', itemData.item.id);
         }
     }/>;
     };
@@ -52,28 +62,6 @@ EventslistScreen.navigationOptions = navData => {
     return {
          
       headerTitle: 'Nos évènements',
-      headerLeft: (
-        <HeaderButtons HeaderButtonComponent={HeaderButton}>
-          <Item
-            title="Menu"
-            iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
-            onPress={() => {
-              navData.navigation.toggleDrawer();
-            }}
-          />
-        </HeaderButtons>
-      ),
-      headerRight: (
-        <HeaderButtons HeaderButtonComponent={HeaderButton}>
-          <Item
-            title="Cart"
-            iconName={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
-            onPress={() => {
-              navData.navigation.navigate('Cart');
-            }}
-          />
-        </HeaderButtons>
-      )
     };
   };
 

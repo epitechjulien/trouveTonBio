@@ -7,6 +7,7 @@ import * as Permissions from 'expo-permissions';
 import Colors from '../constants/Colors';
 import MapPreview from '../components/MapPreview';
 
+
 const LocationPicker = props => {
   const [isFetching, setIsFetching] = useState(false);
   const [pickedLocation, setPickedLocation] = useState();
