@@ -9,9 +9,10 @@ import Colors from '../../constants/Colors';
 import * as eventsActions from '../../store/actions/events';
 
 const UserEventsScreen = props => {
+  
   const userEvents = useSelector(state => state.events.userEvents);
   const dispatch = useDispatch();
-
+  console.log('state : ',userEvents);
   const editEventsHandler = id => {
     props.navigation.navigate('EditEvents', { eventId: id });
     

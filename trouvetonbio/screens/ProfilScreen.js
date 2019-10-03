@@ -78,20 +78,51 @@ const ProfilScreen = props => {
             </TouchableOpacity>
 
             <Text style={styles.description}>Producteur Dashboard</Text>
-            <TouchableOpacity style={styles.buttonContainer2}>
-            <Text style={styles.text2}>Mes évènements</Text>  
-            </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttonContainer2}>
-            <Text style={styles.text2}>Ma ferme</Text>  
-            </TouchableOpacity>
+            <View style={[{ width: "90%", margin: 10, backgroundColor: Colors.activeColor,borderRadius: 5, borderWidth: 1,borderWidth: 0.5, borderColor:'#dddddd',elevation:3,shadowOpacity: 0.2,shadowRadius: 1.41, }]}>
+              <Button
+                onPress={() => props.navigation.navigate({routeName : 'UserProducts'})}
+                title="Mes produits"
+                color={Colors.activeColor}
+              />
+            </View>
 
-            <Button title="Mes produits" onPress={() => props.navigation.navigate({routeName : 'UserProducts'})}/>
-            <Button title="Mes évènements" onPress={() => props.navigation.navigate({routeName : 'UserEvents'})}/>
-            
-            <TouchableOpacity style={styles.buttonContainer2}>
-            <Text style={styles.text2}>Mes ventes</Text>  
-            </TouchableOpacity>
+            <View style={[{ width: "90%", margin: 10, backgroundColor: Colors.activeColor,borderRadius: 5, borderWidth: 1,borderWidth: 0.5, borderColor:'#dddddd',elevation:3,shadowOpacity: 0.2,shadowRadius: 1.41, }]}>
+              <Button
+                onPress={() => props.navigation.navigate({routeName : 'UserEvents'})}
+                title="Mes évènements"
+                color={Colors.activeColor}
+              />
+            </View>
+
+
+            <View style={[{ width: "90%", margin: 10, backgroundColor: Colors.activeColor,borderRadius: 5, borderWidth: 1,borderWidth: 0.5, borderColor:'#dddddd',elevation:3,shadowOpacity: 0.2,shadowRadius: 1.41, }]}>
+              <Button
+                onPress={() => props.navigation.navigate({routeName : ''})}
+                title="Ma ferme"
+                color={Colors.activeColor}
+              />
+            </View>
+
+            <View style={[{ width: "90%", margin: 10, backgroundColor: Colors.activeColor,borderRadius: 5, borderWidth: 1,borderWidth: 0.5, borderColor:'#dddddd',elevation:3,shadowOpacity: 0.2,shadowRadius: 1.41, }]}>
+              <Button
+                onPress={() => props.navigation.navigate({routeName : ''})}
+                title="Mes ventes"
+                color={Colors.activeColor}
+              />
+            </View>
+
+            <View style={[{ width: "90%", margin: 10, borderRadius: 5, borderWidth: 1,borderWidth: 0.5, borderColor:'#dddddd',elevation:3,shadowOpacity: 0.2,shadowRadius: 1.41, }]}>
+              <Button
+                onPress={() => {
+                  dispatch(authActions.logout());
+                  props.navigation.navigate('Accueil');
+                }}
+                title="LOGOUT"
+                color={Colors.activeColor}
+              />
+            </View>
+
 
             <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
             {/* <DrawerItems {...props} /> */}

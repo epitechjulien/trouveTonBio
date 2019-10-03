@@ -33,6 +33,7 @@ import EditEvents from '../screens/user/EditEventScreen';
 
 
 // SHOP SCREENS
+import EventsOverviewScreen from '../screens/shop/EventsOverviewScreen';
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
 import ProductDetailScreen from '../screens/shop/ProductDetailScreen';
 import CartScreen from '../screens/shop/CartScreen';
@@ -63,6 +64,7 @@ const defaultNavOptions = {
 const ProductsNavigator = createStackNavigator(
   {
     ProductsOverview: ProductsOverviewScreen,
+    EventsOverview: EventsOverviewScreen,
     ProductDetail: ProductDetailScreen,
     Cart: CartScreen,
     Categories: Categories,
@@ -221,7 +223,7 @@ const tabScreenConfig = {
       tabBarColor: Colors.primaryColor
   }
   },
-  Events: {screen: EventsNavigator, navigationOptions: {
+  Events: {screen: EventsScreen, navigationOptions: {
       tabBarIcon: (tabInfo) => {
           return <MaterialIcons name="event-available" size={28} color="white" activeColor='white'/>
       },
