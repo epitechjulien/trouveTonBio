@@ -32,18 +32,19 @@ const ProfilScreen = props => {
         return;
       }
       const transformedData = JSON.parse(userData);
-      const { token, userId } = transformedData;
+      const { token, userId, email } = transformedData;
       const expirationDate = new Date(expiryDate);
 
-      if (expirationDate <= new Date() || !token || !userId) {
+      if (expirationDate <= new Date() || !token || !email || !userId) {
         props.navigation.navigate('Auth');
         return;
       }
 
       const expirationTime = expirationDate.getTime() - new Date().getTime();
 
-      props.navigation.navigate('Carte');
-      dispatch(authActions.authenticate(userId, token));
+      props.navigation.navigate('Profil');
+      dispatch(authActions.authenticate(userId, token, email));
+
     };
 
     tryLogin();
@@ -56,7 +57,7 @@ const ProfilScreen = props => {
         {/* <Image style={styles.avatar} source={require('../assets/profil/maxime.jpg')}/> */}
         <View style={styles.body}>
           <View style={styles.bodyContent}>
-            <Text style={styles.name}>Votre nom</Text>
+            <Text style={styles.name}>Name</Text>
             <Text style={styles.info}>Votre statut</Text>
 
 

@@ -25,6 +25,7 @@ import SousCategories from '../screens/categories/SousCategoriesScreen';
 import ListeProduits from '../screens/categories/ListeProduitsScreen';
 
 // EVENTS SCREEN
+import AllEventsScreen from '../screens/eventtypes/AllEventsScreen';
 import EventsScreen from '../screens/eventtypes/TypesofEventsScreen';
 import EventsList from '../screens/eventtypes/EventsScreen';
 import EventDetail from '../screens/eventtypes/EventsDetailScreen';
@@ -36,7 +37,6 @@ import EditProfilScreen from '../screens/user/EditProfilScreen'
 
 
 // SHOP SCREENS
-import EventsOverviewScreen from '../screens/shop/EventsOverviewScreen';
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
 import ProductDetailScreen from '../screens/shop/ProductDetailScreen';
 import CartScreen from '../screens/shop/CartScreen';
@@ -67,7 +67,6 @@ const defaultNavOptions = {
 const ProductsNavigator = createStackNavigator(
   {
     ProductsOverview: ProductsOverviewScreen,
-    EventsOverview: EventsOverviewScreen,
     ProductDetail: ProductDetailScreen,
     Cart: CartScreen,
     Categories: Categories,
@@ -81,6 +80,7 @@ const ProductsNavigator = createStackNavigator(
     UserEvents: UserEvents,
     EditEvents: EditEvents,
     EditProfil: EditProfilScreen,
+    AllEvents : AllEventsScreen,
     Orders: OrdersScreen
   },
   {
@@ -102,6 +102,7 @@ const EventsNavigator = createStackNavigator(
     EventsScreen: EventsScreen,
     EventsList: EventsList,
     EventDetail:EventDetail,
+    AllEvents : AllEventsScreen,
   },
   {
     defaultNavigationOptions: defaultNavOptions
@@ -226,7 +227,7 @@ const tabScreenConfig = {
       tabBarColor: Colors.primaryColor
   }
   },
-  Events: {screen: EventsScreen, navigationOptions: {
+  Events: {screen: AllEventsScreen, navigationOptions: {
       tabBarIcon: (tabInfo) => {
           return <MaterialIcons name="event-available" size={28} color="white" activeColor='white'/>
       },

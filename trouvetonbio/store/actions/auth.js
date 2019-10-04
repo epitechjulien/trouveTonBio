@@ -43,7 +43,7 @@ export const signup = (email, password) => {
 
     const resData = await response.json();
 
-    console.log(resData);
+    console.log('C1 : page auth info user',resData);
     
     dispatch(
       authenticate(
@@ -89,29 +89,29 @@ export const login = (email, password) => {
     }
 
     const resData = await response.json();
-    console.log(resData);
+    console.log('C2 : page auth info user',resData);
+    console.log('C3 : email user',resData.email);
+
     dispatch(
       authenticate(
         resData.localId,
-        resData.idToken
+        resData.idToken,
+        resData.email
         // parseInt(resData.expiresIn) * 1000
       )
     );
     // const expirationDate = new Date(
     //   new Date().getTime() + parseInt(resData.expiresIn) * 1000
     // );
-    saveDataToStorage(resData.idToken, resData.localId);
+    saveDataToStorage(resData.idToken, resData.localId, resData.email);
   };
 };
 
 export const logout = () => {
   clearLogoutTimer();
   AsyncStorage.removeItem('userData');
-  // console.log(resData);
-  // AsyncStorage.getItem('userData');
-  // console.log(resData);
+
   return { type: LOGOUT };
-  console.log(logout)
 };
 
 const clearLogoutTimer = () => {

@@ -7,13 +7,14 @@ import {
   StyleSheet,
   Button,
   ActivityIndicator,
+  ImageBackground,
   Alert
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useDispatch } from 'react-redux';
 
 import Input from '../../components/UI/Input';
-import Card from '../../components/UI/Card';
+import Login from '../../components/UI/Login';
 import Colors from '../../constants/Colors';
 import * as authActions from '../../store/actions/auth';
 
@@ -110,8 +111,8 @@ const AuthScreen = props => {
       keyboardVerticalOffset={50}
       style={styles.screen}
     >
-    <LinearGradient colors={['#ffedff', '#ffe3ff']} style={styles.gradient}>
-        <Card style={styles.authContainer}>
+    <ImageBackground source={require('../../assets/login.png')} style={styles.gradient}>
+        <Login style={styles.authContainer}>
           <ScrollView>
             <Input
               id="email"
@@ -157,8 +158,9 @@ const AuthScreen = props => {
               />
             </View>
           </ScrollView>
-        </Card>
-      </LinearGradient>
+        </Login>
+        </ImageBackground>
+
     </KeyboardAvoidingView>
   );
 };
@@ -176,7 +178,9 @@ const styles = StyleSheet.create({
     width: '80%',
     maxWidth: 400,
     maxHeight: 400,
-    padding: 20
+    padding: 20,
+    opacity: 0.9,
+
   },
   buttonContainer: {
     marginTop: 10
@@ -184,6 +188,10 @@ const styles = StyleSheet.create({
   text2:{
     color: "black",
   },
+  bgImage: {
+    width: '100%',
+    height: 100,
+},
 });
 
 export default AuthScreen;

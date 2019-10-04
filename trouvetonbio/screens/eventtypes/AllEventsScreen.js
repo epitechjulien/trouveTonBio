@@ -10,15 +10,11 @@ import {
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import {createDrawerNavigator} from 'react-navigation-drawer';
-
-import HeaderButton from '../../components/UI/HeaderButton';
 import EventItem from '../../components/shop/EventItem';
-import * as eventActions from '../../store/actions/events';
-import * as cartActions from '../../store/actions/cart';
+import * as eventsActions from '../../store/actions/events';
 import Colors from '../../constants/Colors';
 
-const EventsOverviewScreen = props => {
+const AllEventsScreen = props => {
   const [isLoading, setIsLoading] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState();
@@ -29,7 +25,7 @@ const EventsOverviewScreen = props => {
     setError(null);
     setIsRefreshing(true);
     try {
-      await dispatch(eventActions.fetchEvents());
+      await dispatch(eventsActions.fetchEvents());
     } catch (err) {
       setError(err.message);
     }
@@ -55,24 +51,11 @@ const EventsOverviewScreen = props => {
   }, [dispatch, loadEvents]);
 
   const selectItemHandler = (id, title) => {
-    props.navigation.navigate('ProductDetail', {
+    props.navigation.navigate('EventDetail', {
       eventId: id,
       eventTitle: title
     });
   };
-
-  // if (error) {
-  //   return (
-  //     <View style={styles.centered}>
-  //       <Text>An error occurred!</Text>
-  //       <Button
-  //         title="Try again"
-  //         onPress={loadProducts}
-  //         color={Colors.primary}
-  //       />
-  //     </View>
-  //   );
-  // }
 
   if (isLoading) {
     return (
@@ -117,9 +100,14 @@ const EventsOverviewScreen = props => {
   );
 };
 
+AllEventsScreen.navigationOptions = navData => {
+  return {
+    headerTitle: 'All Events',
+  };
+};
 
 const styles = StyleSheet.create({
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center' }
 });
 
-export default EventsOverviewScreen;
+export default AllEventsScreen;
