@@ -79,7 +79,8 @@ const ProductsNavigator = createStackNavigator(
     UserEvents: UserEvents,
     EditEvents: EditEvents,
     EditProfil: EditProfilScreen,
-    Orders: OrdersScreen
+    Orders: OrdersScreen,
+    MyProfil: MyProfilScreen,
   },
   {
     navigationOptions: {
@@ -134,6 +135,7 @@ const AdminNavigator = createStackNavigator(
     UserEvents: UserEvents,
     EditEvents: EditEvents,
     EditProfil: EditProfilScreen,
+    MyProfil: MyProfilScreen,
   },
   {
     navigationOptions: {
