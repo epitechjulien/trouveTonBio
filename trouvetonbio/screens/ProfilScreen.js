@@ -61,21 +61,29 @@ const ProfilScreen = props => {
 
 
             <Text style={styles.description}>Profil Dashboard</Text>
-            <TouchableOpacity style={styles.buttonContainer}>
-              <Text style={styles.text2}>Mon profil</Text>  
-            </TouchableOpacity>  
+            <View style={[{ width: "90%", margin: 10, backgroundColor: Colors.activeColor,borderRadius: 5, borderWidth: 1,borderWidth: 0.5, borderColor:'#dddddd',elevation:3,shadowOpacity: 0.2,shadowRadius: 1.41, }]}>
+              <Button
+                onPress={() => props.navigation.navigate({routeName : 'EditProfil'})}
+                title="Mon profil"
+                color={Colors.primary}
+              />
+            </View>
 
-            <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.text2}>Votre panier</Text>  
-            </TouchableOpacity>
+            <View style={[{ width: "90%", margin: 10, backgroundColor: Colors.activeColor,borderRadius: 5, borderWidth: 1,borderWidth: 0.5, borderColor:'#dddddd',elevation:3,shadowOpacity: 0.2,shadowRadius: 1.41, }]}>
+              <Button
+                onPress={() => props.navigation.navigate({routeName : 'Cart'})}
+                title="VOTRE PANIER"
+                color={Colors.primary}
+              />
+            </View>
 
-            <TouchableOpacity style={styles.buttonContainer}>
-            <Button title="Vos commandes" onPress={() => props.navigation.navigate({routeName : 'OrdersScreen'})}/>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.text2}>Historiques</Text>  
-            </TouchableOpacity>
+            <View style={[{ width: "90%", margin: 10, backgroundColor: Colors.activeColor,borderRadius: 5, borderWidth: 1,borderWidth: 0.5, borderColor:'#dddddd',elevation:3,shadowOpacity: 0.2,shadowRadius: 1.41, }]}>
+              <Button
+                onPress={() => props.navigation.navigate({routeName : 'OrdersScreen'})}
+                title="VOS COMMANDES"
+                color={Colors.primary}
+              />
+            </View>
 
             <Text style={styles.description}>Producteur Dashboard</Text>
 
@@ -124,8 +132,8 @@ const ProfilScreen = props => {
             </View>
 
 
-            <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
-            {/* <DrawerItems {...props} /> */}
+            {/* <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
+            <DrawerItems {...props} />
             <Button
               title="Logout"
               color={Colors.primary}
@@ -134,7 +142,7 @@ const ProfilScreen = props => {
                 props.navigation.navigate('Accueil');
               }}
             />
-          </SafeAreaView>
+          </SafeAreaView> */}
             
             
 
@@ -144,6 +152,11 @@ const ProfilScreen = props => {
     </ScrollView>
   );
 };
+
+ProfilScreen.navigationOptions = {
+  headerTitle: 'Mon profil'
+};
+
 
 export default ProfilScreen;
 

@@ -6,6 +6,7 @@ import * as Font from 'expo-font';
 import ReduxThunk from 'redux-thunk';
 
 import eventsReducer from './store/reducers/events';
+import profilReducer from './store/reducers/profils';
 import productsReducer from './store/reducers/products';
 import cartReducer from './store/reducers/cart';
 import ordersReducer from './store/reducers/orders';
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   events: eventsReducer,
   cart: cartReducer,
   orders: ordersReducer,
-  auth: authReducer
+  auth: authReducer,
+  profils: profilReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));

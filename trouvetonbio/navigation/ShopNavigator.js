@@ -31,6 +31,9 @@ import EventDetail from '../screens/eventtypes/EventsDetailScreen';
 import UserEvents from '../screens/user/UserEventsScreen';
 import EditEvents from '../screens/user/EditEventScreen';
 
+// PROFIL SCREEN
+import EditProfilScreen from '../screens/user/EditProfilScreen'
+
 
 // SHOP SCREENS
 import EventsOverviewScreen from '../screens/shop/EventsOverviewScreen';
@@ -77,6 +80,7 @@ const ProductsNavigator = createStackNavigator(
     EditProduct: EditProductScreen,
     UserEvents: UserEvents,
     EditEvents: EditEvents,
+    EditProfil: EditProfilScreen,
     Orders: OrdersScreen
   },
   {
@@ -133,6 +137,7 @@ const AdminNavigator = createStackNavigator(
     EditProduct: EditProductScreen,
     UserEvents: UserEvents,
     EditEvents: EditEvents,
+    EditProfil: EditProfilScreen,
   },
   {
     navigationOptions: {
