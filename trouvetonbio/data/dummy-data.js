@@ -90,6 +90,10 @@ export const CATEGORIES = [
 
   
 ];
+ // les ruches
+export const RUCHE = [
+  new Ruche ('coordinate', 'title', 'description', require('../assets/photo.png'))
+];
 
 // export const SUBCATEGORIES = [
 //   new Subcategories('sub1','c1','Fruits de saison', require('../data/Images/fruits/saison.jpg')),

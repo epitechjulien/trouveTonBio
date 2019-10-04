@@ -1,13 +1,9 @@
-class Event {
-  constructor(id, eventtypeId,ownerId, title, image, description, date) {
+export default class Ruche {
+  constructor(id, coordinate, title, description, image) {
     this.id = id;
-    this.eventtypeId=eventtypeId;
-    this.ownerId = ownerId;
+    this.coordinate=coordinate;
     this.title = title;
-    this.image = image;
     this.description = description;
-    this.date = date;
+    this.image = image;
   }
 }
-
-export default Event;
