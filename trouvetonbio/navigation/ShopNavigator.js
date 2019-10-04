@@ -104,8 +104,6 @@ const EventsNavigator = createStackNavigator(
     EventDetail:EventDetail,
   },
   {
-    navigationOptions: {
-    },
     defaultNavigationOptions: defaultNavOptions
   }
 );

@@ -54,16 +54,9 @@ const EventslistScreen = props => {
 
 };
 
-EventslistScreen.navigationOptions = navData => {
-    const eventId = navData.navigation.getParam('eventId');
-    const selectedEventtype = EVENT.find(Event => Event.id === eventId);   
-       
-    
-    return {
-         
-      headerTitle: 'Nos évènements',
-    };
-  };
+EventslistScreen.navigationOptions = {
+  headerTitle: 'Nos évènements'
+};
 
 
 const styles = StyleSheet.create({

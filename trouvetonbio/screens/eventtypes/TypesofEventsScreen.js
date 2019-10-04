@@ -35,16 +35,8 @@ const TypesofEventsScreen = props => {
     );
 };
 
-TypesofEventsScreen.navigationOptions = navData => {
-    const eventId = navData.navigation.getParam('eventId');
-    const selectedEventtype = EVENTTYPE.find(eventtypeId => eventtypeId.id === eventtypeId);   
-       
-    
-    return {
-         
-      headerTitle: "Types d'évènements",
-      
-    };
+TypesofEventsScreen.navigationOptions = {
+    headerTitle: "Types d'évènements"
   };
 
 const styles = StyleSheet.create({
