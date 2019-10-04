@@ -5,7 +5,7 @@ import Category from '../components/Explore/Category';
 import { Thumbnail} from 'native-base';
 import Colors from '../constants/Colors';
 
-import { CATEGORIES, SUBCATEGORIES } from '../data/dummy-data';
+import { CATEGORIES, SUBCATEGORIES, PRODUCTS } from '../data/dummy-data';
 import { EVENT } from '../data/event-data';
 import CategoryGridTile from '../components/categories/CategoryGridTile';
 import EventsGridTile from '../components/eventtypes/EventsGridTile';
@@ -33,6 +33,26 @@ export class Explore extends Component {
             );
     };
 
+
+    renderGridProduct = itemData => {
+        return (
+
+        <CategoryGridTile
+            title={itemData.item.title}
+            image={itemData.item.image}
+            onSelect = {() => {
+                this.props.navigation.navigate({
+                    routeName: 'ProductDetailScreen',
+                    params: {
+                      productId: itemData.item.id
+                }
+        });
+            }} />
+    
+            );
+    };
+
+
     renderGridEvent = itemData => {
         return (
 
@@ -41,7 +61,7 @@ export class Explore extends Component {
             image={itemData.item.image}
             onSelect = {() => {
                 this.props.navigation.navigate({
-                    routeName: 'EventsList',
+                    routeName: 'EventsScreen',
                     params: {
                       eventId: itemData.item.id
                 }
@@ -93,16 +113,28 @@ export class Explore extends Component {
                                 />
                             </View>
 
-                            <Text style={styles.subtitle}>Promotions</Text>
+                            <Text style={styles.subtitle}>Nos produits</Text>
                             <View style={{height :140, marginTop:5, marginBottom: 15,}}>
-                                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
-                                    <Category style={styles.border} image={require('../assets/pomme1.jpg')} name="Pomme Golden: 4€"/>
-                                    <Category style={styles.border} image={require('../assets/banane.png')} name="BANANE naturelle: 7€"/>
-                                    <Category style={styles.border} image={require('../assets/raisins.jpg')} name="Grappe de Raisins: 2€"/>
-                                    <Category style={styles.border} image={require('../assets/carrot.jpg')} name="Carrottes longues: 1€"/>
-                                    <Category style={styles.border} image={require('../assets/asperge.jpg')} name="Asperges: 1€"/>
-                                    <Category style={styles.border} image={require('../assets/raisins.jpg')} name="Grappe de Raisins: 2€"/>
-                                </ScrollView>
+                            <FlatList
+                                keyExtractor={(item, index) => item.id}
+                                data={PRODUCTS}
+                                renderItem={this.renderGridProduct}
+                                // numColumns={2}
+                                horizontal={true}
+                                onSelect = {() => {
+                                    props.navigation.navigate({
+                                        routeName: 'ProductDetailScreen',
+                                        params: {
+                                            productIdId: itemData.item.id,
+                                            productIdTitle: itemData.item.title,
+                                            productIdImage: itemData.item.image,
+                                            productIdDescription: itemData.item.Description,
+
+                                    }
+                            });
+                                }}
+                                style={styles.FlatList}
+                                />
                             </View>
 
                             <Text style={styles.subtitle}>Evènements</Text>
@@ -115,7 +147,7 @@ export class Explore extends Component {
                                 horizontal={true}
                                 onSelect = {() => {
                                     props.navigation.navigate({
-                                        routeName: 'EventDetail',
+                                        routeName: 'EventsScreen',
                                         params: {
                                             eventId: itemData.item.id,
                                             eventTitle: itemData.item.title,

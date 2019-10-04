@@ -19,6 +19,8 @@ const AllEventsScreen = props => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState();
   const events = useSelector(state => state.events.availableEvents);
+  console.log("1 event:",events);
+
   const dispatch = useDispatch();
 
   const loadEvents = useCallback(async () => {
@@ -64,7 +66,7 @@ const AllEventsScreen = props => {
       </View>
     );
   }
-
+  console.log("event:",events);
   if (!isLoading && events.length === 0) {
     return (
       <View style={styles.centered}>

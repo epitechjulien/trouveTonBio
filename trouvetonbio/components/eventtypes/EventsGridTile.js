@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         height: 125,
         overflow: 'hidden',
-        marginTop: 60,
+        marginTop: 20,
 
     },
     container: {

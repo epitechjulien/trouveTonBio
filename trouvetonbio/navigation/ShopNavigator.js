@@ -25,7 +25,6 @@ import SousCategories from '../screens/categories/SousCategoriesScreen';
 import ListeProduits from '../screens/categories/ListeProduitsScreen';
 
 // EVENTS SCREEN
-import AllEventsScreen from '../screens/eventtypes/AllEventsScreen';
 import EventsScreen from '../screens/eventtypes/TypesofEventsScreen';
 import EventsList from '../screens/eventtypes/EventsScreen';
 import EventDetail from '../screens/eventtypes/EventsDetailScreen';
@@ -34,7 +33,6 @@ import EditEvents from '../screens/user/EditEventScreen';
 
 // PROFIL SCREEN
 import EditProfilScreen from '../screens/user/EditProfilScreen'
-
 
 // SHOP SCREENS
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
@@ -80,7 +78,6 @@ const ProductsNavigator = createStackNavigator(
     UserEvents: UserEvents,
     EditEvents: EditEvents,
     EditProfil: EditProfilScreen,
-    AllEvents : AllEventsScreen,
     Orders: OrdersScreen
   },
   {
@@ -102,7 +99,6 @@ const EventsNavigator = createStackNavigator(
     EventsScreen: EventsScreen,
     EventsList: EventsList,
     EventDetail:EventDetail,
-    AllEvents : AllEventsScreen,
   },
   {
     defaultNavigationOptions: defaultNavOptions
@@ -227,7 +223,7 @@ const tabScreenConfig = {
       tabBarColor: Colors.primaryColor
   }
   },
-  Events: {screen: AllEventsScreen, navigationOptions: {
+  Events: {screen: EventsNavigator, navigationOptions: {
       tabBarIcon: (tabInfo) => {
           return <MaterialIcons name="event-available" size={28} color="white" activeColor='white'/>
       },
