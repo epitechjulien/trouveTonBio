@@ -40,6 +40,7 @@ export class Explore extends Component {
         <CategoryGridTile
             title={itemData.item.title}
             image={itemData.item.image}
+            price={itemData.item.price}
             onSelect = {() => {
                 this.props.navigation.navigate({
                     routeName: 'ProductDetailScreen',

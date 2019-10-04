@@ -64,7 +64,7 @@ const ProfilScreen = props => {
             <Text style={styles.description}>Profil Dashboard</Text>
             <View style={[{ width: "90%", margin: 10, backgroundColor: Colors.activeColor,borderRadius: 5, borderWidth: 1,borderWidth: 0.5, borderColor:'#dddddd',elevation:3,shadowOpacity: 0.2,shadowRadius: 1.41, }]}>
               <Button
-                onPress={() => props.navigation.navigate({routeName : 'EditProfil'})}
+                onPress={() => props.navigation.navigate({routeName : 'MyProfil'})}
                 title="Mon profil"
                 color={Colors.primary}
               />

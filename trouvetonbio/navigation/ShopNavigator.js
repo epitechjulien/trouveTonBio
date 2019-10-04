@@ -32,7 +32,8 @@ import UserEvents from '../screens/user/UserEventsScreen';
 import EditEvents from '../screens/user/EditEventScreen';
 
 // PROFIL SCREEN
-import EditProfilScreen from '../screens/user/EditProfilScreen'
+import EditProfilScreen from '../screens/user/EditProfilScreen';
+import MyProfilScreen from '../screens/user/MyProfilScreen';
 
 // SHOP SCREENS
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
@@ -163,7 +164,11 @@ const AuthNavigator = createStackNavigator(
 
 const ProfilNavigator = createStackNavigator(
   {
-    Profil: ProfilScreen
+    Profil: ProfilScreen,
+    Orders: OrdersScreen,
+    Cart: CartScreen,
+    MyProfil: MyProfilScreen,
+    EditProfil: EditProfilScreen,
   },
   {
     navigationOptions: {
